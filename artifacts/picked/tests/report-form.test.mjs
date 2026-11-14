@@ -22,6 +22,29 @@ function setup(fetch) {
   return new Component();
 }
 
+const businessLabels = {
+  EN: "Your business", SL: "Vaše podjetje", HR: "Vaša tvrtka",
+  IT: "La tua azienda", DE: "Ihr Unternehmen", HU: "Az Ön vállalkozása",
+};
+const textValues = (value) => typeof value === "string" ? [value]
+  : value && typeof value === "object" ? Object.values(value).flatMap(textValues) : [];
+for (const [lang, label] of Object.entries(businessLabels)) {
+  test(`${lang} addresses businesses throughout the page`, () => {
+    const component = setup(() => { throw new Error("No network expected"); });
+    component.state.lang = lang;
+    const { t, d, roi, cal } = component.renderVals();
+    assert.equal(t.dYour, label);
+    assert.equal(t.fBiz, t.dName);
+    // Preserve the founder's true restaurant background, not restaurant-only sales copy.
+    const { fdP, ...salesCopy } = t;
+    assert.doesNotMatch(textValues(salesCopy).join("\n"),
+      /restaurant|restavr|restoran|ristoran|étter|guest|\bgost|ospit|Gäst|vendég|dinner|allergen|alergen|Speisekarte|étlap|TheFork|TripAdvisor/i);
+    assert.ok(!d.qShown.includes("{city}"));
+    assert.equal(roi.guests, 10);
+    assert.equal(cal, "https://calendly.com/drolcluka77/30min");
+  });
+}
+
 test("validates before sending and preserves form values on failure", async () => {
   let calls = 0;
   const component = setup(async () => { calls++; return { ok: false, status: 503 }; });

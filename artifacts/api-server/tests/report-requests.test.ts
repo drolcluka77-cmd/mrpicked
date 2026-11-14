@@ -25,7 +25,7 @@ test("sends the owner notification and a localized visitor confirmation", async 
   assert.equal(messages[0].replyTo, "visitor@example.test");
   assert.match(messages[0].text, /sporočila: NE/);
   assert.equal(messages[1].to, "visitor@example.test");
-  assert.match(messages[1].subject, /Prejeli smo/);
+  assert.equal(messages[1].subject, "Vaše AI-poročilo za Test restaurant je v pripravi");
 });
 
 test("does not send a confirmation when the owner notification fails", async () => {
