@@ -11,6 +11,40 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /media/{filename}:
+    get:
+      operationId: getPublicMedia
+      summary: Stream the public Picked service video or its cover image
+      parameters:
+        - in: path
+          name: filename
+          required: true
+          schema:
+            type: string
+            enum: [picked-explainer.mp4, picked-explainer.jpg]
+        - in: header
+          name: Range
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Public media file
+          content:
+            video/mp4:
+              schema: { type: string, format: binary }
+            image/jpeg:
+              schema: { type: string, format: binary }
+        "206":
+          description: Requested byte range
+          content:
+            video/mp4:
+              schema: { type: string, format: binary }
+        "404":
+          description: Media not found
+        "416":
+          description: Requested range is not satisfiable
+        "503":
+          description: Media storage temporarily unavailable
   /report-requests:
     post:
       operationId: requestReport

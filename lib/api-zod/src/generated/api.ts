@@ -9,6 +9,20 @@ import * as zod from 'zod';
 
 
 /**
+ * @summary Stream the public Picked service video or its cover image
+ */
+export const GetPublicMediaParams = zod.object({
+  "filename": zod.enum(['picked-explainer.mp4', 'picked-explainer.jpg'])
+})
+
+export const GetPublicMediaHeader = zod.object({
+  "Range": zod.string().optional()
+})
+
+export const GetPublicMediaResponse = zod.unknown()
+
+
+/**
  * @summary Request a Picked report by email
  */
 export const requestReportBodyEmailMax = 254;

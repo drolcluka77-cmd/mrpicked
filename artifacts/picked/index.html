@@ -41,6 +41,8 @@ input[type=range]{accent-color:#B8F36E;width:100%}
 @keyframes pkblink{0%,49%{opacity:1}50%,100%{opacity:0}}
 .pk-caret{animation:pkblink 1s steps(1) infinite}
 .pk-mbar{display:none}
+.pk-service-video{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:64px;align-items:center}
+@media(max-width:720px){.pk-service-video{grid-template-columns:minmax(0,1fr);gap:32px}}
 @media (max-width: 720px){.pk-mbar{display:flex}}
 @media (prefers-reduced-motion: reduce){.pk-intro{display:none}.pk-rv{opacity:1;transform:none;transition:none}.pk-word,.pk-fade,.pk-in,.pk-rise,.pk-shift,.pk-logo-pop,.pk-draw,.pk-wordmark,.pk-mrpop,.pk-pulse,.pk-caret{animation:none}}
 </style>
@@ -180,6 +182,23 @@ input[type=range]{accent-color:#B8F36E;width:100%}
 </div>
 </sc-if>
 </div>
+</div>
+</div>
+</section>
+
+<section id="service-video" aria-labelledby="service-video-title" style="padding: 88px 24px 0">
+<div class="pk-service-video" style="max-width: 1040px; margin: 0 auto">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2453C8">Picked · 30 s</div>
+<h2 id="service-video-title" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -0.025em">{{serviceVideo.title}}</h2>
+<p style="margin: 0; font-size: 18px; color: #3A4558">{{serviceVideo.description}}</p>
+<a href="#check" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; padding: 15px 22px; border-radius: 999px; background: {{accent}}; color: #0E1A2B; font-weight: 700; text-decoration: none">{{t.mbar}} →</a>
+</div>
+<div style="width: 100%; max-width: 340px; margin: 0 auto">
+<video src="{{serviceVideo.src}}" poster="{{serviceVideo.poster}}" controls playsinline="" preload="none" width="480" height="854" aria-label="{{serviceVideo.title}}" style="display: block; width: 100%; height: auto; aspect-ratio: 480 / 854; object-fit: contain; background: #0E1A2B; border: 1px solid #26364D; border-radius: 24px; box-sizing: border-box; box-shadow: 0 24px 64px rgba(14,26,43,0.16)">
+<a href="{{serviceVideo.src}}">{{serviceVideo.open}}</a>
+</video>
+<p style="margin: 12px 0 0; text-align: center; font-size: 13px"><a href="{{serviceVideo.src}}" style="color: #56637A">{{serviceVideo.open}} ↗</a></p>
 </div>
 </div>
 </section>
@@ -881,6 +900,18 @@ var s = this.state || {};
 var accent = this.props.accent ?? '#B8F36E';
 var lang = s.lang || 'EN';
 var t = Object.assign({}, T[lang], T2[lang]);
+var serviceVideoText = {
+EN: { title: "See how Picked works.", description: "A 30-second introduction to how Picked helps your business get discovered and recommended by AI.", open: "Open video" },
+SL: { title: "Poglejte, kako deluje Picked.", description: "V 30 sekundah spoznajte, kako Picked pomaga vašemu podjetju, da ga umetna inteligenca odkrije in priporoči.", open: "Odpri video" },
+HR: { title: "Pogledajte kako Picked funkcionira.", description: "U 30 sekundi saznajte kako Picked pomaže vašoj tvrtki da je umjetna inteligencija pronađe i preporuči.", open: "Otvori video" },
+IT: { title: "Scopri come funziona Picked.", description: "In 30 secondi, scopri come Picked aiuta la tua azienda a essere trovata e consigliata dall’intelligenza artificiale.", open: "Apri il video" },
+DE: { title: "So funktioniert Picked.", description: "Erfahren Sie in 30 Sekunden, wie Picked Ihrem Unternehmen hilft, von KI gefunden und empfohlen zu werden.", open: "Video öffnen" },
+HU: { title: "Nézze meg, hogyan működik a Picked.", description: "Ismerje meg 30 másodperc alatt, hogyan segít a Picked abban, hogy a mesterséges intelligencia megtalálja és ajánlja vállalkozását.", open: "Videó megnyitása" }
+}[lang];
+var serviceVideo = Object.assign({}, serviceVideoText, {
+src: new URL('api/media/picked-explainer.mp4', document.baseURI).pathname,
+poster: new URL('api/media/picked-explainer.jpg', document.baseURI).pathname
+});
 var set = function (o) { return function () { self.setState(o); }; };
 
 var langs = ['EN', 'SL', 'HR', 'IT', 'DE', 'HU'].map(function (c) {
@@ -1072,7 +1103,7 @@ var rv = {};
 var mr = { open: s.wink ? '0' : '1', wink: s.wink ? '1' : '0', cls: seen.promise ? 'pk-mrpop' : '' };
 var words = t.h1.split(' ').map(function (w, i) { return { w: w, delay: (1.45 + i * 0.07).toFixed(2) + 's' }; });
 
-return { accent: accent, t: t, langs: langs, d: d, how: how, pk: pk, roi: roi, faq: faq, form: form, rv: rv, mr: mr, words: words, showIntro: !s.introDone, wk: wk, cal: cal };
+return { accent: accent, t: t, langs: langs, d: d, how: how, pk: pk, roi: roi, faq: faq, form: form, rv: rv, mr: mr, words: words, showIntro: !s.introDone, wk: wk, cal: cal, serviceVideo: serviceVideo };
 }
 }
 </script>

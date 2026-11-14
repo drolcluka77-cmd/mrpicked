@@ -64,7 +64,7 @@ for (const [lang, label] of Object.entries(businessLabels)) {
   test(`${lang} addresses businesses throughout the page`, () => {
     const component = setup(() => { throw new Error("No network expected"); });
     component.state.lang = lang;
-    const { t, d, roi, cal } = component.renderVals();
+    const { t, d, roi, cal, serviceVideo } = component.renderVals();
     assert.equal(t.dYour, label);
     assert.equal(t.fBiz, t.dName);
     // Preserve the founder's true restaurant background, not restaurant-only sales copy.
@@ -74,6 +74,9 @@ for (const [lang, label] of Object.entries(businessLabels)) {
     assert.ok(!d.qShown.includes("{city}"));
     assert.equal(roi.guests, 10);
     assert.equal(cal, "https://calendly.com/drolcluka77/30min");
+    assert.ok(serviceVideo.title && serviceVideo.description && serviceVideo.open);
+    assert.equal(serviceVideo.src, "/api/media/picked-explainer.mp4");
+    assert.equal(serviceVideo.poster, "/api/media/picked-explainer.jpg");
   });
 }
 

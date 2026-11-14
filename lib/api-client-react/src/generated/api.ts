@@ -52,6 +52,83 @@ const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKe
   return result;
 };
 
+export const getGetPublicMediaUrl = (filename: 'picked-explainer.mp4' | 'picked-explainer.jpg',) => {
+
+
+
+
+  return `/api/media/${filename}`
+}
+
+/**
+ * @summary Stream the public Picked service video or its cover image
+ */
+export const getPublicMedia = async (filename: 'picked-explainer.mp4' | 'picked-explainer.jpg', options?: Parameters<typeof customFetch>[1]): Promise<Blob> => {
+
+  return customFetch<Blob>(getGetPublicMediaUrl(filename),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetPublicMediaQueryKey = (filename: 'picked-explainer.mp4' | 'picked-explainer.jpg',) => {
+    return [
+    `/api/media/${filename}`
+    ] as const;
+    }
+
+
+export const getGetPublicMediaQueryOptions = <TData = Awaited<ReturnType<typeof getPublicMedia>>, TError = ErrorType<void>>(filename: 'picked-explainer.mp4' | 'picked-explainer.jpg', options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getPublicMedia>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetPublicMediaQueryKey(filename);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getPublicMedia>>> = ({ signal }) => getPublicMedia(filename, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: filename !== null && filename !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getPublicMedia>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetPublicMediaQueryResult = NonNullable<Awaited<ReturnType<typeof getPublicMedia>>>
+export type GetPublicMediaQueryError = ErrorType<void>
+
+
+/**
+ * @summary Stream the public Picked service video or its cover image
+ */
+
+export function useGetPublicMedia<TData = Awaited<ReturnType<typeof getPublicMedia>>, TError = ErrorType<void>>(
+ filename: 'picked-explainer.mp4' | 'picked-explainer.jpg', options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getPublicMedia>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetPublicMediaQueryOptions(filename,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
 export const getRequestReportUrl = () => {
 
 
