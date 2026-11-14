@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Picked — get recommended by AI</title>
+<script src="/vendor/react.js"></script>
+<script src="/vendor/react-dom.js"></script>
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E1A2B}
+html{scroll-behavior:smooth}
+a{color:#0E1A2B}a:hover{color:#2453C8}
+@keyframes pkpulse{0%,100%{opacity:.3}50%{opacity:1}}
+.pk-pulse{animation:pkpulse 0.9s ease-in-out infinite}
+input[type=range]{accent-color:#B8F36E;width:100%}
+@keyframes pkcurtain{0%,72%{transform:translateY(0)}100%{transform:translateY(-100%)}}
+.pk-intro{animation:pkcurtain 2.2s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes pkpop{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.12);opacity:1}100%{transform:scale(1);opacity:1}}
+.pk-logo-pop{animation:pkpop .7s cubic-bezier(.2,.9,.3,1.3) .1s both}
+.pk-mrpop{animation:pkpop .8s cubic-bezier(.2,.9,.3,1.3) .35s both}
+@keyframes pkdraw{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
+.pk-draw{stroke-dasharray:30;animation:pkdraw .5s ease-out .6s both}
+@keyframes pkslide{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.pk-wordmark{animation:pkslide .6s ease-out .85s both}
+@keyframes pkup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.pk-word{display:inline-block;margin-right:.24em;animation:pkup .7s cubic-bezier(.2,.8,.2,1) both}
+.pk-fade{animation:pkup .8s cubic-bezier(.2,.8,.2,1) both}
+.pk-in{animation:pkup .45s ease-out both}
+@keyframes pkrise{from{transform:translateY(150px)}to{transform:none}}
+.pk-rise{animation:pkrise .75s cubic-bezier(.2,.8,.2,1) both;box-shadow:0 12px 40px rgba(184,243,110,0.25)}
+@keyframes pkshift{from{transform:translateY(-72px)}to{transform:none}}
+.pk-shift{animation:pkshift .75s cubic-bezier(.2,.8,.2,1) both}
+.pk-rv{opacity:0;transform:translateY(48px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.pk-rv-on{opacity:1;transform:none}
+@keyframes pkblink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.pk-caret{animation:pkblink 1s steps(1) infinite}
+.pk-mbar{display:none}
+@media (max-width: 720px){.pk-mbar{display:flex}}
+@media (prefers-reduced-motion: reduce){.pk-intro{display:none}.pk-rv{opacity:1;transform:none;transition:none}.pk-word,.pk-fade,.pk-in,.pk-rise,.pk-shift,.pk-logo-pop,.pk-draw,.pk-wordmark,.pk-mrpop,.pk-pulse,.pk-caret{animation:none}}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #0E1A2B; background: #F3F5F9; line-height: 1.5">
+<sc-if value="{{showIntro}}" hint-placeholder-val="{{ false }}">
+<div class="pk-intro" aria-hidden="true" style="position: fixed; inset: 0; z-index: 50; background: #0E1A2B; display: flex; align-items: center; justify-content: center; pointer-events: none">
+<div style="display: flex; align-items: center; gap: 20px">
+<span class="pk-logo-pop" style="width: 88px; height: 88px; border-radius: 26px; background: {{accent}}; display: flex; align-items: center; justify-content: center">
+<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path class="pk-draw" d="M5 12l5 5L20 7"></path></svg>
+</span>
+<span class="pk-wordmark" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 68px; letter-spacing: -0.03em; color: #F3F5F9">Picked</span>
+</div>
+</div>
+</sc-if>
+
+<section style="background: #0E1A2B; color: #F3F5F9; padding: 0 24px 104px">
+<div style="max-width: 1200px; margin: 0 auto">
+<nav style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 0">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #F3F5F9">
+<span style="width: 30px; height: 30px; border-radius: 9px; background: {{accent}}; display: flex; align-items: center; justify-content: center">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>
+</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em">Picked</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; font-size: 15px">
+<a href="#how" style="color: #C3CCDA; text-decoration: none">{{t.navHow}}</a>
+<a href="#pricing" style="color: #C3CCDA; text-decoration: none">{{t.navPricing}}</a>
+<a href="#roi" style="color: #C3CCDA; text-decoration: none">{{t.navRoi}}</a>
+<a href="#faq" style="color: #C3CCDA; text-decoration: none">{{t.navFaq}}</a>
+<div role="group" aria-label="Language" style="display: flex; flex-wrap: wrap; gap: 2px; background: #172539; border: 1px solid #26364D; border-radius: 999px; padding: 3px">
+<sc-for list="{{langs}}" as="l" hint-placeholder-count="6">
+<button type="button" onClick="{{ l.pick }}" aria-pressed="{{ l.pressed }}" style="font: inherit; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; min-width: 44px; min-height: 40px; padding: 0 10px; border: 0; border-radius: 999px; cursor: pointer; background: {{ l.bg }}; color: {{ l.fg }}">{{ l.label }}</button>
+</sc-for>
+</div>
+<a href="#check" style="background: {{accent}}; color: #0E1A2B; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 999px">{{t.navCta}}</a>
+</div>
+</nav>
+
+<div id="top" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 56px; align-items: center; padding-top: 56px">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<div class="pk-fade" style="animation-delay: 1.35s; display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; border: 1px solid #26364D; background: #172539; border-radius: 999px; padding: 6px 14px 6px 8px; font-size: 13px; font-weight: 600; color: #C3CCDA">
+<span style="width: 8px; height: 8px; border-radius: 999px; background: {{accent}}"></span>{{t.eyebrow}}
+</div>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(44px, 6vw, 78px); line-height: 1.0; letter-spacing: -0.035em"><sc-for list="{{words}}" as="w" hint-placeholder-count="8"><span class="pk-word" style="animation-delay: {{w.delay}}">{{w.w}}</span></sc-for></h1>
+<p class="pk-fade" style="animation-delay: 2.05s; margin: 0; font-size: 20px; color: #C3CCDA; max-width: 540px">{{t.sub}}</p>
+<div class="pk-fade" style="animation-delay: 2.2s; display: flex; flex-wrap: wrap; gap: 14px">
+<a href="#check" style="background: {{accent}}; color: #0E1A2B; text-decoration: none; font-weight: 600; font-size: 17px; padding: 16px 28px; border-radius: 999px">{{t.cta1}}</a>
+<a href="#pricing" style="color: #F3F5F9; text-decoration: none; font-weight: 500; font-size: 17px; padding: 16px 24px; border-radius: 999px; border: 1px solid #33445E">{{t.cta2}}</a>
+</div>
+<div class="pk-fade" style="animation-delay: 2.35s; display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; color: #C3CCDA">
+<div style="display: flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>{{t.p1}}</div>
+<div style="display: flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>{{t.p2}}</div>
+<div style="display: flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>{{t.p3}}</div>
+</div>
+</div>
+
+<div class="pk-fade" style="animation-delay: 1.85s; background: #172539; border: 1px solid #26364D; border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 40px 100px rgba(0,0,0,0.4)">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 999px; background: #33445E"></span><span style="width: 10px; height: 10px; border-radius: 999px; background: #33445E"></span><span style="width: 10px; height: 10px; border-radius: 999px; background: #33445E"></span></div>
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}">{{t.dTitle}}</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="demo-name" style="font-size: 13px; color: #9EAAC0">{{t.dName}}</label>
+<input id="demo-name" type="text" value="{{d.nameVal}}" onChange="{{d.onName}}" placeholder="{{t.dNamePh}}" style="font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 12px; border: 1px solid #33445E; background: #0E1A2B; color: #F3F5F9; min-height: 44px; box-sizing: border-box">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="demo-city" style="font-size: 13px; color: #9EAAC0">{{t.dCity}}</label>
+<input id="demo-city" type="text" value="{{d.cityVal}}" onChange="{{d.onCity}}" style="font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 12px; border: 1px solid #33445E; background: #0E1A2B; color: #F3F5F9; min-height: 44px; box-sizing: border-box">
+</div>
+</div>
+<button type="button" onClick="{{d.run}}" style="font: inherit; font-weight: 600; font-size: 16px; min-height: 48px; border: 0; border-radius: 12px; background: {{accent}}; color: #0E1A2B; cursor: pointer">{{t.dRun}}</button>
+
+<sc-if value="{{d.idle}}" hint-placeholder-val="{{ true }}">
+<div style="border: 1px dashed #33445E; border-radius: 16px; padding: 28px 20px; text-align: center; color: #9EAAC0; font-size: 15px">{{t.dIdle}}</div>
+</sc-if>
+
+<sc-if value="{{d.scanning}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; border: 1px solid #26364D; border-radius: 16px; padding: 18px">
+<div style="font-weight: 600; font-size: 15px">{{t.dScan}}</div>
+<sc-for list="{{d.ais}}" as="a" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px">
+<span>{{a.name}}</span>
+<span class="{{a.cls}}" style="font-size: 13px; color: {{a.color}}; display: flex; align-items: center; gap: 6px">
+<sc-if value="{{a.done}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></sc-if>{{a.status}}</span>
+</div>
+</sc-for>
+<div style="height: 6px; border-radius: 999px; background: #26364D; overflow: hidden"><div style="height: 6px; width: {{d.scanPct}}; background: {{accent}}; border-radius: 999px"></div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{d.done}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div role="group" aria-label="Before and after" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; background: #0E1A2B; border-radius: 12px; padding: 4px">
+<sc-for list="{{d.tabs}}" as="v" hint-placeholder-count="2">
+<button type="button" onClick="{{v.pick}}" aria-pressed="{{v.pressed}}" style="font: inherit; font-weight: 600; font-size: 14px; min-height: 40px; border: 0; border-radius: 9px; cursor: pointer; background: {{v.bg}}; color: {{v.fg}}">{{v.label}}</button>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: flex-end"><div style="background: #26364D; padding: 12px 16px; border-radius: 16px 16px 4px 16px; font-size: 15px; max-width: 85%; min-height: 22px">{{d.qShown}}<sc-if value="{{d.typing}}" hint-placeholder-val="{{ false }}"><span class="pk-caret" style="color: {{accent}}">|</span></sc-if></div></div>
+<sc-if value="{{d.showLead}}" hint-placeholder-val="{{ true }}"><div class="pk-in" style="font-size: 14px; color: #9EAAC0">{{t.dIntro}}</div></sc-if>
+<sc-for list="{{d.cards}}" as="c" hint-placeholder-count="3">
+<div class="{{c.cls}}" style="display: flex; gap: 14px; align-items: flex-start; padding: 12px 16px; border-radius: 14px; background: {{c.bg}}; color: {{c.fg}}; border: 2px solid {{c.border}}">
+<div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px">{{c.n}}</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-weight: 600; font-size: 15px">{{c.name}}</div><div style="font-size: 13px; color: {{c.sub}}">{{c.desc}}</div></div>
+</div>
+</sc-for>
+<sc-if value="{{d.showBanner}}" hint-placeholder-val="{{ true }}">
+<div class="pk-in" style="border-radius: 14px; padding: 14px 16px; background: {{d.bannerBg}}; color: {{d.bannerFg}}; display: flex; flex-direction: column; gap: 10px; transition: background 0.5s">
+<div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-weight: 600"><span>{{d.banner}}</span><span>{{t.dScore}}: {{d.score}} {{t.dOf}}</span></div>
+<div style="height: 8px; border-radius: 999px; background: {{d.track}}; overflow: hidden"><div style="height: 8px; width: {{d.pct}}; background: {{d.gauge}}; border-radius: 999px; transition: width 1s cubic-bezier(.2,.8,.2,1)"></div></div>
+</div>
+</sc-if>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="font-size: 12px; color: #9EAAC0; max-width: 300px">{{t.dNote}}</div>
+<button type="button" onClick="{{d.again}}" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #33445E; background: transparent; color: #F3F5F9; cursor: pointer">{{t.dAgain}}</button>
+</div>
+<sc-if value="{{d.ask}}" hint-placeholder-val="{{ false }}">
+<div class="pk-in" style="border-top: 1px solid #26364D; padding-top: 16px; display: flex; flex-direction: column; gap: 10px">
+<label for="demo-mail" style="font-weight: 600; font-size: 15px">{{t.dGet}}</label>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<input id="demo-mail" type="email" placeholder="{{t.dEmailPh}}" value="{{form.mail}}" onChange="{{form.onMail}}" style="flex: 1 1 180px; font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 12px; border: 1px solid #33445E; background: #0E1A2B; color: #F3F5F9; min-height: 48px; box-sizing: border-box">
+<button type="button" onClick="{{form.submit}}" style="flex: 0 0 auto; font: inherit; font-weight: 600; font-size: 15px; min-height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: {{accent}}; color: #0E1A2B; cursor: pointer">{{t.btn}}</button>
+</div>
+<div style="font-size: 12px; color: #9EAAC0">{{t.privT}} <a href="#privacy" style="color: #C3CCDA">{{t.privL}}</a></div>
+</div>
+</sc-if>
+<sc-if value="{{d.thanks}}" hint-placeholder-val="{{ false }}">
+<div class="pk-in" style="border-top: 1px solid #26364D; padding-top: 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-weight: 600; font-size: 16px">{{t.tyH}}</div>
+<div style="font-size: 14px; color: #C3CCDA">{{t.tyP}}</div>
+<a href="{{cal}}" target="_blank" rel="noopener" style="align-self: flex-start; background: {{accent}}; color: #0E1A2B; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 999px">{{t.tyBtn}}</a>
+</div>
+</sc-if>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</section>
+
+<section id="how" style="padding: 104px 24px">
+<div data-rv="how" class="{{rv.how}}" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2453C8">{{t.howK}}</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -0.025em">{{t.howH}}</h2>
+</div>
+<div role="tablist" aria-label="{{t.howK}}" style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{how.tabs}}" as="h" hint-placeholder-count="3">
+<button type="button" role="tab" aria-selected="{{h.pressed}}" onClick="{{h.pick}}" style="font: inherit; font-weight: 600; font-size: 16px; min-height: 48px; padding: 0 22px; border-radius: 999px; cursor: pointer; border: 1px solid {{h.border}}; background: {{h.bg}}; color: {{h.fg}}">{{h.k}} · {{h.label}}</button>
+</sc-for>
+</div>
+<div role="tabpanel" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; align-items: stretch">
+<div style="background: #FFFFFF; border: 1px solid #DDE3EC; border-radius: 24px; padding: clamp(28px, 4vw, 44px); display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 30px; letter-spacing: -0.02em">{{how.cur.h}}</h3>
+<p style="margin: 0; font-size: 18px; color: #475468">{{how.cur.p}}</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{how.cur.items}}" as="it" hint-placeholder-count="3">
+<li style="display: flex; gap: 12px; align-items: flex-start; font-size: 17px"><span style="flex: 0 0 auto; width: 24px; height: 24px; border-radius: 999px; background: #0E1A2B; display: flex; align-items: center; justify-content: center; margin-top: 1px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></span>{{it}}</li>
+</sc-for>
+</ul>
+</div>
+<div style="background: #0E1A2B; color: #F3F5F9; border-radius: 24px; padding: clamp(28px, 4vw, 44px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 280px">
+<div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(96px, 12vw, 160px); line-height: 0.9; letter-spacing: -0.05em; color: {{accent}}">{{how.cur.k}}</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px">{{how.cur.tab}}</div>
+<div style="height: 6px; border-radius: 999px; background: #26364D; overflow: hidden"><div style="height: 6px; width: {{how.progress}}; background: {{accent}}"></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding: 0 24px 104px">
+<div data-rv="video" class="{{rv.video}}" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2453C8">{{t.vidK}}</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -0.025em">{{t.vidH}}</h2>
+<p style="margin: 0; font-size: 18px; color: #3A4558">{{t.vidP}}</p>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<sc-for list="{{t.vids}}" as="v" hint-placeholder-count="3">
+<div style="display: flex; gap: 14px; align-items: flex-start; background: #FFFFFF; border: 1px solid #DDE3EC; border-radius: 16px; padding: 16px 18px">
+<span style="flex: 0 0 auto; width: 36px; height: 36px; border-radius: 10px; background: #0E1A2B; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"></path></svg></span>
+<div><div style="font-weight: 600; font-size: 17px">{{v.h}}</div><div style="color: #475468">{{v.p}}</div></div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
+<div style="aspect-ratio: 9 / 16; background: #0E1A2B; border-radius: 24px; position: relative; display: flex; align-items: center; justify-content: center">
+<span style="width: 54px; height: 54px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E1A2B" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+<span style="position: absolute; left: 10px; right: 10px; bottom: 12px; background: rgba(243,245,249,0.92); color: #0E1A2B; border-radius: 8px; padding: 6px 8px; font-size: 11px; font-weight: 600; text-align: center">EN · SL · HR</span>
+</div>
+<div style="aspect-ratio: 9 / 16; background: #1E2D44; border-radius: 24px; position: relative; display: flex; align-items: center; justify-content: center; transform: translateY(-28px)">
+<span style="width: 54px; height: 54px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E1A2B" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+<span style="position: absolute; left: 10px; right: 10px; bottom: 12px; background: rgba(243,245,249,0.92); color: #0E1A2B; border-radius: 8px; padding: 6px 8px; font-size: 11px; font-weight: 600; text-align: center">IT · DE · HU</span>
+</div>
+<div style="aspect-ratio: 9 / 16; background: #0E1A2B; border-radius: 24px; position: relative; display: flex; align-items: center; justify-content: center">
+<span style="width: 54px; height: 54px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E1A2B" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+<span style="position: absolute; left: 10px; right: 10px; bottom: 12px; background: rgba(243,245,249,0.92); color: #0E1A2B; border-radius: 8px; padding: 6px 8px; font-size: 11px; font-weight: 600; text-align: center">Reels · TikTok · Shorts</span>
+</div>
+</div>
+</div>
+</section>
+
+<section id="pricing" style="background: #0E1A2B; color: #F3F5F9; padding: 104px 24px">
+<div data-rv="pricing" class="{{rv.pricing}}" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}">{{t.pkK}}</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -0.025em">{{t.pkH}}</h2>
+<p style="margin: 0; font-size: 17px; color: #C3CCDA">{{t.pkSub}}</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px">
+<sc-for list="{{pk.cards}}" as="c" hint-placeholder-count="3">
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="font: inherit; text-align: left; cursor: pointer; background: {{c.bg}}; color: {{c.fg}}; border: 2px solid {{c.border}}; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<span style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; width: 100%">
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700">{{c.name}}</span>
+<span style="font-size: 14px; color: {{c.sub}}">{{c.tag}}</span>
+</span>
+<sc-if value="{{c.popular}}" hint-placeholder-val="{{ false }}"><span style="background: {{accent}}; color: #0E1A2B; font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; white-space: nowrap">{{t.popular}}</span></sc-if>
+</span>
+<span style="font-family: 'Space Grotesk', sans-serif"><span style="font-size: 46px; font-weight: 700; letter-spacing: -0.02em">{{c.price}}</span><span style="color: {{c.sub}}"> {{t.perMonth}}</span></span>
+<span style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+<sc-for list="{{c.hi}}" as="h" hint-placeholder-count="3">
+<span style="display: flex; gap: 10px; align-items: flex-start"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{c.chk}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 3px"><path d="M5 12l5 5L20 7"></path></svg>{{h}}</span>
+</sc-for>
+</span>
+</button>
+</sc-for>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: start">
+<div style="background: #172539; border: 1px solid #26364D; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">{{pk.inclTitle}}</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; color: #D7DEE8; font-size: 15px">
+<sc-for list="{{pk.incl}}" as="i" hint-placeholder-count="7">
+<li style="display: flex; gap: 10px; align-items: flex-start"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 auto; margin-top: 3px"><path d="M5 12l5 5L20 7"></path></svg>{{i}}</li>
+</sc-for>
+</ul>
+</div>
+
+<div style="background: #172539; border: 1px solid #26364D; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<div style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">{{t.addH}}</div>
+<sc-for list="{{pk.addons}}" as="a" hint-placeholder-count="4">
+<button type="button" onClick="{{a.toggle}}" aria-pressed="{{a.pressed}}" disabled="{{a.included}}" style="font: inherit; text-align: left; width: 100%; cursor: {{a.cursor}}; opacity: {{a.opacity}}; display: flex; gap: 14px; align-items: flex-start; padding: 14px; border-radius: 14px; border: 1px solid {{a.border}}; background: {{a.bg}}; color: #F3F5F9">
+<span style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 7px; border: 2px solid {{a.boxBorder}}; background: {{a.boxBg}}; display: flex; align-items: center; justify-content: center; margin-top: 2px">
+<sc-if value="{{a.checked}}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></sc-if>
+</span>
+<span style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto">
+<span style="font-weight: 600; font-size: 15px">{{a.name}}</span>
+<span style="font-size: 13px; color: #9EAAC0">{{a.desc}}</span>
+<span style="font-size: 13px; font-weight: 600; color: {{a.priceColor}}">{{a.price}}</span>
+</span>
+</button>
+</sc-for>
+</div>
+
+<div style="background: #F3F5F9; color: #0E1A2B; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; outline: 3px solid {{accent}}">
+<div style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">{{t.sumH}}</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+<sc-for list="{{pk.lines}}" as="ln" hint-placeholder-count="2">
+<div style="display: flex; justify-content: space-between; gap: 12px"><span>{{ln.name}}</span><span style="color: #475468; text-align: right">{{ln.amt}}</span></div>
+</sc-for>
+</div>
+<div style="height: 1px; background: #DDE3EC"></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+<span style="font-weight: 600">{{t.sumMonthly}}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; letter-spacing: -0.02em">{{pk.monthly}}</span>
+</div>
+<sc-if value="{{pk.hasOnce}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span style="font-weight: 600">{{t.sumOnce}}</span><span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700">{{pk.once}}</span></div>
+</sc-if>
+<a href="#check" style="margin-top: 6px; background: #0E1A2B; color: #F3F5F9; text-decoration: none; font-weight: 600; text-align: center; padding: 16px 20px; border-radius: 999px">{{t.sumCta}}</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="roi" style="padding: 104px 24px">
+<div data-rv="roi" class="{{rv.roi}}" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2453C8">{{t.roiK}}</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -0.025em">{{t.roiH}}</h2>
+<p style="margin: 0; font-size: 18px; color: #3A4558">{{t.roiP}}</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><label for="roi-spend" style="font-weight: 600">{{t.roiSpend}}</label><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px">{{roi.spendStr}}</span></div>
+<input id="roi-spend" type="range" min="10" max="150" step="5" value="{{roi.spend}}" onChange="{{roi.onSpend}}">
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><label for="roi-guests" style="font-weight: 600">{{t.roiGuests}}</label><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px">{{roi.guests}}</span></div>
+<input id="roi-guests" type="range" min="0" max="80" step="1" value="{{roi.guests}}" onChange="{{roi.onGuests}}">
+</div>
+<p style="margin: 0; font-size: 13px; color: #56637A">{{t.roiNote}}</p>
+</div>
+
+<div style="background: #0E1A2B; color: #F3F5F9; border-radius: 26px; padding: clamp(26px, 4vw, 40px); display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; gap: 12px; color: #C3CCDA"><span>{{t.roiRev}}</span><span style="font-weight: 600; color: #F3F5F9">{{roi.rev}}</span></div>
+<div style="height: 12px; border-radius: 999px; background: #1E2D44; overflow: hidden"><div style="height: 12px; width: {{roi.revW}}; background: {{accent}}; border-radius: 999px"></div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; gap: 12px; color: #C3CCDA"><span>{{t.roiCost}}</span><span style="font-weight: 600; color: #F3F5F9">{{roi.cost}}</span></div>
+<div style="height: 12px; border-radius: 999px; background: #1E2D44; overflow: hidden"><div style="height: 12px; width: {{roi.costW}}; background: #7C93B8; border-radius: 999px"></div></div>
+</div>
+<div style="height: 1px; background: #26364D"></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+<span style="font-weight: 600">{{t.roiNet}}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 5vw, 56px); font-weight: 700; letter-spacing: -0.03em; color: {{roi.netColor}}">{{roi.net}}</span>
+</div>
+<div style="background: #172539; border: 1px solid #26364D; border-radius: 14px; padding: 14px 16px; font-size: 15px; color: #D7DEE8">{{roi.breakStr}}</div>
+<a href="#check" style="background: {{accent}}; color: #0E1A2B; text-decoration: none; font-weight: 600; text-align: center; padding: 16px 20px; border-radius: 999px">{{t.roiCta}}</a>
+</div>
+</div>
+</section>
+
+<section style="padding: 0 24px 104px">
+<div data-rv="promise" class="{{rv.promise}}" style="max-width: 1200px; margin: 0 auto; background: #0E1A2B; color: #F3F5F9; border-radius: 30px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 36px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}}">{{t.proK}}</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 3.8vw, 46px); line-height: 1.08; letter-spacing: -0.02em">{{t.proH}}</h2>
+<p style="margin: 0; font-size: 18px; color: #C3CCDA">{{t.proP}}</p>
+</div>
+<div class="{{mr.cls}}" style="display: flex; flex-direction: column; align-items: center; gap: 14px">
+<svg width="220" height="240" viewBox="0 0 200 220" role="img" aria-label="Mr. Picked">
+<path d="M30 220 Q36 158 100 150 Q164 158 170 220 Z" fill="#26364D"></path>
+<path d="M84 150 L116 150 L100 196 Z" fill="#FFFFFF"></path>
+<path d="M44 220 Q50 168 86 156 L100 196 L114 156 Q150 168 156 220 Z" fill="#172539"></path>
+<path d="M82 150 L100 160 L82 170 Z" fill="{{accent}}"></path>
+<path d="M118 150 L100 160 L118 170 Z" fill="{{accent}}"></path>
+<circle cx="100" cy="160" r="5" fill="{{accent}}"></circle>
+<circle cx="132" cy="186" r="8" fill="{{accent}}"></circle>
+<path d="M128 186 l3 3 l5 -6" fill="none" stroke="#0E1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="100" cy="88" r="54" fill="#F2C9A8"></circle>
+<circle cx="48" cy="84" r="13" fill="#FFFFFF"></circle>
+<circle cx="44" cy="98" r="11" fill="#FFFFFF"></circle>
+<circle cx="152" cy="84" r="13" fill="#FFFFFF"></circle>
+<circle cx="156" cy="98" r="11" fill="#FFFFFF"></circle>
+<ellipse cx="72" cy="104" rx="9" ry="6" fill="#F0A98F"></ellipse>
+<ellipse cx="128" cy="104" rx="9" ry="6" fill="#F0A98F"></ellipse>
+<path d="M66 70 Q78 62 90 70" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"></path>
+<path d="M110 66 Q122 56 134 66" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"></path>
+<circle cx="80" cy="86" r="13" fill="rgba(255,255,255,0.25)" stroke="#C9A227" stroke-width="3"></circle>
+<circle cx="120" cy="86" r="13" fill="rgba(255,255,255,0.25)" stroke="#C9A227" stroke-width="3"></circle>
+<path d="M93 86 L107 86" stroke="#C9A227" stroke-width="3"></path>
+<circle cx="80" cy="87" r="3.5" fill="#0E1A2B"></circle>
+<circle cx="120" cy="87" r="3.5" fill="#0E1A2B" opacity="{{mr.open}}"></circle>
+<path d="M115 88 Q120 84 125 88" fill="none" stroke="#0E1A2B" stroke-width="3" stroke-linecap="round" opacity="{{mr.wink}}"></path>
+<path d="M110 62 Q122 50 134 62" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="{{mr.wink}}"></path>
+<circle cx="100" cy="100" r="7" fill="#E8B08F"></circle>
+<path d="M100 108 Q86 102 70 110 Q56 118 46 106 Q50 124 72 122 Q88 120 100 114 Q112 120 128 122 Q150 124 154 106 Q144 118 130 110 Q114 102 100 108 Z" fill="#FFFFFF"></path>
+<path d="M90 126 Q100 132 110 126" fill="none" stroke="#B5654A" stroke-width="3" stroke-linecap="round"></path>
+</svg>
+<div style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; text-align: center">{{t.mrQuote}}</div>
+<div style="font-size: 14px; color: #9EAAC0">— Mr. Picked</div>
+</div>
+</div>
+</section>
+
+<section id="work" style="padding: 0 24px 104px">
+<div data-rv="work" class="{{rv.work}}" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px">
+<div style="background: #FFFFFF; border: 1px solid #DDE3EC; border-radius: 26px; padding: clamp(26px, 4vw, 44px); display: flex; flex-wrap: wrap; gap: 28px; align-items: center">
+<div style="flex: 0 0 auto; width: 112px; height: 112px; border-radius: 999px; background: #0E1A2B; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 38px; color: {{accent}}">LD</div>
+<div style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2453C8">{{t.fdK}}</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -0.02em">{{t.fdH}}</h2>
+<p style="margin: 0; font-size: 18px; color: #3A4558">{{t.fdP}}</p>
+<div style="font-weight: 600">{{t.fdName}}</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2453C8">{{t.wkK}}</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -0.025em">{{t.wkH}}</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px">
+<sc-for list="{{wk}}" as="w" hint-placeholder-count="3">
+<div style="background: #FFFFFF; border: 1px solid #DDE3EC; border-radius: 22px; padding: 14px 14px 28px; display: flex; flex-direction: column; gap: 14px">
+<div style="height: 140px; border-radius: 14px; background: {{w.bg}}; display: flex; align-items: center; justify-content: center; gap: 14px; padding: 0 16px">
+<span style="flex: 0 0 auto; width: 56px; height: 56px; border-radius: 16px; background: {{w.tile}}; color: {{w.tileFg}}; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em">{{w.mono}}</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: {{w.fg}}">{{w.name}}</span>
+</div>
+<div style="padding: 0 14px; font-size: 13px; font-weight: 600; color: #2453C8">{{w.host}}</div>
+<p style="margin: 0; padding: 0 14px; color: #475468">{{w.desc}}</p>
+<a href="{{w.url}}" target="_blank" rel="noopener" style="padding: 0 14px; font-weight: 600; color: #2453C8">{{t.wkVisit}} ↗</a>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="faq" style="padding: 0 24px 104px">
+<div data-rv="faq" class="{{rv.faq}}" style="max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2453C8">{{t.faqK}}</div>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -0.025em">{{t.faqH}}</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{faq}}" as="f" hint-placeholder-count="5">
+<div style="background: #FFFFFF; border: 1px solid #DDE3EC; border-radius: 18px">
+<button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.expanded}}" style="font: inherit; width: 100%; text-align: left; cursor: pointer; background: transparent; border: 0; padding: 20px 22px; min-height: 64px; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: #0E1A2B">
+<span style="font-weight: 600; font-size: 18px">{{f.q}}</span>
+<span style="flex: 0 0 auto; width: 32px; height: 32px; border-radius: 999px; background: #0E1A2B; display: flex; align-items: center; justify-content: center; transform: {{f.rot}}; transition: transform 0.2s"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg></span>
+</button>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 0 22px 22px; font-size: 16px; color: #475468">{{f.a}}</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="check" style="padding: 0 24px 104px">
+<div data-rv="check" class="{{rv.check}}" style="max-width: 1200px; margin: 0 auto; background: {{accent}}; border-radius: 30px; padding: clamp(32px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02; letter-spacing: -0.025em">{{t.ctaH}}</h2>
+<p style="margin: 0; font-size: 18px; color: #1C2B14">{{t.ctaP}}</p>
+</div>
+<sc-if value="{{form.open}}" hint-placeholder-val="{{ true }}">
+<form style="display: flex; flex-direction: column; gap: 12px">
+<label for="cta-biz" style="font-weight: 600; font-size: 15px">{{t.fBiz}}</label>
+<input id="cta-biz" type="text" placeholder="{{t.dNamePh}}" value="{{form.biz}}" onChange="{{form.onBiz}}" style="font: inherit; font-size: 17px; padding: 16px 18px; border-radius: 14px; border: 2px solid #0E1A2B; background: #FFFFFF; color: #0E1A2B">
+<label for="cta-mail" style="font-weight: 600; font-size: 15px">{{t.fMail}}</label>
+<input id="cta-mail" type="email" placeholder="you@restaurant.si" value="{{form.mail}}" onChange="{{form.onMail}}" style="font: inherit; font-size: 17px; padding: 16px 18px; border-radius: 14px; border: 2px solid #0E1A2B; background: #FFFFFF; color: #0E1A2B">
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #1C2B14; cursor: pointer"><input type="checkbox" checked="{{form.consent}}" onChange="{{form.onConsent}}" style="width: 20px; height: 20px; margin: 1px 0 0; flex: 0 0 auto; accent-color: #0E1A2B">{{t.consent}}</label>
+<div style="font-size: 13px; color: #1C2B14">{{t.privT}} <a href="#privacy" style="color: #0E1A2B">{{t.privL}}</a></div>
+<button type="button" onClick="{{form.submit}}" style="font: inherit; font-weight: 600; font-size: 17px; padding: 16px 24px; border-radius: 999px; border: 0; background: #0E1A2B; color: #F3F5F9; cursor: pointer; min-height: 52px">{{t.btn}}</button>
+</form>
+</sc-if>
+<sc-if value="{{form.sent}}" hint-placeholder-val="{{ false }}">
+<div style="background: #0E1A2B; color: #F3F5F9; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start">
+<span style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700">{{t.tyH}}</span>
+<span style="font-size: 16px; color: #C3CCDA">{{t.tyP}}</span>
+<a href="{{cal}}" target="_blank" rel="noopener" style="background: {{accent}}; color: #0E1A2B; text-decoration: none; font-weight: 600; padding: 14px 22px; border-radius: 999px">{{t.tyBtn}}</a>
+</div>
+</sc-if>
+</div>
+</section>
+
+<sc-if value="{{form.open}}" hint-placeholder-val="{{ false }}">
+<a href="#check" class="pk-mbar" style="position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 40; align-items: center; justify-content: center; gap: 8px; min-height: 56px; border-radius: 999px; background: {{accent}}; color: #0E1A2B; text-decoration: none; font-weight: 700; font-size: 17px; box-shadow: 0 12px 30px rgba(14,26,43,0.35)">{{t.mbar}} →</a>
+</sc-if>
+<footer style="border-top: 1px solid #DDE3EC; padding: 32px 24px 96px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; color: #56637A">
+<div><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0E1A2B">Picked</span> · Ljubljana · SI · HR · IT · AT · HU</div>
+<div style="display: flex; flex-direction: column; gap: 2px; text-align: right"><span style="font-weight: 600; color: #0E1A2B">Cyberfinance, računalniško programiranje d.o.o.</span><span>Celovška cesta 136, 1000 Ljubljana, Slovenia</span><span>DŠ: 83314512 · <a href="tel:+38640290963" style="color: #56637A">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu" style="color: #56637A">info@mrpicked.eu</a></span></div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#B8F36E","options":["#B8F36E","#FF8A5B","#7CC4FF"]},"calendly":{"editor":"text","default":"#calendly"},"$preview":{"width":1440,"height":7800}}'>
+var NAMES = ["Visible", "Recommended", "Concierge"];
+var PRICES = [390, 690, 990];
+var ADDONS = [{id:"video",mo:149,once:0,inc:null},{id:"reviews",mo:90,once:0,inc:1},{id:"wa",mo:290,once:490,inc:2},{id:"web",mo:0,once:1490,inc:null}];
+var LOC = {EN:"en-US",SL:"sl-SI",HR:"hr-HR",IT:"it-IT",DE:"de-AT",HU:"hu-HU"};
+function fmt(n, lang) { var s = Math.round(n).toLocaleString(LOC[lang]); return lang === "EN" ? "€" + s : s + " €"; }
+
+var T = {
+EN: {
+navHow:"How it works", navPricing:"Pricing", navRoi:"ROI", navFaq:"FAQ", navCta:"Free AI check",
+eyebrow:"AI + Google visibility for restaurants & hotels",
+h1:"Your next guest won’t Google you. They’ll ask AI.",
+sub:"When a guest asks ChatGPT, Gemini or Perplexity where to eat, AI names three places. We make sure yours is one of them — in six languages.",
+cta1:"Run a free AI check", cta2:"Build your plan",
+p1:"3 AIs + Google tracked", p2:"6 languages", p3:"Higher score in 90 days — or month 4 is free",
+dTitle:"Live preview", dName:"Restaurant name", dNamePh:"e.g. Gostilna Primer", dCity:"City", dRun:"Run AI check",
+dIdle:"Enter your restaurant and press run to see how an AI answers a hungry guest.", dScan:"Asking the AIs…",
+dToday:"Today", dWith:"With Picked", dQ:"{city}: where should we have dinner tonight?", dIntro:"Here are three good options:",
+dNot:"You’re not in the answer", dYes:"You’re the first pick", dScore:"AI visibility", dOf:"of 30 guest questions",
+dNote:"Simulated preview. Your real AI Mirror report checks 30 questions in 6 languages.",
+dOther:"Another restaurant", dYour:"Your restaurant", dDesc:"Loved for its terrace and tasting menu. Bookable on WhatsApp.",
+dAgain:"Try another", dDone:"done", dWait:"waiting",
+howK:"How it works", howH:"Three steps from invisible to recommended.",
+steps:[
+{tab:"AI Mirror", h:"We ask the AIs about you", p:"We run the questions your guests actually ask across ChatGPT, Gemini, Perplexity and Google’s AI answers.", items:["30 guest questions in 6 languages","Where you appear — and where competitors do","Every wrong fact the AI says about you"]},
+{tab:"Fix", h:"We make you readable", p:"In the first 30 days we fix everything AI and Google read about you.", items:["Google profile, hours, menu, photos, categories","Listings corrected on 15+ platforms","Machine-readable menu and booking info on your site"]},
+{tab:"Stay picked", h:"We keep you there", p:"Every month we re-run the questions, add fresh content and report what changed.", items:["Monthly Picked Report with your visibility score","AI videos and Google posts every month","Review requests after every visit"]}],
+vidK:"AI video", vidH:"Videos that work twice.", vidP:"No filming. Our AI turns your real photos into short clips — content for social, and one more reason for AI to recommend you.",
+vids:[{h:"From your real photos", p:"Your dishes and your space, never stock footage. You approve every clip."},{h:"One video, six languages", p:"AI voiceover and subtitles, so every tourist hears it in their own language."},{h:"Posted where it counts", p:"Instagram, TikTok, YouTube Shorts and your Google profile."}],
+pkK:"Pricing", pkH:"Build your plan.", pkSub:"Pick a package, add what you need, see the total right away. Prices exclude VAT. Monthly, cancel with 30 days’ notice.",
+tags:["Get found and described correctly","Get chosen, not just listed","Picked, then booked"],
+hi:[["AI audit + full fix in 30 days","Listings on 15+ platforms","Monthly Picked Report"],["2 AI videos / month","Review requests + replies in 48 h","50 questions + 3 competitors tracked"],["4 AI videos / month in 6 languages","WhatsApp concierge 24/7","Monthly strategy call"]],
+lists:[
+["Starting AI audit: 30 guest questions in 3 AIs and 6 languages","Full fix in the first 30 days: Google profile, hours, menu, photos, categories","Your menu, hours and location made machine-readable on your website","Listings corrected on 15+ platforms (TripAdvisor, Apple Maps, Bing, TheFork…)","Local Google SEO: tracked Maps ranking for your 10 key searches","4 Google profile posts per month","Monthly Picked Report with your visibility score"],
+["Everything in Visible, plus:","2 AI videos / month in 3 languages, posted to Instagram, TikTok and Google","Automatic review request after every visit (QR or booking system)","We draft replies to all your Google reviews within 48 h","2 new guest-question pages / month in 3 languages","50 guest questions tracked + 3 nearby competitors","Quarterly results call"],
+["Everything in Recommended, plus:","4 AI videos / month in 6 languages","WhatsApp concierge 24/7: menu, allergens, hours and bookings","Booking reminders & no-show follow-up","Your menu online in 6 languages","One seasonal campaign per quarter (Advent, summer terrace…)","Monthly strategy call + changes within 24 h"]],
+popular:"Most popular", perMonth:"/ month", addH:"Add-ons", included:"Included", once:"one-off", setup:"setup",
+addons:[{name:"AI video pack", desc:"+3 AI videos every month"},{name:"Review loop", desc:"Review request after every visit"},{name:"WhatsApp concierge", desc:"Answers guests and takes bookings, 24/7"},{name:"AI-ready website", desc:"Multilingual, fast, readable by AI"}],
+sumH:"Your plan", sumMonthly:"Monthly", sumOnce:"One-off", sumCta:"Start with a free AI check", inclH:"What’s included in",
+roiK:"Return", roiH:"Does it pay off? Do the math.", roiP:"Move the sliders to your own numbers.",
+roiSpend:"Average spend per guest", roiGuests:"Extra guests per week", roiRev:"Extra revenue / month", roiCost:"Your plan / month", roiNet:"Left over",
+roiBreak:"Picked pays for itself at {n} extra guests a week.", roiNote:"An estimate from your inputs — not a promise of results.",
+proK:"Our promise", proH:"Higher visibility in 90 days — or month four is on us.", proP:"We measure your AI and Google visibility on day one. If it isn’t higher after 90 days, you don’t pay for month four.", mrQuote:"“Of course they picked me.”",
+faqK:"FAQ", faqH:"Questions owners ask us",
+faqs:[
+{q:"What is GEO, in plain words?", a:"Making sure AI assistants like ChatGPT, Gemini and Perplexity know your restaurant, describe it correctly and recommend it. It builds on local SEO, so you also rank better on Google."},
+{q:"How soon will I see results?", a:"Fixes to your Google profile and listings often show within weeks. AI answers change more slowly; we measure every month and promise a higher score in 90 days."},
+{q:"Do I need a new website?", a:"Usually not. We fix what you have. Only if AI can’t read your current site do we suggest an AI-ready rebuild."},
+{q:"Are the AI videos made from real footage?", a:"From your real photos of dishes and the space, turned into short clips with AI. You approve each one, and they’re labelled as AI where platforms require it."},
+{q:"Can I cancel?", a:"Yes, monthly with 30 days’ notice. No long contracts."}],
+ctaH:"What does AI say about you today?", ctaP:"Get a free AI Mirror report in 48 hours. No call needed, no obligation.",
+fBiz:"Restaurant or hotel name", fMail:"Email", btn:"Send me my free report", sent:"Thanks — your report is on its way within 48 hours."
+},
+SL: {
+navHow:"Kako deluje", navPricing:"Cenik", navRoi:"Donos", navFaq:"Vprašanja", navCta:"Brezplačen AI pregled",
+eyebrow:"AI + Google vidnost za restavracije in hotele",
+h1:"Vaš naslednji gost vas ne bo iskal na Googlu. Vprašal bo AI.",
+sub:"Ko gost vpraša ChatGPT, Gemini ali Perplexity, kje naj jé, AI imenuje tri lokale. Poskrbimo, da je vaš med njimi — v šestih jezikih.",
+cta1:"Brezplačen AI pregled", cta2:"Sestavite paket",
+p1:"Spremljamo 3 AI + Google", p2:"6 jezikov", p3:"Višja ocena v 90 dneh — ali 4. mesec brezplačno",
+dTitle:"Predogled v živo", dName:"Ime restavracije", dNamePh:"npr. Gostilna Primer", dCity:"Mesto", dRun:"Zaženi AI pregled",
+dIdle:"Vpišite svojo restavracijo in zaženite, da vidite, kako AI odgovori lačnemu gostu.", dScan:"Sprašujemo AI…",
+dToday:"Danes", dWith:"S Picked", dQ:"{city}: kje naj nocoj večerjamo?", dIntro:"Tukaj so tri dobre možnosti:",
+dNot:"Vas ni v odgovoru", dYes:"Ste prva izbira", dScore:"AI vidnost", dOf:"od 30 vprašanj gostov",
+dNote:"Simuliran predogled. Pravo poročilo AI Mirror preveri 30 vprašanj v 6 jezikih.",
+dOther:"Druga restavracija", dYour:"Vaša restavracija", dDesc:"Priljubljena zaradi terase in degustacijskega menija. Rezervacija prek WhatsAppa.",
+dAgain:"Poskusite znova", dDone:"končano", dWait:"čaka",
+howK:"Kako deluje", howH:"Trije koraki od nevidnega do priporočenega.",
+steps:[
+{tab:"AI Mirror", h:"AI vprašamo o vas", p:"Postavimo vprašanja, ki jih gostje res sprašujejo, v ChatGPT, Gemini, Perplexity in Googlovih AI odgovorih.", items:["30 vprašanj gostov v 6 jezikih","Kje se pojavite vi — in kje konkurenca","Vsak napačen podatek, ki ga AI pove o vas"]},
+{tab:"Popravek", h:"Poskrbimo, da vas AI razume", p:"V prvih 30 dneh popravimo vse, kar AI in Google bereta o vas.", items:["Google profil, ure, meni, fotografije, kategorije","Popravljeni vpisi na 15+ platformah","Strojno berljiv meni in rezervacije na vaši strani"]},
+{tab:"Ostanite izbrani", h:"Obdržimo vas tam", p:"Vsak mesec ponovno postavimo vprašanja, dodamo svežo vsebino in poročamo, kaj se je spremenilo.", items:["Mesečno poročilo Picked z oceno vidnosti","AI videi in Google objave vsak mesec","Prošnje za oceno po vsakem obisku"]}],
+vidK:"AI video", vidH:"Videi, ki delujejo dvakrat.", vidP:"Brez snemanja. Naš AI iz vaših pravih fotografij ustvari kratke posnetke — vsebino za družbena omrežja in še en razlog, da vas AI priporoči.",
+vids:[{h:"Iz vaših pravih fotografij", p:"Vaše jedi in vaš prostor, nikoli tuji posnetki. Vsak posnetek odobrite."},{h:"En video, šest jezikov", p:"AI glas in podnapisi, da ga vsak turist sliši v svojem jeziku."},{h:"Objavljeno tam, kjer šteje", p:"Instagram, TikTok, YouTube Shorts in vaš Google profil."}],
+pkK:"Cenik", pkH:"Sestavite svoj paket.", pkSub:"Izberite paket, dodajte, kar potrebujete, in takoj vidite skupno ceno. Cene brez DDV. Mesečno, odpoved s 30-dnevnim rokom.",
+tags:["Da vas najdejo in pravilno opišejo","Da vas izberejo, ne le navedejo","Izbrani, nato rezervirani"],
+hi:[["AI pregled + celoten popravek v 30 dneh","Vpisi na 15+ platformah","Mesečno poročilo Picked"],["2 AI videa na mesec","Prošnje za ocene + odgovori v 48 urah","Spremljanje 50 vprašanj + 3 konkurentov"],["4 AI videi na mesec v 6 jezikih","WhatsApp concierge 24/7","Mesečni strateški sestanek"]],
+lists:[
+["Začetni AI pregled: 30 vprašanj gostov v 3 AI orodjih in 6 jezikih","Celoten popravek v prvih 30 dneh: Google profil, ure, meni, fotografije, kategorije","Meni, delovni čas in lokacija strojno berljivi na vaši spletni strani","Popravljeni vpisi na 15+ platformah (TripAdvisor, Apple Maps, Bing, TheFork…)","Lokalni Google SEO: spremljamo mesto na Zemljevidih za 10 ključnih iskanj","4 objave na Google profilu na mesec","Mesečno poročilo Picked z oceno vidnosti"],
+["Vse iz paketa Visible, plus:","2 AI videa na mesec v 3 jezikih, objavljena na Instagramu, TikToku in Googlu","Samodejna prošnja za oceno po vsakem obisku (QR ali rezervacijski sistem)","Pripravimo odgovore na vse vaše Google ocene v 48 urah","2 novi strani z vprašanji gostov na mesec v 3 jezikih","Spremljanje 50 vprašanj gostov + 3 bližnjih konkurentov","Četrtletni pregled rezultatov"],
+["Vse iz paketa Recommended, plus:","4 AI videi na mesec v 6 jezikih","WhatsApp concierge 24/7: meni, alergeni, delovni čas in rezervacije","Opomniki za rezervacije in sledenje neprihodom","Vaš meni na spletu v 6 jezikih","Ena sezonska kampanja na četrtletje (advent, poletna terasa…)","Mesečni strateški sestanek + spremembe v 24 urah"]],
+popular:"Najbolj priljubljen", perMonth:"/ mesec", addH:"Dodatki", included:"Vključeno", once:"enkratno", setup:"namestitev",
+addons:[{name:"AI video paket", desc:"+3 AI videi vsak mesec"},{name:"Zbiranje ocen", desc:"Prošnja za oceno po vsakem obisku"},{name:"WhatsApp concierge", desc:"Odgovarja gostom in sprejema rezervacije, 24/7"},{name:"Spletna stran za AI", desc:"Večjezična, hitra, berljiva za AI"}],
+sumH:"Vaš paket", sumMonthly:"Mesečno", sumOnce:"Enkratno", sumCta:"Začnite z brezplačnim AI pregledom", inclH:"Kaj vključuje paket",
+roiK:"Donos", roiH:"Se splača? Izračunajte.", roiP:"Premaknite drsnike na svoje številke.",
+roiSpend:"Povprečna poraba na gosta", roiGuests:"Dodatni gostje na teden", roiRev:"Dodaten prihodek / mesec", roiCost:"Vaš paket / mesec", roiNet:"Ostane vam",
+roiBreak:"Picked se poplača že pri {n} dodatnih gostih na teden.", roiNote:"Ocena iz vaših vnosov — ne obljuba rezultatov.",
+proK:"Naša obljuba", proH:"Višja vidnost v 90 dneh — ali četrti mesec plačamo mi.", proP:"Vašo vidnost v AI in na Googlu izmerimo prvi dan. Če po 90 dneh ni višja, četrtega meseca ne plačate.", mrQuote:"»Seveda so izbrali mene.«",
+faqK:"Vprašanja", faqH:"Kaj nas sprašujejo lastniki",
+faqs:[
+{q:"Kaj je GEO, preprosto povedano?", a:"Poskrbimo, da AI pomočniki, kot so ChatGPT, Gemini in Perplexity, poznajo vašo restavracijo, jo pravilno opišejo in priporočijo. Gradi na lokalnem SEO, zato ste višje tudi na Googlu."},
+{q:"Kdaj bom videl rezultate?", a:"Popravki Google profila in vpisov se pogosto pokažejo v nekaj tednih. AI odgovori se spreminjajo počasneje; merimo vsak mesec in obljubljamo višjo oceno v 90 dneh."},
+{q:"Potrebujem novo spletno stran?", a:"Običajno ne. Popravimo, kar imate. Novo stran predlagamo le, če obstoječe AI ne more prebrati."},
+{q:"So AI videi narejeni iz pravih posnetkov?", a:"Iz vaših pravih fotografij jedi in prostora, ki jih AI spremeni v kratke posnetke. Vsakega odobrite, kjer platforme to zahtevajo, pa so označeni kot AI."},
+{q:"Lahko odpovem?", a:"Da, mesečno s 30-dnevnim rokom. Brez dolgih pogodb."}],
+ctaH:"Kaj AI danes pravi o vas?", ctaP:"Brezplačno poročilo AI Mirror v 48 urah. Brez klica, brez obveznosti.",
+fBiz:"Ime restavracije ali hotela", fMail:"E-pošta", btn:"Pošljite mi brezplačno poročilo", sent:"Hvala — poročilo prejmete v 48 urah."
+},
+HR: {
+navHow:"Kako funkcionira", navPricing:"Cjenik", navRoi:"Povrat", navFaq:"Pitanja", navCta:"Besplatna AI provjera",
+eyebrow:"AI + Google vidljivost za restorane i hotele",
+h1:"Vaš sljedeći gost vas neće tražiti na Googleu. Pitat će AI.",
+sub:"Kad gost pita ChatGPT, Gemini ili Perplexity gdje jesti, AI navede tri mjesta. Pobrinut ćemo se da je vaše među njima — na šest jezika.",
+cta1:"Besplatna AI provjera", cta2:"Složite paket",
+p1:"Pratimo 3 AI-ja + Google", p2:"6 jezika", p3:"Viša ocjena za 90 dana — ili 4. mjesec besplatno",
+dTitle:"Pregled uživo", dName:"Naziv restorana", dNamePh:"npr. Konoba Primjer", dCity:"Grad", dRun:"Pokreni AI provjeru",
+dIdle:"Upišite svoj restoran i pokrenite da vidite kako AI odgovara gladnom gostu.", dScan:"Pitamo AI…",
+dToday:"Danas", dWith:"S Picked", dQ:"{city}: gdje da večeras večeramo?", dIntro:"Evo tri dobre opcije:",
+dNot:"Niste u odgovoru", dYes:"Vi ste prvi izbor", dScore:"AI vidljivost", dOf:"od 30 pitanja gostiju",
+dNote:"Simulirani pregled. Pravo AI Mirror izvješće provjerava 30 pitanja na 6 jezika.",
+dOther:"Drugi restoran", dYour:"Vaš restoran", dDesc:"Omiljen zbog terase i degustacijskog menija. Rezervacija putem WhatsAppa.",
+dAgain:"Pokušajte ponovno", dDone:"gotovo", dWait:"čeka",
+howK:"Kako funkcionira", howH:"Tri koraka od nevidljivog do preporučenog.",
+steps:[
+{tab:"AI Mirror", h:"Pitamo AI o vama", p:"Postavljamo pitanja koja gosti stvarno postavljaju u ChatGPT-u, Geminiju, Perplexityju i Googleovim AI odgovorima.", items:["30 pitanja gostiju na 6 jezika","Gdje se pojavljujete vi — a gdje konkurencija","Svaki pogrešan podatak koji AI kaže o vama"]},
+{tab:"Popravak", h:"Činimo vas čitljivima", p:"U prvih 30 dana ispravljamo sve što AI i Google čitaju o vama.", items:["Google profil, radno vrijeme, meni, fotografije, kategorije","Ispravljeni unosi na 15+ platformi","Strojno čitljiv meni i rezervacije na vašoj stranici"]},
+{tab:"Ostanite odabrani", h:"Zadržavamo vas ondje", p:"Svaki mjesec ponovno postavljamo pitanja, dodajemo svježi sadržaj i javljamo što se promijenilo.", items:["Mjesečno Picked izvješće s ocjenom vidljivosti","AI videi i Google objave svaki mjesec","Zahtjevi za recenziju nakon svakog posjeta"]}],
+vidK:"AI video", vidH:"Videi koji rade dvostruko.", vidP:"Bez snimanja. Naš AI od vaših pravih fotografija izrađuje kratke isječke — sadržaj za društvene mreže i još jedan razlog da vas AI preporuči.",
+vids:[{h:"Od vaših pravih fotografija", p:"Vaša jela i vaš prostor, nikad tuđe snimke. Svaki isječak odobravate."},{h:"Jedan video, šest jezika", p:"AI glas i titlovi, da ga svaki turist čuje na svom jeziku."},{h:"Objavljeno gdje se računa", p:"Instagram, TikTok, YouTube Shorts i vaš Google profil."}],
+pkK:"Cjenik", pkH:"Složite svoj paket.", pkSub:"Odaberite paket, dodajte što trebate i odmah vidite ukupnu cijenu. Cijene bez PDV-a. Mjesečno, otkaz uz 30 dana obavijesti.",
+tags:["Da vas pronađu i točno opišu","Da vas odaberu, a ne samo navedu","Odabrani, pa rezervirani"],
+hi:[["AI provjera + potpuni popravak u 30 dana","Unosi na 15+ platformi","Mjesečno Picked izvješće"],["2 AI videa mjesečno","Zahtjevi za recenziju + odgovori u 48 h","Praćenje 50 pitanja + 3 konkurenta"],["4 AI videa mjesečno na 6 jezika","WhatsApp concierge 24/7","Mjesečni strateški sastanak"]],
+lists:[
+["Početna AI provjera: 30 pitanja gostiju u 3 AI alata i 6 jezika","Potpuni popravak u prvih 30 dana: Google profil, radno vrijeme, meni, fotografije, kategorije","Meni, radno vrijeme i lokacija strojno čitljivi na vašoj web stranici","Ispravljeni unosi na 15+ platformi (TripAdvisor, Apple Maps, Bing, TheFork…)","Lokalni Google SEO: pratimo položaj na kartama za 10 ključnih pretraga","4 objave na Google profilu mjesečno","Mjesečno Picked izvješće s ocjenom vidljivosti"],
+["Sve iz paketa Visible, plus:","2 AI videa mjesečno na 3 jezika, objavljena na Instagramu, TikToku i Googleu","Automatski zahtjev za recenziju nakon svakog posjeta (QR ili sustav rezervacija)","Pripremamo odgovore na sve vaše Google recenzije u 48 sati","2 nove stranice s pitanjima gostiju mjesečno na 3 jezika","Praćenje 50 pitanja gostiju + 3 obližnja konkurenta","Tromjesečni pregled rezultata"],
+["Sve iz paketa Recommended, plus:","4 AI videa mjesečno na 6 jezika","WhatsApp concierge 24/7: meni, alergeni, radno vrijeme i rezervacije","Podsjetnici za rezervacije i praćenje nedolazaka","Vaš meni online na 6 jezika","Jedna sezonska kampanja po tromjesečju (advent, ljetna terasa…)","Mjesečni strateški sastanak + izmjene u 24 sata"]],
+popular:"Najpopularniji", perMonth:"/ mjesečno", addH:"Dodaci", included:"Uključeno", once:"jednokratno", setup:"postavljanje",
+addons:[{name:"AI video paket", desc:"+3 AI videa svaki mjesec"},{name:"Prikupljanje recenzija", desc:"Zahtjev za recenziju nakon svakog posjeta"},{name:"WhatsApp concierge", desc:"Odgovara gostima i prima rezervacije, 24/7"},{name:"Web stranica za AI", desc:"Višejezična, brza, čitljiva za AI"}],
+sumH:"Vaš paket", sumMonthly:"Mjesečno", sumOnce:"Jednokratno", sumCta:"Započnite besplatnom AI provjerom", inclH:"Što uključuje paket",
+roiK:"Povrat", roiH:"Isplati li se? Izračunajte.", roiP:"Pomaknite klizače na svoje brojke.",
+roiSpend:"Prosječna potrošnja po gostu", roiGuests:"Dodatni gosti tjedno", roiRev:"Dodatni prihod / mjesečno", roiCost:"Vaš paket / mjesečno", roiNet:"Ostaje vam",
+roiBreak:"Picked se isplati već s {n} dodatnih gostiju tjedno.", roiNote:"Procjena iz vaših unosa — ne obećanje rezultata.",
+proK:"Naše obećanje", proH:"Veća vidljivost za 90 dana — ili četvrti mjesec plaćamo mi.", proP:"Vašu vidljivost u AI-ju i na Googleu mjerimo prvi dan. Ako nakon 90 dana nije veća, četvrti mjesec ne plaćate.", mrQuote:"„Naravno da su odabrali mene.”",
+faqK:"Pitanja", faqH:"Što nas vlasnici pitaju",
+faqs:[
+{q:"Što je GEO, jednostavno rečeno?", a:"Pobrinemo se da AI pomoćnici poput ChatGPT-a, Geminija i Perplexityja poznaju vaš restoran, točno ga opišu i preporuče. Temelji se na lokalnom SEO-u, pa ste bolje rangirani i na Googleu."},
+{q:"Kada ću vidjeti rezultate?", a:"Ispravci Google profila i unosa često se vide za nekoliko tjedana. AI odgovori mijenjaju se sporije; mjerimo svaki mjesec i obećavamo višu ocjenu za 90 dana."},
+{q:"Trebam li novu web stranicu?", a:"Obično ne. Popravljamo ono što imate. Novu stranicu predlažemo samo ako postojeću AI ne može pročitati."},
+{q:"Jesu li AI videi napravljeni od pravih snimki?", a:"Od vaših pravih fotografija jela i prostora, koje AI pretvara u kratke isječke. Svaki odobravate, a gdje platforme to traže, označeni su kao AI."},
+{q:"Mogu li otkazati?", a:"Da, mjesečno uz 30 dana obavijesti. Bez dugih ugovora."}],
+ctaH:"Što AI danas kaže o vama?", ctaP:"Besplatno AI Mirror izvješće u 48 sati. Bez poziva, bez obveze.",
+fBiz:"Naziv restorana ili hotela", fMail:"E-pošta", btn:"Pošaljite mi besplatno izvješće", sent:"Hvala — izvješće stiže u roku od 48 sati."
+},
+IT: {
+navHow:"Come funziona", navPricing:"Prezzi", navRoi:"Ritorno", navFaq:"Domande", navCta:"Analisi AI gratuita",
+eyebrow:"Visibilità su AI e Google per ristoranti e hotel",
+h1:"Il tuo prossimo ospite non ti cercherà su Google. Chiederà all’AI.",
+sub:"Quando un ospite chiede a ChatGPT, Gemini o Perplexity dove mangiare, l’AI nomina tre locali. Facciamo in modo che il tuo sia tra questi — in sei lingue.",
+cta1:"Analisi AI gratuita", cta2:"Componi il tuo piano",
+p1:"3 AI + Google monitorati", p2:"6 lingue", p3:"Punteggio più alto in 90 giorni — o il 4° mese è gratis",
+dTitle:"Anteprima dal vivo", dName:"Nome del ristorante", dNamePh:"es. Trattoria Esempio", dCity:"Città", dRun:"Avvia analisi AI",
+dIdle:"Inserisci il tuo ristorante e avvia per vedere come l’AI risponde a un ospite affamato.", dScan:"Chiediamo alle AI…",
+dToday:"Oggi", dWith:"Con Picked", dQ:"{city}: dove ceniamo stasera?", dIntro:"Ecco tre buone opzioni:",
+dNot:"Non sei nella risposta", dYes:"Sei la prima scelta", dScore:"Visibilità AI", dOf:"su 30 domande degli ospiti",
+dNote:"Anteprima simulata. Il vero report AI Mirror verifica 30 domande in 6 lingue.",
+dOther:"Un altro ristorante", dYour:"Il tuo ristorante", dDesc:"Amato per la terrazza e il menu degustazione. Prenotabile su WhatsApp.",
+dAgain:"Riprova", dDone:"fatto", dWait:"in attesa",
+howK:"Come funziona", howH:"Tre passi da invisibile a consigliato.",
+steps:[
+{tab:"AI Mirror", h:"Chiediamo all’AI di te", p:"Facciamo le domande che gli ospiti fanno davvero su ChatGPT, Gemini, Perplexity e le risposte AI di Google.", items:["30 domande degli ospiti in 6 lingue","Dove compari tu — e dove i concorrenti","Ogni informazione sbagliata che l’AI dice di te"]},
+{tab:"Correzione", h:"Ti rendiamo leggibile", p:"Nei primi 30 giorni correggiamo tutto ciò che AI e Google leggono di te.", items:["Profilo Google, orari, menu, foto, categorie","Schede corrette su oltre 15 piattaforme","Menu e prenotazioni leggibili dalle macchine sul tuo sito"]},
+{tab:"Resta scelto", h:"Ti teniamo lì", p:"Ogni mese ripetiamo le domande, aggiungiamo contenuti nuovi e ti diciamo cosa è cambiato.", items:["Picked Report mensile con il punteggio di visibilità","Video AI e post Google ogni mese","Richieste di recensione dopo ogni visita"]}],
+vidK:"Video AI", vidH:"Video che funzionano due volte.", vidP:"Niente riprese. La nostra AI trasforma le tue foto reali in clip brevi — contenuti per i social e un motivo in più per cui l’AI ti consiglia.",
+vids:[{h:"Dalle tue foto reali", p:"I tuoi piatti e il tuo locale, mai immagini di repertorio. Approvi ogni clip."},{h:"Un video, sei lingue", p:"Voce AI e sottotitoli, così ogni turista lo ascolta nella sua lingua."},{h:"Pubblicato dove conta", p:"Instagram, TikTok, YouTube Shorts e il tuo profilo Google."}],
+pkK:"Prezzi", pkH:"Componi il tuo piano.", pkSub:"Scegli un pacchetto, aggiungi ciò che ti serve e vedi subito il totale. Prezzi IVA esclusa. Mensile, disdetta con 30 giorni di preavviso.",
+tags:["Farti trovare e descrivere correttamente","Farti scegliere, non solo elencare","Scelto, poi prenotato"],
+hi:[["Analisi AI + correzione completa in 30 giorni","Schede su oltre 15 piattaforme","Picked Report mensile"],["2 video AI al mese","Richieste di recensione + risposte in 48 h","50 domande + 3 concorrenti monitorati"],["4 video AI al mese in 6 lingue","Concierge WhatsApp 24/7","Call strategica mensile"]],
+lists:[
+["Analisi AI iniziale: 30 domande degli ospiti su 3 AI e in 6 lingue","Correzione completa nei primi 30 giorni: profilo Google, orari, menu, foto, categorie","Menu, orari e posizione leggibili dalle macchine sul tuo sito","Schede corrette su oltre 15 piattaforme (TripAdvisor, Apple Maps, Bing, TheFork…)","SEO locale: monitoriamo la posizione su Maps per le tue 10 ricerche chiave","4 post al mese sul profilo Google","Picked Report mensile con il tuo punteggio di visibilità"],
+["Tutto di Visible, più:","2 video AI al mese in 3 lingue, pubblicati su Instagram, TikTok e Google","Richiesta automatica di recensione dopo ogni visita (QR o sistema di prenotazione)","Prepariamo le risposte a tutte le tue recensioni Google entro 48 ore","2 nuove pagine di domande degli ospiti al mese in 3 lingue","50 domande degli ospiti monitorate + 3 concorrenti vicini","Call trimestrale sui risultati"],
+["Tutto di Recommended, più:","4 video AI al mese in 6 lingue","Concierge WhatsApp 24/7: menu, allergeni, orari e prenotazioni","Promemoria delle prenotazioni e follow-up dei no-show","Il tuo menu online in 6 lingue","Una campagna stagionale a trimestre (Natale, terrazza estiva…)","Call strategica mensile + modifiche entro 24 ore"]],
+popular:"Il più scelto", perMonth:"/ mese", addH:"Extra", included:"Incluso", once:"una tantum", setup:"attivazione",
+addons:[{name:"Pacchetto video AI", desc:"+3 video AI ogni mese"},{name:"Raccolta recensioni", desc:"Richiesta di recensione dopo ogni visita"},{name:"Concierge WhatsApp", desc:"Risponde agli ospiti e prende prenotazioni, 24/7"},{name:"Sito pronto per l’AI", desc:"Multilingue, veloce, leggibile dall’AI"}],
+sumH:"Il tuo piano", sumMonthly:"Mensile", sumOnce:"Una tantum", sumCta:"Inizia con un’analisi AI gratuita", inclH:"Cosa include",
+roiK:"Ritorno", roiH:"Conviene? Fai i conti.", roiP:"Sposta i cursori sui tuoi numeri.",
+roiSpend:"Spesa media per ospite", roiGuests:"Ospiti in più a settimana", roiRev:"Ricavi in più / mese", roiCost:"Il tuo piano / mese", roiNet:"Ti resta",
+roiBreak:"Picked si ripaga già con {n} ospiti in più a settimana.", roiNote:"Una stima dai tuoi dati — non una promessa di risultati.",
+proK:"La nostra promessa", proH:"Più visibilità in 90 giorni — o il quarto mese lo offriamo noi.", proP:"Misuriamo la tua visibilità su AI e Google il primo giorno. Se dopo 90 giorni non è più alta, il quarto mese non lo paghi.", mrQuote:"«Ovviamente hanno scelto me.»",
+faqK:"Domande", faqH:"Cosa ci chiedono i titolari",
+faqs:[
+{q:"Cos’è la GEO, in parole semplici?", a:"Fare in modo che assistenti AI come ChatGPT, Gemini e Perplexity conoscano il tuo ristorante, lo descrivano correttamente e lo consiglino. Si basa sulla SEO locale, quindi sali anche su Google."},
+{q:"Quando vedrò i risultati?", a:"Le correzioni al profilo Google e alle schede si vedono spesso in poche settimane. Le risposte dell’AI cambiano più lentamente; misuriamo ogni mese e promettiamo un punteggio più alto in 90 giorni."},
+{q:"Mi serve un nuovo sito?", a:"Di solito no. Sistemiamo quello che hai. Proponiamo un nuovo sito solo se l’AI non riesce a leggere quello attuale."},
+{q:"I video AI sono fatti con immagini reali?", a:"Dalle tue foto reali di piatti e locale, trasformate in clip brevi con l’AI. Approvi ognuno e, dove le piattaforme lo richiedono, sono etichettati come AI."},
+{q:"Posso disdire?", a:"Sì, mensilmente con 30 giorni di preavviso. Nessun contratto lungo."}],
+ctaH:"Cosa dice oggi l’AI di te?", ctaP:"Ricevi un report AI Mirror gratuito in 48 ore. Nessuna chiamata, nessun impegno.",
+fBiz:"Nome del ristorante o hotel", fMail:"Email", btn:"Inviami il report gratuito", sent:"Grazie — il report arriva entro 48 ore."
+},
+DE: {
+navHow:"So funktioniert’s", navPricing:"Preise", navRoi:"Rendite", navFaq:"FAQ", navCta:"Gratis KI-Check",
+eyebrow:"KI- und Google-Sichtbarkeit für Restaurants & Hotels",
+h1:"Ihr nächster Gast googelt Sie nicht. Er fragt die KI.",
+sub:"Wenn ein Gast ChatGPT, Gemini oder Perplexity fragt, wo er essen soll, nennt die KI drei Lokale. Wir sorgen dafür, dass Ihres dabei ist — in sechs Sprachen.",
+cta1:"Gratis KI-Check starten", cta2:"Paket zusammenstellen",
+p1:"3 KIs + Google im Blick", p2:"6 Sprachen", p3:"Höherer Wert in 90 Tagen — sonst Monat 4 gratis",
+dTitle:"Live-Vorschau", dName:"Name des Restaurants", dNamePh:"z. B. Gasthaus Beispiel", dCity:"Stadt", dRun:"KI-Check starten",
+dIdle:"Geben Sie Ihr Restaurant ein und starten Sie — so sehen Sie, wie eine KI einem hungrigen Gast antwortet.", dScan:"Wir fragen die KIs…",
+dToday:"Heute", dWith:"Mit Picked", dQ:"{city}: Wo essen wir heute Abend?", dIntro:"Hier drei gute Optionen:",
+dNot:"Sie kommen in der Antwort nicht vor", dYes:"Sie sind die erste Wahl", dScore:"KI-Sichtbarkeit", dOf:"von 30 Gästefragen",
+dNote:"Simulierte Vorschau. Der echte AI-Mirror-Bericht prüft 30 Fragen in 6 Sprachen.",
+dOther:"Ein anderes Restaurant", dYour:"Ihr Restaurant", dDesc:"Beliebt für Terrasse und Degustationsmenü. Reservierung über WhatsApp.",
+dAgain:"Neu versuchen", dDone:"fertig", dWait:"wartet",
+howK:"So funktioniert’s", howH:"Drei Schritte von unsichtbar zu empfohlen.",
+steps:[
+{tab:"AI Mirror", h:"Wir fragen die KI nach Ihnen", p:"Wir stellen die Fragen, die Gäste wirklich stellen, in ChatGPT, Gemini, Perplexity und Googles KI-Antworten.", items:["30 Gästefragen in 6 Sprachen","Wo Sie erscheinen — und wo die Konkurrenz","Jede falsche Angabe, die die KI über Sie macht"]},
+{tab:"Korrektur", h:"Wir machen Sie lesbar", p:"In den ersten 30 Tagen korrigieren wir alles, was KI und Google über Sie lesen.", items:["Google-Profil, Öffnungszeiten, Speisekarte, Fotos, Kategorien","Einträge auf 15+ Plattformen korrigiert","Maschinenlesbare Speisekarte und Reservierung auf Ihrer Website"]},
+{tab:"Gewählt bleiben", h:"Wir halten Sie dort", p:"Jeden Monat stellen wir die Fragen neu, liefern frische Inhalte und berichten, was sich geändert hat.", items:["Monatlicher Picked-Bericht mit Sichtbarkeitswert","KI-Videos und Google-Beiträge jeden Monat","Bewertungsanfragen nach jedem Besuch"]}],
+vidK:"KI-Video", vidH:"Videos, die doppelt wirken.", vidP:"Kein Dreh. Unsere KI macht aus Ihren echten Fotos kurze Clips — Inhalte für Social Media und ein Grund mehr für die KI, Sie zu empfehlen.",
+vids:[{h:"Aus Ihren echten Fotos", p:"Ihre Gerichte und Ihre Räume, nie Stockbilder. Sie geben jeden Clip frei."},{h:"Ein Video, sechs Sprachen", p:"KI-Sprecherstimme und Untertitel, damit jeder Tourist es in seiner Sprache hört."},{h:"Veröffentlicht, wo es zählt", p:"Instagram, TikTok, YouTube Shorts und Ihr Google-Profil."}],
+pkK:"Preise", pkH:"Stellen Sie Ihr Paket zusammen.", pkSub:"Paket wählen, Extras hinzufügen, Gesamtpreis sofort sehen. Preise exkl. MwSt. Monatlich, kündbar mit 30 Tagen Frist.",
+tags:["Gefunden und richtig beschrieben werden","Gewählt werden, nicht nur gelistet","Gewählt, dann reserviert"],
+hi:[["KI-Analyse + komplette Korrektur in 30 Tagen","Einträge auf 15+ Plattformen","Monatlicher Picked-Bericht"],["2 KI-Videos pro Monat","Bewertungsanfragen + Antworten in 48 h","50 Fragen + 3 Mitbewerber im Blick"],["4 KI-Videos pro Monat in 6 Sprachen","WhatsApp-Concierge 24/7","Monatliches Strategiegespräch"]],
+lists:[
+["KI-Startanalyse: 30 Gästefragen in 3 KI-Tools und 6 Sprachen","Komplette Korrektur in den ersten 30 Tagen: Google-Profil, Öffnungszeiten, Speisekarte, Fotos, Kategorien","Speisekarte, Öffnungszeiten und Standort maschinenlesbar auf Ihrer Website","Einträge auf 15+ Plattformen korrigiert (TripAdvisor, Apple Maps, Bing, TheFork…)","Lokales Google-SEO: Maps-Ranking für Ihre 10 wichtigsten Suchen im Blick","4 Beiträge pro Monat auf Ihrem Google-Profil","Monatlicher Picked-Bericht mit Ihrem Sichtbarkeitswert"],
+["Alles aus Visible, plus:","2 KI-Videos pro Monat in 3 Sprachen, auf Instagram, TikTok und Google veröffentlicht","Automatische Bewertungsanfrage nach jedem Besuch (QR oder Reservierungssystem)","Wir entwerfen Antworten auf alle Google-Bewertungen innerhalb von 48 h","2 neue Seiten mit Gästefragen pro Monat in 3 Sprachen","50 Gästefragen + 3 Mitbewerber in der Nähe im Blick","Quartalsgespräch zu den Ergebnissen"],
+["Alles aus Recommended, plus:","4 KI-Videos pro Monat in 6 Sprachen","WhatsApp-Concierge 24/7: Speisekarte, Allergene, Öffnungszeiten und Reservierungen","Reservierungserinnerungen und No-Show-Nachfassung","Ihre Speisekarte online in 6 Sprachen","Eine saisonale Kampagne pro Quartal (Advent, Sommerterrasse…)","Monatliches Strategiegespräch + Änderungen innerhalb von 24 h"]],
+popular:"Am beliebtesten", perMonth:"/ Monat", addH:"Extras", included:"Inklusive", once:"einmalig", setup:"Einrichtung",
+addons:[{name:"KI-Video-Paket", desc:"+3 KI-Videos jeden Monat"},{name:"Bewertungsschleife", desc:"Bewertungsanfrage nach jedem Besuch"},{name:"WhatsApp-Concierge", desc:"Beantwortet Gäste und nimmt Reservierungen an, 24/7"},{name:"KI-taugliche Website", desc:"Mehrsprachig, schnell, für KI lesbar"}],
+sumH:"Ihr Paket", sumMonthly:"Monatlich", sumOnce:"Einmalig", sumCta:"Mit einem Gratis-KI-Check starten", inclH:"Enthalten in",
+roiK:"Rendite", roiH:"Lohnt es sich? Rechnen Sie nach.", roiP:"Stellen Sie die Regler auf Ihre eigenen Zahlen.",
+roiSpend:"Durchschnittlicher Umsatz pro Gast", roiGuests:"Zusätzliche Gäste pro Woche", roiRev:"Zusätzlicher Umsatz / Monat", roiCost:"Ihr Paket / Monat", roiNet:"Bleibt übrig",
+roiBreak:"Picked rechnet sich schon ab {n} zusätzlichen Gästen pro Woche.", roiNote:"Eine Schätzung aus Ihren Eingaben — kein Ergebnisversprechen.",
+proK:"Unser Versprechen", proH:"Mehr Sichtbarkeit in 90 Tagen — sonst geht Monat vier auf uns.", proP:"Wir messen Ihre Sichtbarkeit in KI und Google am ersten Tag. Ist sie nach 90 Tagen nicht höher, zahlen Sie den vierten Monat nicht.", mrQuote:"„Natürlich haben sie mich gewählt.“",
+faqK:"FAQ", faqH:"Was Gastronomen uns fragen",
+faqs:[
+{q:"Was ist GEO, einfach erklärt?", a:"Wir sorgen dafür, dass KI-Assistenten wie ChatGPT, Gemini und Perplexity Ihr Restaurant kennen, richtig beschreiben und empfehlen. Es baut auf lokalem SEO auf, deshalb ranken Sie auch bei Google besser."},
+{q:"Wann sehe ich Ergebnisse?", a:"Korrekturen an Google-Profil und Einträgen zeigen sich oft in wenigen Wochen. KI-Antworten ändern sich langsamer; wir messen jeden Monat und versprechen einen höheren Wert in 90 Tagen."},
+{q:"Brauche ich eine neue Website?", a:"Meist nicht. Wir verbessern, was Sie haben. Eine neue Website schlagen wir nur vor, wenn die KI die bestehende nicht lesen kann."},
+{q:"Werden die KI-Videos aus echtem Material gemacht?", a:"Aus Ihren echten Fotos von Gerichten und Räumen, die eine KI in kurze Clips verwandelt. Sie geben jeden frei, und wo Plattformen es verlangen, sind sie als KI gekennzeichnet."},
+{q:"Kann ich kündigen?", a:"Ja, monatlich mit 30 Tagen Frist. Keine langen Verträge."}],
+ctaH:"Was sagt die KI heute über Sie?", ctaP:"Gratis AI-Mirror-Bericht in 48 Stunden. Ohne Anruf, ohne Verpflichtung.",
+fBiz:"Name des Restaurants oder Hotels", fMail:"E-Mail", btn:"Gratis-Bericht anfordern", sent:"Danke — Ihr Bericht kommt innerhalb von 48 Stunden."
+},
+HU: {
+navHow:"Hogyan működik", navPricing:"Árak", navRoi:"Megtérülés", navFaq:"GYIK", navCta:"Ingyenes AI-ellenőrzés",
+eyebrow:"AI- és Google-láthatóság éttermeknek és szállodáknak",
+h1:"A következő vendége nem a Google-ön keresi. Az AI-t kérdezi.",
+sub:"Amikor egy vendég megkérdezi a ChatGPT-t, a Geminit vagy a Perplexityt, hol egyen, az AI három helyet nevez meg. Mi gondoskodunk róla, hogy az Öné köztük legyen — hat nyelven.",
+cta1:"Ingyenes AI-ellenőrzés", cta2:"Csomag összeállítása",
+p1:"3 AI + Google követése", p2:"6 nyelv", p3:"Magasabb pontszám 90 nap alatt — vagy a 4. hónap ingyenes",
+dTitle:"Élő előnézet", dName:"Az étterem neve", dNamePh:"pl. Példa Csárda", dCity:"Város", dRun:"AI-ellenőrzés indítása",
+dIdle:"Írja be az éttermét, és indítsa el, hogy lássa, hogyan válaszol az AI egy éhes vendégnek.", dScan:"Kérdezzük az AI-okat…",
+dToday:"Ma", dWith:"Pickeddel", dQ:"{city}: hol vacsorázzunk ma este?", dIntro:"Íme három jó lehetőség:",
+dNot:"Ön nem szerepel a válaszban", dYes:"Ön az első választás", dScore:"AI-láthatóság", dOf:"/ 30 vendégkérdés",
+dNote:"Szimulált előnézet. A valódi AI Mirror jelentés 30 kérdést ellenőriz 6 nyelven.",
+dOther:"Egy másik étterem", dYour:"Az Ön étterme", dDesc:"Kedvelt a terasza és a kóstolómenüje miatt. Foglalás WhatsAppon.",
+dAgain:"Új próba", dDone:"kész", dWait:"várakozik",
+howK:"Hogyan működik", howH:"Három lépés a láthatatlantól az ajánlottig.",
+steps:[
+{tab:"AI Mirror", h:"Megkérdezzük az AI-t Önről", p:"Feltesszük azokat a kérdéseket, amelyeket a vendégek valóban feltesznek, a ChatGPT-ben, a Geminiben, a Perplexityben és a Google AI-válaszaiban.", items:["30 vendégkérdés 6 nyelven","Hol jelenik meg Ön — és hol a versenytársak","Minden téves adat, amit az AI Önről mond"]},
+{tab:"Javítás", h:"Olvashatóvá tesszük Önt", p:"Az első 30 napban kijavítunk mindent, amit az AI és a Google Önről olvas.", items:["Google-profil, nyitvatartás, étlap, fotók, kategóriák","Javított bejegyzések 15+ platformon","Gépileg olvasható étlap és foglalás a weboldalán"]},
+{tab:"Maradjon kiválasztott", h:"Ott tartjuk Önt", p:"Minden hónapban újra feltesszük a kérdéseket, friss tartalmat adunk, és beszámolunk a változásokról.", items:["Havi Picked-jelentés láthatósági pontszámmal","AI-videók és Google-bejegyzések minden hónapban","Értékeléskérés minden látogatás után"]}],
+vidK:"AI-videó", vidH:"Videók, amelyek kétszer dolgoznak.", vidP:"Nincs forgatás. AI-unk az Ön valódi fotóiból rövid klipeket készít — tartalmat a közösségi médiára, és még egy okot, hogy az AI Önt ajánlja.",
+vids:[{h:"Az Ön valódi fotóiból", p:"Az Ön ételei és terei, soha nem stockfelvételek. Minden klipet Ön hagy jóvá."},{h:"Egy videó, hat nyelv", p:"AI-narráció és felirat, hogy minden turista a saját nyelvén hallja."},{h:"Ott jelenik meg, ahol számít", p:"Instagram, TikTok, YouTube Shorts és az Ön Google-profilja."}],
+pkK:"Árak", pkH:"Állítsa össze a csomagját.", pkSub:"Válasszon csomagot, adja hozzá, amire szüksége van, és azonnal látja a végösszeget. Az árak ÁFA nélkül értendők. Havi díjas, 30 napos felmondással.",
+tags:["Hogy megtalálják és pontosan írják le","Hogy válasszák, ne csak felsorolják","Kiválasztva, majd lefoglalva"],
+hi:[["AI-audit + teljes javítás 30 nap alatt","Bejegyzések 15+ platformon","Havi Picked-jelentés"],["Havi 2 AI-videó","Értékeléskérés + válasz 48 órán belül","50 kérdés + 3 versenytárs követése"],["Havi 4 AI-videó 6 nyelven","WhatsApp concierge 0–24","Havi stratégiai megbeszélés"]],
+lists:[
+["Kezdő AI-audit: 30 vendégkérdés 3 AI-eszközben és 6 nyelven","Teljes javítás az első 30 napban: Google-profil, nyitvatartás, étlap, fotók, kategóriák","Étlap, nyitvatartás és helyszín gépileg olvashatóan a weboldalán","Javított bejegyzések 15+ platformon (TripAdvisor, Apple Maps, Bing, TheFork…)","Helyi Google SEO: Térkép-helyezés követése a 10 fő keresésére","Havi 4 bejegyzés a Google-profilján","Havi Picked-jelentés láthatósági pontszámmal"],
+["Minden, ami a Visible csomagban, plusz:","Havi 2 AI-videó 3 nyelven, Instagramon, TikTokon és a Google-ön","Automatikus értékeléskérés minden látogatás után (QR vagy foglalási rendszer)","48 órán belül megírjuk a válaszokat minden Google-értékelésre","Havi 2 új vendégkérdés-oldal 3 nyelven","50 vendégkérdés + 3 közeli versenytárs követése","Negyedéves eredménymegbeszélés"],
+["Minden, ami a Recommended csomagban, plusz:","Havi 4 AI-videó 6 nyelven","WhatsApp concierge 0–24: étlap, allergének, nyitvatartás és foglalások","Foglalási emlékeztetők és a meg nem jelenők utánkövetése","Az étlapja online 6 nyelven","Negyedévente egy szezonális kampány (advent, nyári terasz…)","Havi stratégiai megbeszélés + módosítások 24 órán belül"]],
+popular:"Legnépszerűbb", perMonth:"/ hó", addH:"Kiegészítők", included:"Benne van", once:"egyszeri", setup:"beállítás",
+addons:[{name:"AI-videócsomag", desc:"+3 AI-videó minden hónapban"},{name:"Értékelésgyűjtés", desc:"Értékeléskérés minden látogatás után"},{name:"WhatsApp concierge", desc:"Válaszol a vendégeknek és foglalásokat fogad, 0–24"},{name:"AI-ra kész weboldal", desc:"Többnyelvű, gyors, AI számára olvasható"}],
+sumH:"Az Ön csomagja", sumMonthly:"Havonta", sumOnce:"Egyszeri", sumCta:"Kezdje ingyenes AI-ellenőrzéssel", inclH:"Mit tartalmaz:",
+roiK:"Megtérülés", roiH:"Megéri? Számolja ki.", roiP:"Állítsa a csúszkákat a saját számaira.",
+roiSpend:"Átlagos költés vendégenként", roiGuests:"Plusz vendég hetente", roiRev:"Plusz bevétel / hó", roiCost:"Az Ön csomagja / hó", roiNet:"Marad",
+roiBreak:"A Picked már heti {n} plusz vendégnél megtérül.", roiNote:"Becslés az Ön adataiból — nem eredményígéret.",
+proK:"Ígéretünk", proH:"Nagyobb láthatóság 90 nap alatt — vagy a negyedik hónap a miénk.", proP:"Az első napon megmérjük AI- és Google-láthatóságát. Ha 90 nap után nem nagyobb, a negyedik hónapot nem fizeti.", mrQuote:"„Persze, hogy engem választottak.”",
+faqK:"GYIK", faqH:"Amit a tulajdonosok kérdeznek",
+faqs:[
+{q:"Mi az a GEO, egyszerűen?", a:"Gondoskodunk róla, hogy az olyan AI-asszisztensek, mint a ChatGPT, a Gemini és a Perplexity ismerjék az éttermét, pontosan írják le és ajánlják. Helyi SEO-ra épül, így a Google-ön is jobb helyen lesz."},
+{q:"Mikor látok eredményt?", a:"A Google-profil és a bejegyzések javítása gyakran néhány hét alatt látszik. Az AI-válaszok lassabban változnak; havonta mérünk, és 90 napon belül magasabb pontszámot ígérünk."},
+{q:"Új weboldal kell?", a:"Általában nem. A meglévőt javítjuk. Új oldalt csak akkor javaslunk, ha az AI nem tudja olvasni a jelenlegit."},
+{q:"Valódi anyagból készülnek az AI-videók?", a:"Az Ön ételeiről és tereiről készült valódi fotókból, amelyeket AI alakít rövid klipekké. Mindegyiket Ön hagyja jóvá, és ahol a platformok előírják, AI-ként jelöljük."},
+{q:"Lemondhatom?", a:"Igen, havonta, 30 napos felmondással. Nincs hosszú szerződés."}],
+ctaH:"Mit mond ma Önről az AI?", ctaP:"Ingyenes AI Mirror jelentés 48 órán belül. Hívás és kötelezettség nélkül.",
+fBiz:"Az étterem vagy szálloda neve", fMail:"E-mail", btn:"Kérem az ingyenes jelentést", sent:"Köszönjük — a jelentés 48 órán belül érkezik."
+}
+};
+
+var T2 = {
+EN: { dGet:"Send me the real report", dEmailPh:"Your email", tyH:"Your report is on its way", tyP:"You’ll get it within 48 hours. Want us to walk you through it? Book a free 15-minute call.", tyBtn:"Book 15 min", roiCta:"See where you stand today — free", mbar:"Free AI check", consent:"Send me tips and follow-ups about my report (optional)", privT:"We only use your email for your report.", privL:"Privacy policy", fdK:"Who’s behind Picked", fdH:"Built by a restaurant owner, not an agency.", fdP:"I run a restaurant in Ljubljana. I built Picked for my own place first — now we do it for yours.", fdName:"Luka Drolc, founder", wkK:"Recent work", wkH:"Projects we’ve worked on.", wk:["Pools, stone soaking tubs and wellness","Sourcing machinery and equipment from China for EU buyers","AI back office for building managers and trades — our own product"], wkVisit:"Visit site" },
+SL: { dGet:"Pošljite mi pravo poročilo", dEmailPh:"Vaš e-mail", tyH:"Poročilo je na poti", tyP:"Prejmete ga v 48 urah. Želite, da vam ga razložimo? Rezervirajte brezplačen 15-minutni klic.", tyBtn:"Rezerviraj 15 min", roiCta:"Preverite, kje ste danes — brezplačno", mbar:"Brezplačen AI pregled", consent:"Pošiljajte mi nasvete in nadaljnja sporočila o poročilu (neobvezno)", privT:"Vaš e-mail uporabimo samo za poročilo.", privL:"Politika zasebnosti", fdK:"Kdo stoji za Picked", fdH:"Naredil ga je gostinec, ne agencija.", fdP:"Vodim restavracijo v Ljubljani. Picked sem najprej naredil za svoj lokal — zdaj ga delamo za vašega.", fdName:"Luka Drolc, ustanovitelj", wkK:"Naše delo", wkH:"Projekti, na katerih smo delali.", wk:["Bazeni, kamnite kadi in wellness","Nabava strojev in opreme iz Kitajske za kupce v EU","AI zaledje za upravnike stavb in obrtnike — naš lasten produkt"], wkVisit:"Obiščite stran" },
+HR: { dGet:"Pošaljite mi pravo izvješće", dEmailPh:"Vaš e-mail", tyH:"Izvješće je na putu", tyP:"Stiže u roku od 48 sati. Želite da vam ga objasnimo? Rezervirajte besplatan poziv od 15 minuta.", tyBtn:"Rezerviraj 15 min", roiCta:"Pogledajte gdje ste danas — besplatno", mbar:"Besplatna AI provjera", consent:"Šaljite mi savjete i daljnje poruke o izvješću (neobavezno)", privT:"Vaš e-mail koristimo samo za izvješće.", privL:"Pravila privatnosti", fdK:"Tko stoji iza Picked", fdH:"Izradio ga je ugostitelj, a ne agencija.", fdP:"Vodim restoran u Ljubljani. Picked sam najprije napravio za svoj lokal — sada ga radimo za vaš.", fdName:"Luka Drolc, osnivač", wkK:"Naš rad", wkH:"Projekti na kojima smo radili.", wk:["Bazeni, kamene kade i wellness","Nabava strojeva i opreme iz Kine za kupce u EU","AI pozadinski ured za upravitelje zgrada i obrtnike — naš vlastiti proizvod"], wkVisit:"Posjetite stranicu" },
+IT: { dGet:"Inviami il report reale", dEmailPh:"La tua email", tyH:"Il report è in arrivo", tyP:"Lo ricevi entro 48 ore. Vuoi che te lo spieghiamo? Prenota una call gratuita di 15 minuti.", tyBtn:"Prenota 15 min", roiCta:"Scopri dove sei oggi — gratis", mbar:"Analisi AI gratuita", consent:"Inviami consigli e aggiornamenti sul report (facoltativo)", privT:"Usiamo la tua email solo per il report.", privL:"Informativa privacy", fdK:"Chi c’è dietro Picked", fdH:"Creato da un ristoratore, non da un’agenzia.", fdP:"Gestisco un ristorante a Lubiana. Ho creato Picked prima per il mio locale — ora lo facciamo per il tuo.", fdName:"Luka Drolc, fondatore", wkK:"I nostri lavori", wkH:"Progetti a cui abbiamo lavorato.", wk:["Piscine, vasche in pietra e wellness","Approvvigionamento di macchinari e attrezzature dalla Cina per acquirenti UE","Back office AI per amministratori di condominio e artigiani — un nostro prodotto"], wkVisit:"Visita il sito" },
+DE: { dGet:"Echten Bericht anfordern", dEmailPh:"Ihre E-Mail", tyH:"Ihr Bericht ist unterwegs", tyP:"Sie erhalten ihn innerhalb von 48 Stunden. Sollen wir ihn mit Ihnen durchgehen? Buchen Sie ein kostenloses 15-Minuten-Gespräch.", tyBtn:"15 Min. buchen", roiCta:"Gratis sehen, wo Sie heute stehen", mbar:"Gratis KI-Check", consent:"Senden Sie mir Tipps und weitere Infos zu meinem Bericht (optional)", privT:"Wir nutzen Ihre E-Mail nur für Ihren Bericht.", privL:"Datenschutz", fdK:"Wer hinter Picked steht", fdH:"Gebaut von einem Gastronomen, nicht von einer Agentur.", fdP:"Ich führe ein Restaurant in Ljubljana. Ich habe Picked zuerst für mein eigenes Lokal gebaut — jetzt machen wir es für Ihres.", fdName:"Luka Drolc, Gründer", wkK:"Unsere Arbeit", wkH:"Projekte, an denen wir gearbeitet haben.", wk:["Pools, Steinbadewannen und Wellness","Beschaffung von Maschinen und Ausrüstung aus China für EU-Käufer","KI-Backoffice für Hausverwaltungen und Handwerker — unser eigenes Produkt"], wkVisit:"Website ansehen" },
+HU: { dGet:"Kérem a valódi jelentést", dEmailPh:"Az Ön e-mail-címe", tyH:"A jelentés úton van", tyP:"48 órán belül megkapja. Szeretné, ha végigvennénk Önnel? Foglaljon egy ingyenes 15 perces hívást.", tyBtn:"15 perc foglalása", roiCta:"Nézze meg ingyen, hol tart ma", mbar:"Ingyenes AI-ellenőrzés", consent:"Kérek tippeket és további üzeneteket a jelentésemről (nem kötelező)", privT:"E-mail-címét csak a jelentéshez használjuk.", privL:"Adatvédelem", fdK:"Ki áll a Picked mögött", fdH:"Egy vendéglátós építette, nem egy ügynökség.", fdP:"Éttermet vezetek Ljubljanában. A Pickedet először a saját helyemnek építettem — most az Önének csináljuk.", fdName:"Luka Drolc, alapító", wkK:"Munkáink", wkH:"Projektek, amelyeken dolgoztunk.", wk:["Medencék, kőkádak és wellness","Gépek és berendezések beszerzése Kínából uniós vevőknek","AI háttériroda társasházkezelőknek és szakembereknek — saját termékünk"], wkVisit:"Weboldal megtekintése" }
+};
+
+class Component extends DCLogic {
+componentDidMount() {
+var self = this;
+this._tos = []; this._auto = []; this._seen = {};
+var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+this._tos.push(setTimeout(function () { self.setState({ introDone: true }); }, reduce ? 0 : 2300));
+this._auto.push(setTimeout(function () { self.startAuto(); }, reduce ? 300 : 2700));
+var ALL = ['how', 'video', 'pricing', 'roi', 'promise', 'work', 'faq', 'check'];
+var markAll = function () { ALL.forEach(function (k) { self._seen[k] = 1; }); self.setState({ seen: Object.assign({}, self._seen) }); self.startWink(); };
+if (reduce || typeof IntersectionObserver === 'undefined') { markAll(); return; }
+this._io = new IntersectionObserver(function (entries) {
+var any = false;
+entries.forEach(function (en) {
+if (!en.isIntersecting) return;
+var k = en.target.getAttribute('data-rv');
+if (k && !self._seen[k]) { self._seen[k] = 1; any = true; self._io.unobserve(en.target); if (k === 'promise') self.startWink(); }
+});
+if (any) self.setState({ seen: Object.assign({}, self._seen) });
+}, { threshold: 0.08 });
+this._tos.push(setTimeout(function () {
+var els = document.querySelectorAll('[data-rv]');
+if (!els.length) { markAll(); return; }
+for (var i = 0; i < els.length; i++) self._io.observe(els[i]);
+}, 80));
+}
+stopAuto() { (this._auto || []).forEach(function (id) { clearTimeout(id); clearInterval(id); }); this._auto = []; }
+startAuto() {
+var self = this;
+this.stopAuto();
+var s = this.state || {};
+var t = T[s.lang || 'EN'];
+var city = (s.city == null ? 'Ljubljana' : s.city).trim() || 'Ljubljana';
+var len = t.dQ.replace('{city}', city).length;
+this.setState({ stage: 'done', view: 'today', auto: true, typed: 0, shown: 0 });
+var n = 0;
+var iv = setInterval(function () {
+n += 1;
+self.setState({ typed: n });
+if (n >= len) {
+clearInterval(iv);
+[1, 2, 3].forEach(function (c, i) { self._auto.push(setTimeout(function () { self.setState({ shown: c }); }, 300 + i * 320)); });
+self._auto.push(setTimeout(function () { self.setState({ auto: false, view: 'with' }); }, 300 + 3 * 320 + 1500));
+}
+}, 38);
+this._auto.push(iv);
+}
+startWink() {
+if (this._winkOn) return;
+this._winkOn = true;
+var self = this;
+var blink = function () { self.setState({ wink: true }); self._tos.push(setTimeout(function () { self.setState({ wink: false }); }, 700)); };
+this._tos.push(setTimeout(blink, 1100));
+this._wi = setInterval(blink, 3800);
+}
+componentWillUnmount() {
+if (this._timer) { clearInterval(this._timer); this._timer = null; }
+this.stopAuto();
+(this._tos || []).forEach(function (id) { clearTimeout(id); });
+if (this._wi) clearInterval(this._wi);
+if (this._io) this._io.disconnect();
+}
+renderVals() {
+var self = this;
+var s = this.state || {};
+var accent = this.props.accent ?? '#B8F36E';
+var lang = s.lang || 'EN';
+var t = Object.assign({}, T[lang], T2[lang]);
+var set = function (o) { return function () { self.setState(o); }; };
+
+var langs = ['EN', 'SL', 'HR', 'IT', 'DE', 'HU'].map(function (c) {
+var on = c === lang;
+return { label: c, pressed: on ? 'true' : 'false', bg: on ? '#F3F5F9' : 'transparent', fg: on ? '#0E1A2B' : '#C3CCDA', pick: set({ lang: c }) };
+});
+
+var stage = s.stage || 'idle';
+var scan = s.scan || 0;
+var view = s.view || 'today';
+var nameVal = s.name == null ? '' : s.name;
+var cityVal = s.city == null ? 'Ljubljana' : s.city;
+var shown = nameVal.trim() || t.dYour;
+var city = cityVal.trim() || 'Ljubljana';
+var withP = view === 'with';
+var auto = !!s.auto;
+var otherCls = withP ? 'pk-shift' : 'pk-in';
+var other = function (n, l) { return { n: n, name: t.dOther + ' ' + l, desc: '', bg: '#1E2D44', fg: '#C3CCDA', border: '#1E2D44', sub: '#9EAAC0', cls: otherCls }; };
+var mine = { n: 1, name: shown, desc: t.dDesc, bg: '#F3F5F9', fg: '#0E1A2B', border: accent, sub: '#475468', cls: 'pk-rise' };
+var cards = withP ? [mine, other(2, 'A'), other(3, 'B')] : [other(1, 'A'), other(2, 'B'), other(3, 'C')];
+var shownN = auto ? (s.shown || 0) : 3;
+var fullQ = t.dQ.replace('{city}', city);
+var typed = s.typed || 0;
+var pickView = function (v) { return function () { self.stopAuto(); self.setState({ auto: false, view: v }); }; };
+var ais = ['ChatGPT', 'Gemini', 'Perplexity'].map(function (n, i) {
+var done = scan > i; var active = scan === i;
+return { name: n, done: done, cls: active ? 'pk-pulse' : '', status: done ? t.dDone : (active ? '…' : t.dWait), color: done ? accent : '#9EAAC0' };
+});
+var run = function () {
+if (self._timer) clearInterval(self._timer);
+self.stopAuto();
+self.setState({ stage: 'scan', scan: 0, view: 'today', auto: false });
+self._timer = setInterval(function () {
+var n = ((self.state && self.state.scan) || 0) + 1;
+if (n >= 3) { clearInterval(self._timer); self._timer = null; self.setState({ scan: 3, stage: 'done' }); }
+else { self.setState({ scan: n }); }
+}, 650);
+};
+var d = {
+idle: stage === 'idle', scanning: stage === 'scan', done: stage === 'done',
+nameVal: nameVal, cityVal: cityVal,
+onName: function (e) { self.setState({ name: e.target.value }); },
+onCity: function (e) { self.setState({ city: e.target.value }); },
+run: run,
+again: function () { if (self._timer) { clearInterval(self._timer); self._timer = null; } self.stopAuto(); self.setState({ stage: 'idle', scan: 0, view: 'today', auto: false }); },
+ais: ais, scanPct: Math.round(scan / 3 * 100) + '%',
+tabs: [
+{ label: t.dToday, pressed: withP ? 'false' : 'true', bg: withP ? 'transparent' : '#26364D', fg: withP ? '#9EAAC0' : '#F3F5F9', pick: pickView('today') },
+{ label: t.dWith, pressed: withP ? 'true' : 'false', bg: withP ? accent : 'transparent', fg: withP ? '#0E1A2B' : '#9EAAC0', pick: pickView('with') }
+],
+qShown: auto ? fullQ.slice(0, typed) : fullQ, typing: auto && typed < fullQ.length,
+showLead: !auto || shownN > 0, showBanner: !auto || shownN >= 3,
+cards: cards.slice(0, shownN),
+ask: stage === 'done' && !auto && !s.sent, thanks: stage === 'done' && !auto && !!s.sent,
+score: withP ? 22 : 3, pct: withP ? '73%' : '10%',
+gauge: withP ? '#0E1A2B' : '#FF8A5B', track: withP ? 'rgba(14,26,43,0.2)' : '#26364D',
+banner: withP ? t.dYes : t.dNot,
+bannerBg: withP ? accent : 'rgba(255,138,91,0.14)', bannerFg: withP ? '#0E1A2B' : '#FFB596'
+};
+
+var step = s.step || 0;
+var how = {
+tabs: t.steps.map(function (st, i) {
+var on = i === step;
+return { k: '0' + (i + 1), label: st.tab, pressed: on ? 'true' : 'false', bg: on ? '#0E1A2B' : '#FFFFFF', fg: on ? '#F3F5F9' : '#0E1A2B', border: on ? '#0E1A2B' : '#DDE3EC', pick: set({ step: i }) };
+}),
+cur: { k: '0' + (step + 1), tab: t.steps[step].tab, h: t.steps[step].h, p: t.steps[step].p, items: t.steps[step].items },
+progress: Math.round((step + 1) / 3 * 100) + '%'
+};
+
+var tier = s.tier == null ? 1 : s.tier;
+var sel = s.addons || {};
+var monthly = PRICES[tier];
+var once = 0;
+var lines = [{ name: NAMES[tier], amt: fmt(PRICES[tier], lang) + ' ' + t.perMonth }];
+var addons = ADDONS.map(function (a, i) {
+var included = a.inc != null && tier >= a.inc;
+var on = !included && !!sel[a.id];
+var parts = [];
+if (a.mo) parts.push(fmt(a.mo, lang) + ' ' + t.perMonth);
+if (a.once) parts.push(fmt(a.once, lang) + ' ' + (a.mo ? t.setup : t.once));
+var price = parts.join(' + ');
+if (on) { monthly += a.mo; once += a.once; lines.push({ name: t.addons[i].name, amt: price }); }
+return {
+name: t.addons[i].name, desc: t.addons[i].desc, price: included ? t.included : price,
+priceColor: included ? accent : '#C3CCDA',
+included: included, checked: on || included, pressed: on ? 'true' : 'false',
+cursor: included ? 'default' : 'pointer', opacity: included ? '0.7' : '1',
+border: on ? accent : '#26364D', bg: on ? 'rgba(184,243,110,0.08)' : 'transparent',
+boxBorder: (on || included) ? accent : '#33445E', boxBg: (on || included) ? accent : 'transparent',
+toggle: function () { if (included) return; var o = Object.assign({}, sel); o[a.id] = !o[a.id]; self.setState({ addons: o }); }
+};
+});
+var pk = {
+cards: NAMES.map(function (nm, i) {
+var on = i === tier;
+return { name: nm, tag: t.tags[i], hi: t.hi[i], price: fmt(PRICES[i], lang), popular: i === 1, pressed: on ? 'true' : 'false',
+bg: on ? '#F3F5F9' : '#172539', fg: on ? '#0E1A2B' : '#F3F5F9', sub: on ? '#475468' : '#9EAAC0', border: on ? accent : '#26364D', chk: on ? '#0E1A2B' : accent, pick: set({ tier: i }) };
+}),
+addons: addons, lines: lines,
+inclTitle: t.inclH + ' ' + NAMES[tier], incl: t.lists[tier],
+monthly: fmt(monthly, lang), once: fmt(once, lang), hasOnce: once > 0
+};
+
+var spend = s.spend == null ? 35 : s.spend;
+var guests = s.guests == null ? 10 : s.guests;
+var rev = Math.round(guests * spend * 4.33);
+var net = rev - monthly;
+var max = Math.max(rev, monthly, 1);
+var roi = {
+spend: spend, guests: guests, spendStr: fmt(spend, lang),
+onSpend: function (e) { self.setState({ spend: Number(e.target.value) }); },
+onGuests: function (e) { self.setState({ guests: Number(e.target.value) }); },
+rev: fmt(rev, lang), cost: fmt(monthly, lang),
+revW: Math.round(rev / max * 100) + '%', costW: Math.round(monthly / max * 100) + '%',
+net: (net < 0 ? '−' : '+') + fmt(Math.abs(net), lang), netColor: net >= 0 ? accent : '#FF8A5B',
+breakStr: t.roiBreak.replace('{n}', String(Math.ceil(monthly / (spend * 4.33))))
+};
+
+var open = s.faq == null ? 0 : s.faq;
+var faq = t.faqs.map(function (f, i) {
+var isOpen = i === open;
+return { q: f.q, a: f.a, open: isOpen, expanded: isOpen ? 'true' : 'false', rot: isOpen ? 'rotate(45deg)' : 'none', toggle: set({ faq: isOpen ? -1 : i }) };
+});
+
+var form = {
+sent: !!s.sent, open: !s.sent, submit: set({ sent: true }),
+mail: s.mail == null ? '' : s.mail, biz: s.biz == null ? nameVal : s.biz, consent: !!s.consent,
+onMail: function (e) { self.setState({ mail: e.target.value }); },
+onBiz: function (e) { self.setState({ biz: e.target.value }); },
+onConsent: function (e) { self.setState({ consent: !!e.target.checked }); }
+};
+var cal = this.props.calendly ?? '#calendly';
+var wk = [
+{ name: 'Aqua Veritas', mono: 'AV', host: 'aquaveritas.eu', url: 'https://aquaveritas.eu', desc: t.wk[0], bg: '#E3F2F7', tile: '#0F6E8C', tileFg: '#FFFFFF', fg: '#0B4A5E' },
+{ name: 'EURO TRADE', mono: 'ET', host: 'euro-mach.com', url: 'https://euro-mach.com', desc: t.wk[1], bg: '#EEF0F3', tile: '#1F2A37', tileFg: '#F5B83D', fg: '#1F2A37' },
+{ name: 'Unbusyness', mono: 'U', host: 'unbusyness.com', url: 'https://unbusyness.com', desc: t.wk[2], bg: '#0E1A2B', tile: accent, tileFg: '#0E1A2B', fg: '#F3F5F9' }
+];
+
+var seen = s.seen || {};
+var rv = {};
+['how', 'video', 'pricing', 'roi', 'promise', 'work', 'faq', 'check'].forEach(function (k) { rv[k] = seen[k] ? 'pk-rv pk-rv-on' : 'pk-rv'; });
+var mr = { open: s.wink ? '0' : '1', wink: s.wink ? '1' : '0', cls: seen.promise ? 'pk-mrpop' : '' };
+var words = t.h1.split(' ').map(function (w, i) { return { w: w, delay: (1.45 + i * 0.07).toFixed(2) + 's' }; });
+
+return { accent: accent, t: t, langs: langs, d: d, how: how, pk: pk, roi: roi, faq: faq, form: form, rv: rv, mr: mr, words: words, showIntro: !s.introDone, wk: wk, cal: cal };
+}
+}
+</script>
+</body>
+</html>
