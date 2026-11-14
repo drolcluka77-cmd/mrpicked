@@ -5,6 +5,15 @@ import test from "node:test";
 const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const source = html.match(/<script type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1];
 
+test("sets a device-width viewport and gives every fixed-minimum grid a mobile layout", () => {
+  assert.match(html, /<meta name="viewport" content="width=device-width, initial-scale=1">/);
+  for (const [tag] of html.matchAll(/<div[^>]+grid-template-columns: repeat\(auto-fit[^>]+>/g)) {
+    assert.match(tag, /class="[^"]*pk-(responsive-grid|demo-inputs)/);
+  }
+  assert.match(html, /\.pk-page \.pk-responsive-grid\{grid-template-columns:minmax\(0,1fr\)!important/);
+  assert.match(html, /env\(safe-area-inset-bottom/);
+});
+
 function setup(fetch, storedLanguage, browserLanguage = "en-US") {
   class Logic {
     props = {};
