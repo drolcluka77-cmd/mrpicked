@@ -1,0 +1,1 @@
+- [Email delivery preference](email-delivery.md) — use the user's SMTP provider for owner notifications and visitor confirmations.

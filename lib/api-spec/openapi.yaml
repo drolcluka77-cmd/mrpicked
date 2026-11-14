@@ -11,6 +11,29 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /report-requests:
+    post:
+      operationId: requestReport
+      summary: Request a Picked report by email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportRequestInput"
+      responses:
+        "200":
+          description: Request delivered to Picked
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReportRequestResult"
+        "400":
+          description: Invalid input
+        "429":
+          description: Too many requests
+        "503":
+          description: Email delivery unavailable
   /healthz:
     get:
       operationId: healthCheck
@@ -26,6 +49,22 @@ paths:
                 $ref: "#/components/schemas/HealthStatus"
 components:
   schemas:
+    ReportRequestInput:
+      type: object
+      additionalProperties: false
+      required: [email, business, language, consent, requestId]
+      properties:
+        email: { type: string, format: email, maxLength: 254 }
+        business: { type: string, minLength: 1, maxLength: 200 }
+        language: { type: string, enum: [EN, SL, HR, IT, DE, HU] }
+        consent: { type: boolean }
+        requestId: { type: string, format: uuid }
+    ReportRequestResult:
+      type: object
+      required: [accepted, confirmationSent]
+      properties:
+        accepted: { type: boolean }
+        confirmationSent: { type: boolean }
     HealthStatus:
       type: object
       properties:

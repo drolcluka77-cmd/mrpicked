@@ -163,15 +163,17 @@ input[type=range]{accent-color:#B8F36E;width:100%}
 <label for="demo-mail" style="font-weight: 600; font-size: 15px">{{t.dGet}}</label>
 <div style="display: flex; gap: 8px; flex-wrap: wrap">
 <input id="demo-mail" type="email" placeholder="{{t.dEmailPh}}" value="{{form.mail}}" onChange="{{form.onMail}}" style="flex: 1 1 180px; font: inherit; font-size: 15px; padding: 12px 14px; border-radius: 12px; border: 1px solid #33445E; background: #0E1A2B; color: #F3F5F9; min-height: 48px; box-sizing: border-box">
-<button type="button" onClick="{{form.submit}}" style="flex: 0 0 auto; font: inherit; font-weight: 600; font-size: 15px; min-height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: {{accent}}; color: #0E1A2B; cursor: pointer">{{t.btn}}</button>
+<button type="button" disabled="{{form.busy}}" onClick="{{form.submit}}" style="flex: 0 0 auto; font: inherit; font-weight: 600; font-size: 15px; min-height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: {{accent}}; color: #0E1A2B; cursor: pointer">{{form.buttonText}}</button>
 </div>
 <div style="font-size: 12px; color: #9EAAC0">{{t.privT}} <a href="#privacy" style="color: #C3CCDA">{{t.privL}}</a></div>
+<sc-if value="{{form.error}}"><p role="alert" style="margin: 0; color: #FFB49A">{{form.error}}</p></sc-if>
 </div>
 </sc-if>
 <sc-if value="{{d.thanks}}" hint-placeholder-val="{{ false }}">
 <div class="pk-in" style="border-top: 1px solid #26364D; padding-top: 16px; display: flex; flex-direction: column; gap: 10px">
 <div style="font-weight: 600; font-size: 16px">{{t.tyH}}</div>
 <div style="font-size: 14px; color: #C3CCDA">{{t.tyP}}</div>
+<sc-if value="{{form.warning}}"><p role="status" style="margin: 0; color: #FFB49A">{{form.warning}}</p></sc-if>
 <a href="{{cal}}" target="_blank" rel="noopener" style="align-self: flex-start; background: {{accent}}; color: #0E1A2B; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 999px">{{t.tyBtn}}</a>
 </div>
 </sc-if>
@@ -463,14 +465,15 @@ input[type=range]{accent-color:#B8F36E;width:100%}
 <p style="margin: 0; font-size: 18px; color: #1C2B14">{{t.ctaP}}</p>
 </div>
 <sc-if value="{{form.open}}" hint-placeholder-val="{{ true }}">
-<form style="display: flex; flex-direction: column; gap: 12px">
+<form onSubmit="{{form.submit}}" style="display: flex; flex-direction: column; gap: 12px">
 <label for="cta-biz" style="font-weight: 600; font-size: 15px">{{t.fBiz}}</label>
 <input id="cta-biz" type="text" placeholder="{{t.dNamePh}}" value="{{form.biz}}" onChange="{{form.onBiz}}" style="font: inherit; font-size: 17px; padding: 16px 18px; border-radius: 14px; border: 2px solid #0E1A2B; background: #FFFFFF; color: #0E1A2B">
 <label for="cta-mail" style="font-weight: 600; font-size: 15px">{{t.fMail}}</label>
 <input id="cta-mail" type="email" placeholder="you@restaurant.si" value="{{form.mail}}" onChange="{{form.onMail}}" style="font: inherit; font-size: 17px; padding: 16px 18px; border-radius: 14px; border: 2px solid #0E1A2B; background: #FFFFFF; color: #0E1A2B">
 <label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #1C2B14; cursor: pointer"><input type="checkbox" checked="{{form.consent}}" onChange="{{form.onConsent}}" style="width: 20px; height: 20px; margin: 1px 0 0; flex: 0 0 auto; accent-color: #0E1A2B">{{t.consent}}</label>
 <div style="font-size: 13px; color: #1C2B14">{{t.privT}} <a href="#privacy" style="color: #0E1A2B">{{t.privL}}</a></div>
-<button type="button" onClick="{{form.submit}}" style="font: inherit; font-weight: 600; font-size: 17px; padding: 16px 24px; border-radius: 999px; border: 0; background: #0E1A2B; color: #F3F5F9; cursor: pointer; min-height: 52px">{{t.btn}}</button>
+<button type="submit" disabled="{{form.busy}}" style="font: inherit; font-weight: 600; font-size: 17px; padding: 16px 24px; border-radius: 999px; border: 0; background: #0E1A2B; color: #F3F5F9; cursor: pointer; min-height: 52px">{{form.buttonText}}</button>
+<sc-if value="{{form.error}}"><p role="alert" style="margin: 0; color: #7D2510">{{form.error}}</p></sc-if>
 </form>
 </sc-if>
 <sc-if value="{{form.sent}}" hint-placeholder-val="{{ false }}">
@@ -478,6 +481,7 @@ input[type=range]{accent-color:#B8F36E;width:100%}
 <span style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 999px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg></span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700">{{t.tyH}}</span>
 <span style="font-size: 16px; color: #C3CCDA">{{t.tyP}}</span>
+<sc-if value="{{form.warning}}"><p role="status" style="margin: 0; color: #FFB49A">{{form.warning}}</p></sc-if>
 <a href="{{cal}}" target="_blank" rel="noopener" style="background: {{accent}}; color: #0E1A2B; text-decoration: none; font-weight: 600; padding: 14px 22px; border-radius: 999px">{{t.tyBtn}}</a>
 </div>
 </sc-if>
@@ -977,8 +981,54 @@ var isOpen = i === open;
 return { q: f.q, a: f.a, open: isOpen, expanded: isOpen ? 'true' : 'false', rot: isOpen ? 'rotate(45deg)' : 'none', toggle: set({ faq: isOpen ? -1 : i }) };
 });
 
+var mailText = {
+EN: ['Sending…', 'Enter a valid email and your business name.', 'Sending failed. Please try again or email info@mrpicked.eu.', 'Too many requests. Please try again in 15 minutes.', 'We received your request, but could not send the confirmation email. No need to resubmit.'],
+SL: ['Pošiljanje…', 'Vnesite veljaven e-poštni naslov in ime podjetja.', 'Pošiljanje ni uspelo. Poskusite znova ali pišite na info@mrpicked.eu.', 'Preveč zahtev. Poskusite znova čez 15 minut.', 'Povpraševanje smo prejeli, potrditvenega e-sporočila pa ni bilo mogoče poslati. Ponovna oddaja ni potrebna.'],
+HR: ['Slanje…', 'Unesite valjanu e-adresu i naziv tvrtke.', 'Slanje nije uspjelo. Pokušajte ponovno ili pišite na info@mrpicked.eu.', 'Previše zahtjeva. Pokušajte za 15 minuta.', 'Primili smo upit, ali potvrda nije poslana. Ne trebate ponovno slati upit.'],
+IT: ['Invio…', 'Inserisci un indirizzo email valido e il nome della tua attività.', 'Invio non riuscito. Riprova o scrivi a info@mrpicked.eu.', 'Troppe richieste. Riprova tra 15 minuti.', 'Richiesta ricevuta, ma email di conferma non inviata. Non inviare di nuovo.'],
+DE: ['Wird gesendet…', 'Geben Sie eine gültige E-Mail-Adresse und Ihren Firmennamen ein.', 'Senden fehlgeschlagen. Erneut versuchen oder info@mrpicked.eu kontaktieren.', 'Zu viele Anfragen. In 15 Minuten erneut versuchen.', 'Anfrage erhalten, Bestätigung konnte nicht gesendet werden. Bitte nicht erneut absenden.'],
+HU: ['Küldés…', 'Adjon meg érvényes e-mail-címet és cégnevet.', 'Sikertelen küldés. Próbálja újra, vagy írjon: info@mrpicked.eu.', 'Túl sok kérés. Próbálja újra 15 perc múlva.', 'Kérését megkaptuk, de a visszaigazolást nem sikerült elküldeni. Nem kell újra beküldenie.']
+}[lang];
 var form = {
-sent: !!s.sent, open: !s.sent, submit: set({ sent: true }),
+sent: !!s.sent, open: !s.sent, busy: !!s.sending,
+buttonText: s.sending ? mailText[0] : t.btn,
+error: s.mailError ? mailText[s.mailError] : '',
+warning: s.confirmationFailed ? mailText[4] : '',
+submit: async function (e) {
+if (e && e.preventDefault) e.preventDefault();
+if (self._sending || self.state.sent) return;
+var current = self.state || {};
+var email = (current.mail || '').trim();
+var business = (current.biz == null ? (current.name || '') : current.biz).trim();
+var validator = document.createElement('input');
+validator.type = 'email'; validator.value = email;
+if (!email || email.length > 254 || !validator.checkValidity() || !business || business.length > 200) {
+self.setState({ mailError: 1 }); return;
+}
+self._sending = true;
+self.setState({ sending: true, mailError: 0 });
+var payload = { email: email, business: business, language: lang, consent: !!current.consent };
+var signature = JSON.stringify(payload);
+if (self._reportSignature !== signature) {
+self._reportSignature = signature;
+self._reportRequestId = crypto.randomUUID();
+}
+payload.requestId = self._reportRequestId;
+try {
+var response = await fetch(new URL('api/report-requests', document.baseURI).pathname, {
+method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+});
+if (!response.ok) { self.setState({ mailError: response.status === 429 ? 3 : (response.status === 400 ? 1 : 2) }); return; }
+var result = await response.json();
+if (result.accepted !== true) throw new Error('Not accepted');
+self.setState({ sent: true, confirmationFailed: !result.confirmationSent, mailError: 0 });
+} catch (_) {
+self.setState({ mailError: 2 });
+} finally {
+self._sending = false;
+self.setState({ sending: false });
+}
+},
 mail: s.mail == null ? '' : s.mail, biz: s.biz == null ? nameVal : s.biz, consent: !!s.consent,
 onMail: function (e) { self.setState({ mail: e.target.value }); },
 onBiz: function (e) { self.setState({ biz: e.target.value }); },
