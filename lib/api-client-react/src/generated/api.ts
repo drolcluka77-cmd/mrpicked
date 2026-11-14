@@ -22,7 +22,8 @@ import type {
 import type {
   HealthStatus,
   ReportRequestInput,
-  ReportRequestResult
+  ReportRequestResult,
+  VisitorLanguageResult
 } from './api.schemas';
 
 import { customFetch } from '../custom-fetch';
@@ -51,6 +52,83 @@ const withQueryKey = <T extends object, K>(query: T, queryKey: K): T & { queryKe
   }
   return result;
 };
+
+export const getGetVisitorLanguageUrl = () => {
+
+
+
+
+  return `/api/visitor-language`
+}
+
+/**
+ * @summary Choose a language from the visitor IP country and VPN status
+ */
+export const getVisitorLanguage = async ( options?: Parameters<typeof customFetch>[1]): Promise<VisitorLanguageResult> => {
+
+  return customFetch<VisitorLanguageResult>(getGetVisitorLanguageUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetVisitorLanguageQueryKey = () => {
+    return [
+    `/api/visitor-language`
+    ] as const;
+    }
+
+
+export const getGetVisitorLanguageQueryOptions = <TData = Awaited<ReturnType<typeof getVisitorLanguage>>, TError = ErrorType<void | VisitorLanguageResult>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getVisitorLanguage>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetVisitorLanguageQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getVisitorLanguage>>> = ({ signal }) => getVisitorLanguage({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getVisitorLanguage>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetVisitorLanguageQueryResult = NonNullable<Awaited<ReturnType<typeof getVisitorLanguage>>>
+export type GetVisitorLanguageQueryError = ErrorType<void | VisitorLanguageResult>
+
+
+/**
+ * @summary Choose a language from the visitor IP country and VPN status
+ */
+
+export function useGetVisitorLanguage<TData = Awaited<ReturnType<typeof getVisitorLanguage>>, TError = ErrorType<void | VisitorLanguageResult>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getVisitorLanguage>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetVisitorLanguageQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getRequestReportUrl = () => {
 

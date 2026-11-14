@@ -5,22 +5,55 @@ import test from "node:test";
 const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const source = html.match(/<script type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1];
 
-function setup(fetch) {
+function setup(fetch, storedLanguage) {
   class Logic {
     props = {};
     state = { mail: "visitor@example.test", biz: "Restaurant", lang: "SL" };
     setState(update) { Object.assign(this.state, update); }
   }
   const document = {
+    documentElement: { lang: "en" },
     baseURI: "https://example.test/",
     createElement: () => ({
       value: "",
       checkValidity() { return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(this.value); },
     }),
   };
-  const Component = new Function("DCLogic", "fetch", "document", `${source}; return Component;`)(Logic, fetch, document);
+  const window = { localStorage: {
+    getItem: () => storedLanguage,
+    setItem: (_key, value) => { storedLanguage = value; },
+  } };
+  const Component = new Function("DCLogic", "fetch", "document", "window", `${source}; return Component;`)(Logic, fetch, document, window);
   return new Component();
 }
+
+test("automatically uses the detected language and English on lookup failure", async () => {
+  const detected = setup(async () => ({ ok: true, json: async () => ({ language: "IT" }) }));
+  await detected.detectLanguage();
+  assert.equal(detected.state.lang, "IT");
+  for (const fetch of [
+    async () => ({ ok: false, status: 503 }),
+    async () => { throw new Error("Timeout"); },
+    async () => ({ ok: true, json: async () => ({ language: "XX" }) }),
+  ]) {
+    const component = setup(fetch);
+    await component.detectLanguage();
+    assert.equal(component.state.lang, "EN");
+  }
+});
+
+test("honors saved manual language and ignores stale automatic results", async () => {
+  const saved = setup(() => { throw new Error("Should skip lookup"); }, "HR");
+  await saved.detectLanguage();
+  assert.equal(saved.state.lang, "HR");
+  let resolve;
+  const component = setup(() => new Promise((done) => { resolve = done; }));
+  const pending = component.detectLanguage();
+  component.renderVals().langs.find((item) => item.label === "DE").pick();
+  resolve({ ok: true, json: async () => ({ language: "IT" }) });
+  await pending;
+  assert.equal(component.state.lang, "DE");
+});
 
 const businessLabels = {
   EN: "Your business", SL: "Vaše podjetje", HR: "Vaša tvrtka",

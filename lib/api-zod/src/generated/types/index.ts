@@ -10,3 +10,6 @@ export * from './healthStatus';
 export * from './reportRequestInput';
 export * from './reportRequestInputLanguage';
 export * from './reportRequestResult';
+export * from './visitorLanguageResult';
+export * from './visitorLanguageResultLanguage';
+export * from './visitorLanguageResultReason';

@@ -11,6 +11,25 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /visitor-language:
+    get:
+      operationId: getVisitorLanguage
+      summary: Choose a language from the visitor IP country and VPN status
+      responses:
+        "200":
+          description: Language detected or country not supported
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VisitorLanguageResult"
+        "503":
+          description: Detection unavailable; use English
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VisitorLanguageResult"
+        "429":
+          description: Too many lookups; use English
   /report-requests:
     post:
       operationId: requestReport
@@ -49,6 +68,14 @@ paths:
                 $ref: "#/components/schemas/HealthStatus"
 components:
   schemas:
+    VisitorLanguageResult:
+      type: object
+      required: [language, country, vpn, reason]
+      properties:
+        language: { type: string, enum: [EN, SL, HR, IT, DE, HU] }
+        country: { type: [string, "null"] }
+        vpn: { type: [boolean, "null"] }
+        reason: { type: string, enum: [country, vpn, default, unavailable] }
     ReportRequestInput:
       type: object
       additionalProperties: false

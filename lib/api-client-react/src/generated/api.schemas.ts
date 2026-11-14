@@ -5,6 +5,37 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+export type VisitorLanguageResultLanguage = typeof VisitorLanguageResultLanguage[keyof typeof VisitorLanguageResultLanguage];
+
+
+export const VisitorLanguageResultLanguage = {
+  EN: 'EN',
+  SL: 'SL',
+  HR: 'HR',
+  IT: 'IT',
+  DE: 'DE',
+  HU: 'HU',
+} as const;
+
+export type VisitorLanguageResultReason = typeof VisitorLanguageResultReason[keyof typeof VisitorLanguageResultReason];
+
+
+export const VisitorLanguageResultReason = {
+  country: 'country',
+  vpn: 'vpn',
+  default: 'default',
+  unavailable: 'unavailable',
+} as const;
+
+export interface VisitorLanguageResult {
+  language: VisitorLanguageResultLanguage;
+  /** @nullable */
+  country: string | null;
+  /** @nullable */
+  vpn: boolean | null;
+  reason: VisitorLanguageResultReason;
+}
+
 export type ReportRequestInputLanguage = typeof ReportRequestInputLanguage[keyof typeof ReportRequestInputLanguage];
 
 

@@ -9,6 +9,17 @@ import * as zod from 'zod';
 
 
 /**
+ * @summary Choose a language from the visitor IP country and VPN status
+ */
+export const GetVisitorLanguageResponse = zod.object({
+  "language": zod.enum(['EN', 'SL', 'HR', 'IT', 'DE', 'HU']),
+  "country": zod.string().nullable(),
+  "vpn": zod.boolean().nullable(),
+  "reason": zod.enum(['country', 'vpn', 'default', 'unavailable'])
+})
+
+
+/**
  * @summary Request a Picked report by email
  */
 export const requestReportBodyEmailMax = 254;
