@@ -496,7 +496,6 @@ input[type=range]{accent-color:#B8F36E;width:100%}
 <div><span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #0E1A2B">Picked</span> · Ljubljana · SI · HR · IT · AT · HU</div>
 <div style="display: flex; flex-direction: column; gap: 2px; text-align: right"><span style="font-weight: 600; color: #0E1A2B">Cyberfinance, računalniško programiranje d.o.o.</span><span>Celovška cesta 136, 1000 Ljubljana, Slovenia</span><span>DŠ: 83314512 · <a href="tel:+38640290963" style="color: #56637A">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu" style="color: #56637A">info@mrpicked.eu</a></span></div>
 </div>
-<p style="max-width: 1200px; margin: 20px auto 0; font-size: 12px; color: #56637A">{{geoNotice}}</p>
 </footer>
 
 </div>
@@ -797,35 +796,25 @@ this.setState({ lang: lang });
 document.documentElement.lang = lang.toLowerCase();
 }
 pickLanguage(lang) {
-this._manualLanguage = true;
 try { window.localStorage.setItem('picked.language', lang); } catch (_) {}
 this.applyLanguage(lang);
 }
-async detectLanguage() {
+detectLanguage() {
 var supported = ['EN', 'SL', 'HR', 'IT', 'DE', 'HU'];
 var saved;
 try { saved = window.localStorage.getItem('picked.language'); } catch (_) {}
 if (supported.indexOf(saved) >= 0) { this.pickLanguage(saved); return; }
-this._languageAbort = new AbortController();
-var timeout = setTimeout(function (controller) { controller.abort(); }, 4000, this._languageAbort);
 var lang = 'EN';
 try {
-var response = await fetch(new URL('api/visitor-language', document.baseURI).pathname, {
-signal: this._languageAbort.signal, cache: 'no-store'
-});
-if (response.ok) {
-var result = await response.json();
-if (supported.indexOf(result.language) >= 0) lang = result.language;
-}
+var browserLanguage = navigator.language;
+var candidate = typeof browserLanguage === 'string' ? browserLanguage.split(/[-_]/)[0].toUpperCase() : '';
+if (supported.indexOf(candidate) >= 0) lang = candidate;
 } catch (_) {
-// Unknown country, blocked requests and service outages use English.
-} finally {
-clearTimeout(timeout);
+// Missing or unsupported browser language uses English.
 }
-if (!this._manualLanguage && !this._unmounted) this.applyLanguage(lang);
+this.applyLanguage(lang);
 }
 componentDidMount() {
-this._unmounted = false;
 this.detectLanguage();
 var self = this;
 this._tos = []; this._auto = []; this._seen = {};
@@ -880,8 +869,6 @@ this._tos.push(setTimeout(blink, 1100));
 this._wi = setInterval(blink, 3800);
 }
 componentWillUnmount() {
-this._unmounted = true;
-if (this._languageAbort) this._languageAbort.abort();
 if (this._timer) { clearInterval(this._timer); this._timer = null; }
 this.stopAuto();
 (this._tos || []).forEach(function (id) { clearTimeout(id); });
@@ -894,14 +881,6 @@ var s = this.state || {};
 var accent = this.props.accent ?? '#B8F36E';
 var lang = s.lang || 'EN';
 var t = Object.assign({}, T[lang], T2[lang]);
-var geoNotice = {
-EN: 'Automatic language selection sends your IP address to ipapi.is to check country and VPN status. No GPS location is requested. A manual language choice is saved in your browser.',
-SL: 'Samodejna izbira jezika pošlje vaš IP-naslov storitvi ipapi.is za preverjanje države in VPN-ja. GPS-lokacije ne zahtevamo. Ročna izbira jezika se shrani v vaš brskalnik.',
-HR: 'Automatski odabir jezika šalje vašu IP adresu usluzi ipapi.is radi provjere države i VPN-a. Ne tražimo GPS lokaciju. Ručni odabir jezika sprema se u preglednik.',
-IT: 'La selezione automatica della lingua invia il tuo indirizzo IP a ipapi.is per verificare il paese e l’uso di VPN. Non richiediamo la posizione GPS. La scelta manuale della lingua viene salvata nel browser.',
-DE: 'Die automatische Sprachauswahl übermittelt Ihre IP-Adresse an ipapi.is, um Land und VPN-Nutzung zu prüfen. GPS-Standortdaten werden nicht angefordert. Ihre manuelle Sprachauswahl wird im Browser gespeichert.',
-HU: 'Az automatikus nyelvválasztás az IP-címét az ipapi.is szolgáltatásnak küldi az ország és a VPN-használat ellenőrzéséhez. GPS-helyzetet nem kérünk. A kézi nyelvválasztást a böngésző tárolja.'
-}[lang];
 var set = function (o) { return function () { self.setState(o); }; };
 
 var langs = ['EN', 'SL', 'HR', 'IT', 'DE', 'HU'].map(function (c) {
@@ -1093,7 +1072,7 @@ var rv = {};
 var mr = { open: s.wink ? '0' : '1', wink: s.wink ? '1' : '0', cls: seen.promise ? 'pk-mrpop' : '' };
 var words = t.h1.split(' ').map(function (w, i) { return { w: w, delay: (1.45 + i * 0.07).toFixed(2) + 's' }; });
 
-return { accent: accent, t: t, langs: langs, d: d, how: how, pk: pk, roi: roi, faq: faq, form: form, rv: rv, mr: mr, words: words, showIntro: !s.introDone, wk: wk, cal: cal, geoNotice: geoNotice };
+return { accent: accent, t: t, langs: langs, d: d, how: how, pk: pk, roi: roi, faq: faq, form: form, rv: rv, mr: mr, words: words, showIntro: !s.introDone, wk: wk, cal: cal };
 }
 }
 </script>

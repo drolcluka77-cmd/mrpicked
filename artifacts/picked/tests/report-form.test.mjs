@@ -5,7 +5,7 @@ import test from "node:test";
 const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const source = html.match(/<script type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1];
 
-function setup(fetch, storedLanguage) {
+function setup(fetch, storedLanguage, browserLanguage = "en-US") {
   class Logic {
     props = {};
     state = { mail: "visitor@example.test", biz: "Restaurant", lang: "SL" };
@@ -23,35 +23,34 @@ function setup(fetch, storedLanguage) {
     getItem: () => storedLanguage,
     setItem: (_key, value) => { storedLanguage = value; },
   } };
-  const Component = new Function("DCLogic", "fetch", "document", "window", `${source}; return Component;`)(Logic, fetch, document, window);
+  const Component = new Function("DCLogic", "fetch", "document", "window", "navigator", `${source}; return Component;`)(Logic, fetch, document, window, { language: browserLanguage });
   return new Component();
 }
 
-test("automatically uses the detected language and English on lookup failure", async () => {
-  const detected = setup(async () => ({ ok: true, json: async () => ({ language: "IT" }) }));
-  await detected.detectLanguage();
-  assert.equal(detected.state.lang, "IT");
-  for (const fetch of [
-    async () => ({ ok: false, status: 503 }),
-    async () => { throw new Error("Timeout"); },
-    async () => ({ ok: true, json: async () => ({ language: "XX" }) }),
+test("uses navigator.language without any network request and falls back to English", () => {
+  for (const [browserLanguage, expected] of [
+    ["sl-SI", "SL"], ["hr-HR", "HR"], ["it-IT", "IT"], ["de-AT", "DE"],
+    ["hu-HU", "HU"], ["EN-gb", "EN"], ["it", "IT"], ["fr-FR", "EN"],
+    ["", "EN"], [null, "EN"], [42, "EN"],
   ]) {
-    const component = setup(fetch);
-    await component.detectLanguage();
-    assert.equal(component.state.lang, "EN");
+    const component = setup(() => { throw new Error("No language lookup allowed"); }, undefined, browserLanguage);
+    component.detectLanguage();
+    assert.equal(component.state.lang, expected);
   }
+  assert.ok(!html.includes("api/visitor-language"));
+  assert.ok(!html.includes("ipapi.is"));
 });
 
-test("honors saved manual language and ignores stale automatic results", async () => {
-  const saved = setup(() => { throw new Error("Should skip lookup"); }, "HR");
-  await saved.detectLanguage();
+test("honors saved manual language and keeps the manual switch working", () => {
+  const saved = setup(() => { throw new Error("No network expected"); }, "HR", "it-IT");
+  saved.detectLanguage();
   assert.equal(saved.state.lang, "HR");
-  let resolve;
-  const component = setup(() => new Promise((done) => { resolve = done; }));
-  const pending = component.detectLanguage();
+  const component = setup(() => { throw new Error("No network expected"); }, "invalid", "it-IT");
+  component.detectLanguage();
+  assert.equal(component.state.lang, "IT");
   component.renderVals().langs.find((item) => item.label === "DE").pick();
-  resolve({ ok: true, json: async () => ({ language: "IT" }) });
-  await pending;
+  assert.equal(component.state.lang, "DE");
+  component.detectLanguage();
   assert.equal(component.state.lang, "DE");
 });
 

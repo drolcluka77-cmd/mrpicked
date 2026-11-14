@@ -1,10 +1,10 @@
 ---
 name: Automatic language selection
-description: User's country-based language requirement and VPN default.
+description: User requires browser-language defaults without IP or VPN detection.
 ---
 
-Choose the page's initial language automatically from the customer's country. When a VPN is detected, automatic selection must use English.
+Choose the default language from `navigator.language`, falling back to English. Do not use ipapi.is, IP location or VPN detection.
 
-**Why:** The user requested “avtomatsko v jeziku glede na lokacijo stranke, ce uporablja vpn pa naj bo v eng”.
+**Why:** The user explicitly replaced the earlier location/VPN request: “Pick the default language from the browser language (navigator.language), falling back to English. No VPN detection. Don’t change anything else.”
 
-**How to apply:** Keep country and VPN detection as separate checks; do not replace them with browser-language detection or treat missing VPN data as proof of no VPN.
+**How to apply:** Keep language detection client-side and preserve manual language selection. Do not add third-party IP lookups.

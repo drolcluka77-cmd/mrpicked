@@ -1,3 +1,3 @@
 - [Email delivery preference](email-delivery.md) — use the user's SMTP provider for owner notifications and visitor confirmations.
 - [Product audience](product-audience.md) — Picked targets businesses across industries, not only restaurants.
-- [Automatic language selection](automatic-language.md) — choose by country; detected VPNs use English.
+- [Automatic language selection](automatic-language.md) — use navigator.language with English fallback; no IP or VPN detection.
