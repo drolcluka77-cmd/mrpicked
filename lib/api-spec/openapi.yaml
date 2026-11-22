@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+paths:
+  /media/{filename}:
+    get:
+      operationId: getPublicMedia
+      summary: Stream the public Picked service video or its cover image
+      parameters:
+        - in: path
+          name: filename
+          required: true
+          schema:
+            type: string
+            enum: [picked-explainer.mp4, picked-explainer.jpg]
+        - in: header
+          name: Range
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Public media file
+          content:
+            video/mp4:
+              schema: { type: string, format: binary }
+            image/jpeg:
+              schema: { type: string, format: binary }
+        "206":
+          description: Requested byte range
+          content:
+            video/mp4:
+              schema: { type: string, format: binary }
+        "404":
+          description: Media not found
+        "416":
+          description: Requested range is not satisfiable
+        "503":
+          description: Media storage temporarily unavailable
+  /report-requests:
+    post:
+      operationId: requestReport
+      summary: Request a Picked report by email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportRequestInput"
+      responses:
+        "200":
+          description: Request delivered to Picked
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReportRequestResult"
+        "400":
+          description: Invalid input
+        "429":
+          description: Too many requests
+        "503":
+          description: Email delivery unavailable
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+components:
+  schemas:
+    ReportRequestInput:
+      type: object
+      additionalProperties: false
+      required: [email, business, language, consent, requestId]
+      properties:
+        email: { type: string, format: email, maxLength: 254 }
+        business: { type: string, minLength: 1, maxLength: 200 }
+        language: { type: string, enum: [EN, SL, HR, IT, DE, HU] }
+        consent: { type: boolean }
+        requestId: { type: string, format: uuid }
+    ReportRequestResult:
+      type: object
+      required: [accepted, confirmationSent]
+      properties:
+        accepted: { type: boolean }
+        confirmationSent: { type: boolean }
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+

@@ -1,0 +1,4 @@
+- [Email delivery preference](email-delivery.md) — use the user's SMTP provider for owner notifications and visitor confirmations.
+- [Product audience](product-audience.md) — Picked targets businesses across industries, not only restaurants.
+- [Automatic language selection](automatic-language.md) — use navigator.language with English fallback; no IP or VPN detection.
+- [Managed storage compatibility](storage-compatibility.md) — verify real uploads when upgrading SDK majors; the sidecar credential template failed with Storage v9.
