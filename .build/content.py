@@ -471,3 +471,206 @@ _BRK = {
 for _v, _m in _BRK.items():
     for _L, _s in _m.items():
         (GEN[_L] if _v == 'main' else IND[_v][_L])['roiBreak'] = _s
+
+# ---------------------------------------------------------------------------
+# Car repair, emergency trades, tours & activities (EN + SL)
+
+def _std_steps(L, who, items1, items2, rev3, p1):
+    if L == 'EN':
+        return [dict(tab="AI Mirror", h="We ask the AIs about you", p=p1, items=items1),
+                dict(tab="Fix", h="We make you readable", p="In the first 30 days we fix everything AI and Google read about you.", items=items2),
+                dict(tab="Stay picked", h="We keep you there", p="Every month we re-run the questions, add fresh content and report what changed.", items=["Monthly Mr. Picked Report with your visibility score","AI videos and Google posts every month", rev3])]
+    return [dict(tab="AI Mirror", h="AI vprašamo o vas", p=p1, items=items1),
+            dict(tab="Popravek", h="Poskrbimo, da vas AI razume", p="V prvih 30 dneh popravimo vse, kar AI in Google bereta o vas.", items=items2),
+            dict(tab="Ostanite izbrani", h="Obdržimo vas tam", p="Vsak mesec ponovno postavimo vprašanja, dodamo svežo vsebino in poročamo, kaj se je spremenilo.", items=["Mesečno poročilo Mr. Picked z oceno vidnosti","AI videi in Google objave vsak mesec", rev3])]
+
+def _vids(L, p1, p2):
+    if L == 'EN':
+        return [dict(h="From your real photos", p=p1), dict(h="One video, six languages", p=p2), dict(h="Posted where it counts", p="Instagram, TikTok, YouTube Shorts and your Google profile.")]
+    return [dict(h="Iz vaših pravih fotografij", p=p1), dict(h="En video, šest jezikov", p=p2), dict(h="Objavljeno tam, kjer šteje", p="Instagram, TikTok, YouTube Shorts in vaš Google profil.")]
+
+def _addons(L, rev, wa):
+    if L == 'EN':
+        return [dict(name="AI video pack", desc="+3 AI videos every month"), dict(name="Review loop", desc=rev), dict(name="WhatsApp concierge", desc=wa), dict(name="AI-ready website", desc="Multilingual, fast, readable by AI")]
+    return [dict(name="AI video paket", desc="+3 AI videi vsak mesec"), dict(name="Zbiranje ocen", desc=rev), dict(name="WhatsApp concierge", desc=wa), dict(name="Spletna stran za AI", desc="Večjezična, hitra, berljiva za AI")]
+
+IND['carrepair'] = {
+ 'EN': dict(
+  eyebrow="AI + Google visibility for car repair, tyres & bodywork",
+  h1="Your next customer won’t scroll through reviews. They’ll ask AI which garage to trust.",
+  sub="When a driver asks ChatGPT, Gemini or Google for a garage with a free slot this week, a tyre change or a bodyshop after an accident, AI names two or three. We make sure yours is one of them.",
+  dName="Garage name", dNamePh="e.g. Car Service Primer", dQ="{city}: reliable car service with a free slot this week?",
+  dYour="Your garage", dOther="Another garage", dIdle="Enter your garage and press run to see what AI tells a driver.",
+  dDesc="Free slots this week, fair prices, all brands. Book on WhatsApp.", dOf="of 30 driver questions",
+  steps=_std_steps('EN', '', ["30 driver questions in 6 languages","Where you appear — and which garages appear instead","Wrong hours, services or brands the AI gives about you"],
+    ["Google profile: services, brands, hours, photos, booking link","Listings corrected on 15+ platforms and car directories","Services, price ranges and booking info machine-readable on your site"], "Review request after every service",
+    "We run the questions drivers actually ask across ChatGPT, Gemini, Perplexity and Google’s AI answers — from servicing and tyres to accident repairs."),
+  vidP="No filming. Our AI turns photos of your workshop and team into short clips that show drivers their car is in good hands.",
+  vids=_vids('EN', "Your workshop, your mechanics and real jobs, never stock footage. You approve every clip.", "Foreign residents and tourists hear it in their own language."),
+  lists=[
+   ["Starting AI audit: 30 driver questions in 3 AIs and 6 languages","Full fix in the first 30 days: Google profile, services, brands, hours, photos","Services, price ranges and booking info machine-readable on your website","Listings corrected on 15+ platforms (Apple Maps, Bing, car directories…)","Local Google SEO: tracked Maps ranking for your 10 key searches (e.g. “tyre change Domžale”)","4 Google profile posts per month","Monthly Mr. Picked Report with your visibility score"],
+   ["Everything in Visible, plus:","2 AI videos / month in 3 languages, posted to Instagram, TikTok and Google","Automatic review request after every service","We draft replies to all your Google reviews within 48 h","2 new driver-question pages / month in 3 languages (e.g. “when to change to winter tyres”)","50 driver questions tracked + 3 nearby competitors","Quarterly results call"],
+   ["Everything in Recommended, plus:","4 AI videos / month in 6 languages","WhatsApp concierge 24/7: answers questions, sends price estimates and takes appointment requests","Service and tyre-change reminders & no-show follow-up","Services and price list online in 6 languages","Seasonal campaigns: winter and summer tyre change, checks before the holidays","Monthly strategy call + changes within 24 h (working days)"]],
+  addons=_addons('EN', "Review request after every service", "Answers drivers, sends estimates, takes appointment requests, 24/7"),
+  roiSpend="Average value of a job", roiGuests="Extra customers per week", roiBreak="Extra customers a week to cover Mr. Picked: {n}",
+  fdH="Built by people who work with drivers every day, not an agency.",
+  fdP="I’ve run a towing and roadside assistance company, so I know how drivers pick a garage after a breakdown. I built Mr. Picked for local businesses like mine first.",
+  faqs=[GEN['EN']['faqs'][0],
+   dict(q="Can AI really bring me customers?", a="More and more drivers ask ChatGPT, Gemini or Google’s AI which garage to trust instead of scrolling results. AI names garages whose details and reviews it trusts: correct services, brands, hours and good reviews. That is exactly what we fix and keep up to date."), 1,
+   dict(q="Does the WhatsApp concierge set prices?", a="It sends estimates only from the price list you give us and always says your team confirms the final price. Unusual repairs go straight to you."), 4],
+  fBiz="Garage name", mailPh="you@garage.si"),
+ 'SL': dict(
+  eyebrow="AI + Google vidnost za avtoservise, vulkanizerje in kleparje",
+  h1="Vaša naslednja stranka ne bo brskala po ocenah. Vprašala bo AI, kateremu servisu zaupati.",
+  sub="Ko voznik vpraša ChatGPT, Gemini ali Google za servis s prostim terminom ta teden, menjavo gum ali kleparja po nesreči, AI imenuje dva ali tri. Poskrbimo, da ste vi med njimi.",
+  dName="Ime servisa", dNamePh="npr. Avtoservis Primer", dQ="{city}: zanesljiv avtoservis s prostim terminom ta teden?",
+  dYour="Vaš servis", dOther="Drug servis", dIdle="Vpišite svoj servis in zaženite, da vidite, kaj AI pove vozniku.",
+  dDesc="Prosti termini ta teden, poštene cene, vse znamke. Naročilo prek WhatsAppa.", dOf="od 30 vprašanj voznikov",
+  steps=_std_steps('SL', '', ["30 vprašanj voznikov v 6 jezikih","Kje se pojavite vi — in kateri servisi namesto vas","Napačne ure, storitve ali znamke, ki jih AI navaja o vas"],
+    ["Google profil: storitve, znamke, delovni čas, fotografije, povezava za naročilo","Popravljeni vpisi na 15+ platformah in avtomobilskih imenikih","Storitve, cenovni razponi in naročanje strojno berljivi na vaši strani"], "Prošnja za oceno po vsakem servisu",
+    "Postavimo vprašanja, ki jih vozniki res sprašujejo, v ChatGPT, Gemini, Perplexity in Googlovih AI odgovorih — od servisa in gum do popravil po nesreči."),
+  vidP="Brez snemanja. Naš AI iz fotografij delavnice in ekipe ustvari kratke posnetke, ki voznikom pokažejo, da bo njihov avto v dobrih rokah.",
+  vids=_vids('SL', "Vaša delavnica, mehaniki in prava dela, nikoli tuji posnetki. Vsak posnetek odobrite.", "Tujci, ki živijo pri nas, in turisti ga slišijo v svojem jeziku."),
+  lists=[
+   ["Začetni AI pregled: 30 vprašanj voznikov v 3 AI orodjih in 6 jezikih","Celoten popravek v prvih 30 dneh: Google profil, storitve, znamke, delovni čas, fotografije","Storitve, cenovni razponi in naročanje strojno berljivi na vaši spletni strani","Popravljeni vpisi na 15+ platformah (Apple Maps, Bing, avtomobilski imeniki …)","Lokalni Google SEO: spremljamo mesto na Zemljevidih za 10 ključnih iskanj (npr. »menjava gum Domžale«)","4 objave na Google profilu na mesec","Mesečno poročilo Mr. Picked z oceno vidnosti"],
+   ["Vse iz paketa Visible, plus:","2 AI videa na mesec v 3 jezikih, objavljena na Instagramu, TikToku in Googlu","Samodejna prošnja za oceno po vsakem servisu","Pripravimo odgovore na vse vaše Google ocene v 48 urah","2 novi strani z vprašanji voznikov na mesec v 3 jezikih (npr. »kdaj zamenjati zimske gume«)","Spremljanje 50 vprašanj voznikov + 3 bližnjih konkurentov","Četrtletni pregled rezultatov"],
+   ["Vse iz paketa Recommended, plus:","4 AI videi na mesec v 6 jezikih","WhatsApp concierge 24/7: odgovarja na vprašanja, pošilja ocene cen in sprejema prošnje za termin","Opomniki za servis in menjavo gum ter sledenje neprihodom","Storitve in cenik na spletu v 6 jezikih","Sezonske kampanje: menjava zimskih in letnih gum, pregledi pred dopustom","Mesečni strateški sestanek + spremembe v 24 urah (delovni dnevi)"]],
+  addons=_addons('SL', "Prošnja za oceno po vsakem servisu", "Odgovarja voznikom, pošilja ocene, sprejema prošnje za termin, 24/7"),
+  roiSpend="Povprečna vrednost posla", roiGuests="Dodatne stranke na teden", roiBreak="Dodatne stranke na teden, ki pokrijejo Mr. Picked: {n}",
+  fdH="Naredili so ga ljudje, ki vsak dan delajo z vozniki, ne agencija.",
+  fdP="Vodil sem podjetje za avtovleko in pomoč na cesti, zato vem, kako vozniki po okvari izberejo servis. Mr. Picked sem najprej naredil za lokalna podjetja, kot je moje.",
+  faqs=[GEN['SL']['faqs'][0],
+   dict(q="Mi lahko AI res prinese stranke?", a="Vse več voznikov namesto brskanja po zadetkih vpraša ChatGPT, Gemini ali Googlov AI, kateremu servisu zaupati. AI imenuje servise, katerih podatkom in ocenam zaupa: pravilne storitve, znamke, ure in dobre ocene. Točno to popravimo in vzdržujemo."), 1,
+   dict(q="Ali WhatsApp concierge določa cene?", a="Ocene pošilja samo po ceniku, ki nam ga daste, in vedno doda, da končno ceno potrdi vaša ekipa. Nenavadna popravila preda neposredno vam."), 4],
+  fBiz="Ime servisa", mailPh="vi@avtoservis.si"),
+}
+
+IND['trades'] = {
+ 'EN': dict(
+  eyebrow="AI + Google visibility for plumbers, electricians & emergency repairs",
+  h1="When a pipe bursts, nobody compares quotes. They ask AI who can come now.",
+  sub="When someone asks ChatGPT, Gemini or Google for a plumber, electrician or locksmith nearby, AI names one or two. We make sure yours is the number they call.",
+  dName="Company name", dNamePh="e.g. Plumbing Primer", dQ="{city}: emergency plumber who can come today?",
+  dYour="Your company", dOther="Another company", dIdle="Enter your company and press run to see what AI tells someone with an emergency.",
+  dDesc="Available today, 24/7 emergency line, clear call-out fee.", dOf="of 30 customer questions",
+  steps=_std_steps('EN', '', ["30 customer questions in 6 languages","Where you appear — and which companies appear instead","Wrong numbers, hours or service areas the AI gives about you"],
+    ["Google profile: services, emergency hours, service area, photos","Listings corrected on 15+ platforms and trade directories","Services, call-out fees and service area machine-readable on your site"], "Review request after every job",
+    "We run the questions people ask in a hurry across ChatGPT, Gemini, Perplexity and Google’s AI answers — at night, at weekends, in other languages."),
+  vidP="No filming. Our AI turns photos of your van, team and finished jobs into short clips that show customers who will turn up.",
+  vids=_vids('EN', "Your van, your team and real jobs, never stock footage. You approve every clip.", "Foreign residents and holiday-home owners hear it in their own language."),
+  lists=[
+   ["Starting AI audit: 30 customer questions in 3 AIs and 6 languages","Full fix in the first 30 days: Google profile, services, emergency hours, service area, photos","Services, call-out fees and service area machine-readable on your website","Listings corrected on 15+ platforms (Apple Maps, Bing, trade directories…)","Local Google SEO: tracked Maps ranking for your 10 key searches (e.g. “emergency plumber Kranj”)","4 Google profile posts per month","Monthly Mr. Picked Report with your visibility score"],
+   ["Everything in Visible, plus:","2 AI videos / month in 3 languages, posted to Instagram, TikTok and Google","Automatic review request after every job","We draft replies to all your Google reviews within 48 h","2 new customer-question pages / month in 3 languages (e.g. “what to do if a pipe bursts”)","50 customer questions tracked + 3 nearby competitors","Quarterly results call"],
+   ["Everything in Recommended, plus:","4 AI videos / month in 6 languages","WhatsApp concierge 24/7: collects the address, problem and photos, sends your call-out fee and passes the job to you","Status messages to the customer (on the way, arrival time)","Services and price list online in 6 languages","One seasonal campaign per quarter (heating checks before winter, AC before summer…)","Monthly strategy call + changes within 24 h (working days)"]],
+  addons=_addons('EN', "Review request after every job", "Collects address, problem and photos, sends the call-out fee, 24/7"),
+  roiSpend="Average value of a job", roiGuests="Extra jobs per week", roiBreak="Extra jobs a week to cover Mr. Picked: {n}",
+  fdH=GEN['EN']['fdH'], fdP=GEN['EN']['fdP'],
+  faqs=[GEN['EN']['faqs'][0],
+   dict(q="Which trades is this for?", a="Plumbers, electricians, locksmiths, heating and AC technicians, roofers, pest control and other services people need quickly. We tailor the questions to what your customers ask."), 1,
+   dict(q="Does the WhatsApp concierge book jobs without me?", a="No. It collects the address, the problem and photos and sends your call-out fee. You confirm the job and the time."), 4],
+  fBiz="Company name", mailPh="you@company.si"),
+ 'SL': dict(
+  eyebrow="AI + Google vidnost za vodovodarje, električarje in nujna popravila",
+  h1="Ko poči cev, nihče ne primerja ponudb. Vprašajo AI, kdo lahko pride takoj.",
+  sub="Ko nekdo vpraša ChatGPT, Gemini ali Google za vodovodarja, električarja ali ključavničarja v bližini, AI imenuje enega ali dva. Poskrbimo, da je vaša številka tista, ki jo pokliče.",
+  dName="Ime podjetja", dNamePh="npr. Vodovod Primer", dQ="{city}: nujni vodovodar, ki lahko pride danes?",
+  dYour="Vaše podjetje", dOther="Drugo podjetje", dIdle="Vpišite svoje podjetje in zaženite, da vidite, kaj AI pove nekomu v nuji.",
+  dDesc="Na voljo danes, dežurna linija 24/7, jasna cena prihoda.", dOf="od 30 vprašanj strank",
+  steps=_std_steps('SL', '', ["30 vprašanj strank v 6 jezikih","Kje se pojavite vi — in katera podjetja namesto vas","Napačne številke, ure ali območja, ki jih AI navaja o vas"],
+    ["Google profil: storitve, dežurni čas, območje, fotografije","Popravljeni vpisi na 15+ platformah in obrtnih imenikih","Storitve, cena prihoda in območje strojno berljivi na vaši strani"], "Prošnja za oceno po vsakem opravljenem delu",
+    "Postavimo vprašanja, ki jih ljudje v naglici res sprašujejo, v ChatGPT, Gemini, Perplexity in Googlovih AI odgovorih — ponoči, ob vikendih, v tujih jezikih."),
+  vidP="Brez snemanja. Naš AI iz fotografij vašega vozila, ekipe in opravljenih del ustvari kratke posnetke, ki strankam pokažejo, kdo bo prišel.",
+  vids=_vids('SL', "Vaše vozilo, ekipa in prava dela, nikoli tuji posnetki. Vsak posnetek odobrite.", "Tujci in lastniki počitniških hiš ga slišijo v svojem jeziku."),
+  lists=[
+   ["Začetni AI pregled: 30 vprašanj strank v 3 AI orodjih in 6 jezikih","Celoten popravek v prvih 30 dneh: Google profil, storitve, dežurni čas, območje, fotografije","Storitve, cena prihoda in območje strojno berljivi na vaši spletni strani","Popravljeni vpisi na 15+ platformah (Apple Maps, Bing, obrtni imeniki …)","Lokalni Google SEO: spremljamo mesto na Zemljevidih za 10 ključnih iskanj (npr. »nujni vodovodar Kranj«)","4 objave na Google profilu na mesec","Mesečno poročilo Mr. Picked z oceno vidnosti"],
+   ["Vse iz paketa Visible, plus:","2 AI videa na mesec v 3 jezikih, objavljena na Instagramu, TikToku in Googlu","Samodejna prošnja za oceno po vsakem opravljenem delu","Pripravimo odgovore na vse vaše Google ocene v 48 urah","2 novi strani z vprašanji strank na mesec v 3 jezikih (npr. »kaj narediti, ko poči cev«)","Spremljanje 50 vprašanj strank + 3 bližnjih konkurentov","Četrtletni pregled rezultatov"],
+   ["Vse iz paketa Recommended, plus:","4 AI videi na mesec v 6 jezikih","WhatsApp concierge 24/7: zbere naslov, opis težave in fotografije, pošlje vašo ceno prihoda in preda nalog vam","Sporočila stranki o statusu (na poti, čas prihoda)","Storitve in cenik na spletu v 6 jezikih","Ena sezonska kampanja na četrtletje (pregled ogrevanja pred zimo, klime pred poletjem …)","Mesečni strateški sestanek + spremembe v 24 urah (delovni dnevi)"]],
+  addons=_addons('SL', "Prošnja za oceno po vsakem opravljenem delu", "Zbere naslov, težavo in fotografije, pošlje ceno prihoda, 24/7"),
+  roiSpend="Povprečna vrednost posla", roiGuests="Dodatni posli na teden", roiBreak="Dodatni posli na teden, ki pokrijejo Mr. Picked: {n}",
+  fdH=GEN['SL']['fdH'], fdP=GEN['SL']['fdP'],
+  faqs=[GEN['SL']['faqs'][0],
+   dict(q="Za katere obrtnike je to?", a="Za vodovodarje, električarje, ključavničarje, serviserje ogrevanja in klim, krovce, deratizacijo in druge storitve, ki jih ljudje potrebujejo hitro. Vprašanja prilagodimo temu, kar sprašujejo vaše stranke."), 1,
+   dict(q="Ali WhatsApp concierge sprejema naročila brez mene?", a="Ne. Zbere naslov, opis težave in fotografije ter pošlje vašo ceno prihoda. Delo in termin potrdite vi."), 4],
+  fBiz="Ime podjetja", mailPh="vi@podjetje.si"),
+}
+
+IND['activities'] = {
+ 'EN': dict(
+  eyebrow="AI + Google visibility for tours & outdoor activities",
+  h1="Travellers don’t browse brochures anymore. They ask AI what to do tomorrow.",
+  sub="When a tourist asks ChatGPT, Gemini or Perplexity for the best rafting trip, wine tour or guided hike nearby, AI names two or three. We make sure yours is one of them — in their language.",
+  dName="Business name", dNamePh="e.g. Rafting Primer", dQ="{city}: best activity for tomorrow with kids, in English?",
+  dYour="Your tour", dOther="Another tour", dIdle="Enter your business and press run to see what AI tells a traveller.",
+  dDesc="Small groups, English-speaking guides, book online for tomorrow.", dOf="of 30 traveller questions",
+  steps=_std_steps('EN', '', ["30 traveller questions in 6 languages","Where you appear — and which tours appear instead","Wrong prices, seasons or meeting points the AI gives about you"],
+    ["Google profile: tours, season, meeting point, photos, booking link","Listings corrected on 15+ platforms and travel directories","Tours, prices and availability machine-readable on your site"], "Review request after every tour",
+    "We run the questions travellers actually ask while planning their days across ChatGPT, Gemini, Perplexity and Google’s AI answers — in their own languages."),
+  vidP="No filming. Our AI turns your photos from real tours into short clips that make travellers book — in their own language.",
+  vids=_vids('EN', "Your guides, your guests and your landscape, never stock footage. You approve every clip.", "Every traveller hears it in their own language."),
+  lists=[
+   ["Starting AI audit: 30 traveller questions in 3 AIs and 6 languages","Full fix in the first 30 days: Google profile, tours, season, meeting point, photos","Tours, prices and availability machine-readable on your website","Listings corrected on 15+ platforms (Apple Maps, Bing, travel directories…)","Local Google SEO: tracked Maps ranking for your 10 key searches (e.g. “rafting Bovec”)","4 Google profile posts per month","Monthly Mr. Picked Report with your visibility score"],
+   ["Everything in Visible, plus:","2 AI videos / month in 3 languages, posted to Instagram, TikTok and Google","Automatic review request after every tour","We draft replies to all your Google reviews within 48 h","2 new traveller-question pages / month in 3 languages (e.g. “what to do in Bovec when it rains”)","50 traveller questions tracked + 3 nearby competitors","Quarterly results call"],
+   ["Everything in Recommended, plus:","4 AI videos / month in 6 languages","WhatsApp concierge 24/7: answers questions about tours, weather and what to bring, and takes booking requests","Reminders before the tour (time, meeting point, what to bring) & no-show follow-up","Tours and price list online in 6 languages","Seasonal campaigns: early-season deals, school holidays, autumn","Monthly strategy call + changes within 24 h (working days)"]],
+  addons=_addons('EN', "Review request after every tour", "Answers travellers and takes booking requests, 24/7"),
+  roiSpend="Average value of a booking", roiGuests="Extra bookings per week", roiBreak="Extra bookings a week to cover Mr. Picked: {n}",
+  fdH="Built by people who host travellers, not an agency.",
+  fdP="I host travellers in my own apartments and see every day how they plan their trips with AI. I built Mr. Picked so that AI picks local businesses like yours.",
+  faqs=[GEN['EN']['faqs'][0],
+   dict(q="We already sell through GetYourGuide and Viator. Why this?", a="Keep them. AI assistants often recommend local providers by name. We make sure that name is yours, with a link to book directly, so more bookings come without commission."), 1,
+   dict(q="What does the WhatsApp concierge answer?", a="Times, meeting points, what to bring, age limits, weather changes and prices, in the traveller’s language. Booking requests go to you to confirm."), 4],
+  fBiz="Business name", mailPh="you@tours.si"),
+ 'SL': dict(
+  eyebrow="AI + Google vidnost za turistične aktivnosti in izlete",
+  h1="Popotniki ne listajo več brošur. Vprašajo AI, kaj početi jutri.",
+  sub="Ko turist vpraša ChatGPT, Gemini ali Perplexity za najboljši rafting, vinsko turo ali voden pohod v bližini, AI imenuje dva ali tri. Poskrbimo, da ste vi med njimi — v njegovem jeziku.",
+  dName="Ime ponudnika", dNamePh="npr. Rafting Primer", dQ="{city}: najboljša aktivnost za jutri z otroki, v angleščini?",
+  dYour="Vaša tura", dOther="Druga tura", dIdle="Vpišite svoje podjetje in zaženite, da vidite, kaj AI pove popotniku.",
+  dDesc="Majhne skupine, vodniki v angleščini, rezervacija na spletu za jutri.", dOf="od 30 vprašanj popotnikov",
+  steps=_std_steps('SL', '', ["30 vprašanj popotnikov v 6 jezikih","Kje se pojavite vi — in katere ture namesto vas","Napačne cene, sezone ali zbirna mesta, ki jih AI navaja o vas"],
+    ["Google profil: ture, sezona, zbirno mesto, fotografije, povezava za rezervacijo","Popravljeni vpisi na 15+ platformah in turističnih imenikih","Ture, cene in razpoložljivost strojno berljivi na vaši strani"], "Prošnja za oceno po vsaki turi",
+    "Postavimo vprašanja, ki jih popotniki res sprašujejo, ko načrtujejo dneve, v ChatGPT, Gemini, Perplexity in Googlovih AI odgovorih — v njihovih jezikih."),
+  vidP="Brez snemanja. Naš AI iz fotografij s pravih tur ustvari kratke posnetke, zaradi katerih popotniki rezervirajo — v svojem jeziku.",
+  vids=_vids('SL', "Vaši vodniki, gostje in pokrajina, nikoli tuji posnetki. Vsak posnetek odobrite.", "Vsak popotnik ga sliši v svojem jeziku."),
+  lists=[
+   ["Začetni AI pregled: 30 vprašanj popotnikov v 3 AI orodjih in 6 jezikih","Celoten popravek v prvih 30 dneh: Google profil, ture, sezona, zbirno mesto, fotografije","Ture, cene in razpoložljivost strojno berljivi na vaši spletni strani","Popravljeni vpisi na 15+ platformah (Apple Maps, Bing, turistični imeniki …)","Lokalni Google SEO: spremljamo mesto na Zemljevidih za 10 ključnih iskanj (npr. »rafting Bovec«)","4 objave na Google profilu na mesec","Mesečno poročilo Mr. Picked z oceno vidnosti"],
+   ["Vse iz paketa Visible, plus:","2 AI videa na mesec v 3 jezikih, objavljena na Instagramu, TikToku in Googlu","Samodejna prošnja za oceno po vsaki turi","Pripravimo odgovore na vse vaše Google ocene v 48 urah","2 novi strani z vprašanji popotnikov na mesec v 3 jezikih (npr. »kaj početi v Bovcu, ko dežuje«)","Spremljanje 50 vprašanj popotnikov + 3 bližnjih konkurentov","Četrtletni pregled rezultatov"],
+   ["Vse iz paketa Recommended, plus:","4 AI videi na mesec v 6 jezikih","WhatsApp concierge 24/7: odgovarja na vprašanja o turah, vremenu in opremi ter sprejema povpraševanja za rezervacije","Opomniki pred turo (ura, zbirno mesto, oprema) in sledenje neprihodom","Ture in cenik na spletu v 6 jezikih","Sezonske kampanje: ponudbe za začetek sezone, šolske počitnice, jesen","Mesečni strateški sestanek + spremembe v 24 urah (delovni dnevi)"]],
+  addons=_addons('SL', "Prošnja za oceno po vsaki turi", "Odgovarja popotnikom in sprejema povpraševanja za rezervacije, 24/7"),
+  roiSpend="Povprečna vrednost rezervacije", roiGuests="Dodatne rezervacije na teden", roiBreak="Dodatne rezervacije na teden, ki pokrijejo Mr. Picked: {n}",
+  fdH="Naredili so ga ljudje, ki gostijo popotnike, ne agencija.",
+  fdP="V svojih apartmajih gostim popotnike in vsak dan vidim, kako načrtujejo izlete z AI. Mr. Picked sem naredil, da AI izbere lokalna podjetja, kot je vaše.",
+  faqs=[GEN['SL']['faqs'][0],
+   dict(q="Že prodajamo prek GetYourGuide in Viatorja. Zakaj še to?", a="Obdržite ju. AI pomočniki pogosto priporočijo lokalne ponudnike po imenu. Poskrbimo, da je to vaše ime, s povezavo za neposredno rezervacijo, zato več rezervacij pride brez provizije."), 1,
+   dict(q="Na kaj odgovarja WhatsApp concierge?", a="Na ure, zbirna mesta, potrebno opremo, starostne omejitve, spremembe zaradi vremena in cene, v jeziku popotnika. Povpraševanja za rezervacije preda vam v potrditev."), 4],
+  fBiz="Ime ponudnika", mailPh="vi@izleti.si"),
+}
+
+ROI['carrepair'] = ((250, 50, 1500, 10), (3, 0, 40, 1))
+ROI['trades'] = ((200, 50, 1500, 10), (3, 0, 40, 1))
+ROI['activities'] = ((150, 20, 600, 10), (5, 0, 60, 1))
+IND_PATH['carrepair'] = {'EN': 'car-repair/', 'SL': 'sl/avtoservisi/'}
+IND_PATH['trades'] = {'EN': 'trades/', 'SL': 'sl/obrtniki/'}
+IND_PATH['activities'] = {'EN': 'activities/', 'SL': 'sl/turisticne-aktivnosti/'}
+META_IND['carrepair'] = {
+ 'EN': ("Mr. Picked for car repair, tyres & bodywork — be the garage AI recommends", "When drivers ask ChatGPT, Gemini or Google which garage to trust, AI names two or three. Mr. Picked makes sure yours is one of them. Free AI check."),
+ 'SL': ("Mr. Picked za avtoservise, vulkanizerje in kleparje — bodite servis, ki ga priporoči AI", "Ko vozniki vprašajo ChatGPT, Gemini ali Google, kateremu servisu zaupati, AI imenuje dva ali tri. Mr. Picked poskrbi, da ste vi med njimi. Brezplačen AI pregled.")}
+META_IND['trades'] = {
+ 'EN': ("Mr. Picked for plumbers, electricians & emergency repairs — be the number AI gives", "When someone asks ChatGPT, Gemini or Google for a plumber or electrician who can come now, AI names one or two. Mr. Picked makes sure yours is one of them. Free AI check."),
+ 'SL': ("Mr. Picked za vodovodarje, električarje in nujna popravila — bodite številka, ki jo da AI", "Ko nekdo vpraša ChatGPT, Gemini ali Google za vodovodarja ali električarja, ki lahko pride takoj, AI imenuje enega ali dva. Mr. Picked poskrbi, da ste vi med njimi. Brezplačen AI pregled.")}
+META_IND['activities'] = {
+ 'EN': ("Mr. Picked for tours & outdoor activities — get recommended by AI", "When travellers ask ChatGPT, Gemini or Perplexity what to do nearby, AI names two or three tours. Mr. Picked makes sure yours is one of them, in 6 languages. Free AI check."),
+ 'SL': ("Mr. Picked za turistične aktivnosti in izlete — naj vas priporoči AI", "Ko popotniki vprašajo ChatGPT, Gemini ali Perplexity, kaj početi v bližini, AI imenuje dve ali tri ture. Mr. Picked poskrbi, da ste vi med njimi, v 6 jezikih. Brezplačen AI pregled.")}
+
+IND_ORDER = ['hospitality', 'apartments', 'activities', 'towing', 'carrepair', 'trades', 'insurance', 'dental']
+_new = {
+ 'EN': [("Tours & outdoor activities", "Be the trip AI suggests when travellers plan tomorrow."), ("Car repair, tyres & bodywork", "Be the garage AI recommends for service, tyres and repairs."), ("Plumbers, electricians & emergency repairs", "Be the number AI gives when something breaks at home."), ("Salons, physios & professional services", "Hair and beauty, physiotherapy, lawyers, accountants and real estate agents.")],
+ 'SL': [("Turistične aktivnosti in izleti", "Bodite izlet, ki ga AI predlaga, ko popotniki načrtujejo jutri."), ("Avtoservisi, vulkanizerji in kleparji", "Bodite servis, ki ga AI priporoči za servis, gume in popravila."), ("Vodovodarji, električarji in nujna popravila", "Bodite številka, ki jo AI da, ko se doma kaj pokvari."), ("Saloni, fizioterapija in strokovne storitve", "Frizerji in kozmetika, fizioterapija, odvetniki, računovodje in nepremičninski agenti.")],
+ 'HR': [("Turističke aktivnosti i izleti", "Budite izlet koji AI predloži kad putnici planiraju sutra."), ("Autoservisi, vulkanizeri i limari", "Budite servis koji AI preporuča za servis, gume i popravke."), ("Vodoinstalateri, električari i hitni popravci", "Budite broj koji AI daje kad se kod kuće nešto pokvari."), ("Saloni, fizioterapija i stručne usluge", "Frizeri i kozmetika, fizioterapija, odvjetnici, računovođe i agenti za nekretnine.")],
+ 'IT': [("Escursioni e attività outdoor", "Sii l’escursione che l’AI suggerisce quando i viaggiatori pianificano il domani."), ("Officine, gommisti e carrozzerie", "Sii l’officina che l’AI consiglia per tagliandi, gomme e riparazioni."), ("Idraulici, elettricisti e pronto intervento", "Sii il numero che l’AI dà quando a casa si rompe qualcosa."), ("Saloni, fisioterapia e servizi professionali", "Parrucchieri ed estetiste, fisioterapia, avvocati, commercialisti e agenti immobiliari.")],
+ 'DE': [("Touren & Outdoor-Aktivitäten", "Der Ausflug sein, den die KI vorschlägt, wenn Reisende den nächsten Tag planen."), ("Kfz-Werkstätten, Reifen & Karosserie", "Die Werkstatt sein, die die KI für Service, Reifen und Reparaturen empfiehlt."), ("Installateure, Elektriker & Notdienste", "Die Nummer sein, die die KI nennt, wenn zu Hause etwas kaputtgeht."), ("Salons, Physiotherapie & freie Berufe", "Friseur und Kosmetik, Physiotherapie, Anwälte, Steuerberater und Immobilienmakler.")],
+ 'HU': [("Túrák és szabadtéri programok", "Legyen az a program, amit az AI javasol, amikor az utazók a holnapot tervezik."), ("Autószervizek, gumiszervizek és karosszériajavítók", "Legyen az a szerviz, amit az AI ajánl szervizre, gumicserére és javításra."), ("Vízszerelők, villanyszerelők és sürgősségi javítás", "Legyen az a szám, amit az AI ad, ha otthon valami elromlik."), ("Szalonok, gyógytorna és szakmai szolgáltatások", "Fodrászat és kozmetika, gyógytorna, ügyvédek, könyvelők és ingatlanközvetítők.")],
+}
+for _L, _n in _new.items():
+    _c = GEN[_L]['inds']  # current: hospitality, apartments, towing, insurance, dental, other
+    _d = lambda t: dict(name=t[0], desc=t[1])
+    GEN[_L]['inds'] = [_c[0], _c[1], _d(_n[0]), _c[2], _d(_n[1]), _d(_n[2]), _c[3], _c[4], _d(_n[3])]

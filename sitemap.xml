@@ -95,6 +95,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/apartments/"/>
   </url>
   <url>
+    <loc>https://mrpicked.eu/activities/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/activities/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/turisticne-aktivnosti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/activities/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/sl/turisticne-aktivnosti/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/activities/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/turisticne-aktivnosti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/activities/"/>
+  </url>
+  <url>
     <loc>https://mrpicked.eu/towing/</loc>
     <lastmod>2026-11-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/towing/"/>
@@ -107,6 +121,34 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/towing/"/>
     <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/avtovleka/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/towing/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/car-repair/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/car-repair/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/avtoservisi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/car-repair/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/sl/avtoservisi/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/car-repair/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/avtoservisi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/car-repair/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/trades/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/trades/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/obrtniki/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/trades/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/sl/obrtniki/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/trades/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/obrtniki/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/trades/"/>
   </url>
   <url>
     <loc>https://mrpicked.eu/insurance/</loc>

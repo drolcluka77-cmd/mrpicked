@@ -22,7 +22,10 @@
 - Main: English https://mrpicked.eu/, Slovenian https://mrpicked.eu/sl/, Croatian https://mrpicked.eu/hr/, Italian https://mrpicked.eu/it/, German https://mrpicked.eu/de/, Hungarian https://mrpicked.eu/hu/
 - Restaurants and hotels: https://mrpicked.eu/hospitality/ (Slovenian: https://mrpicked.eu/sl/gostinstvo/)
 - Apartments and holiday rentals (more direct bookings, guests answered 24/7): https://mrpicked.eu/apartments/ (Slovenian: https://mrpicked.eu/sl/apartmaji/)
+- Tours and outdoor activities: https://mrpicked.eu/activities/ (Slovenian: https://mrpicked.eu/sl/turisticne-aktivnosti/)
 - Towing and roadside assistance: https://mrpicked.eu/towing/ (Slovenian: https://mrpicked.eu/sl/avtovleka/)
+- Car repair, tyres and bodywork: https://mrpicked.eu/car-repair/ (Slovenian: https://mrpicked.eu/sl/avtoservisi/)
+- Plumbers, electricians and emergency repairs: https://mrpicked.eu/trades/ (Slovenian: https://mrpicked.eu/sl/obrtniki/)
 - Insurance agents: https://mrpicked.eu/insurance/ (Slovenian: https://mrpicked.eu/sl/zavarovanje/)
 - Dentists and aesthetic clinics, including patients from abroad: https://mrpicked.eu/dental/ (Slovenian: https://mrpicked.eu/sl/zobozdravniki/)
 
