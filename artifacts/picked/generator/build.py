@@ -204,13 +204,18 @@ def page(L, variant):
     # Comparison table: grouped by the package that adds each item
     def cell(on): return f'<td>{CK("#0E1A2B", 12, 4, "cmp-ck") if on else ""}<span class="sr">{"✓" if on else "—"}</span>{"" if on else "<span class=cmp-no aria-hidden=true>—</span>"}</td>'
     cmp_rows = ''
+    chev = '<svg class="cmp-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
+    def grp_head(g, label, pk, n):
+        return (f'<tr class="cmp-g"><th scope="rowgroup" colspan="4"><button type="button" class="cmp-tg" aria-expanded="true" aria-controls="cmp-g{g}">'
+                f'<span class="cmp-gl">{e(label)}<span class="cmp-pk">{e(pk)}</span></span><span class="cmp-cnt">{n}</span>{chev}</button></th></tr>')
     for g, lst in enumerate(t['lists']):
         items = lst if g == 0 else lst[1:]
-        cmp_rows += f'<tr class="cmp-g"><th scope="rowgroup" colspan="4">{e(t["g" + str(g)])}</th></tr>'
+        cmp_rows += f'<tbody class="cmp-grp" id="cmp-g{g}">' + grp_head(g, t['g' + str(g)], ' · '.join(NAMES[g:]), len(items))
         for it in items:
-            cmp_rows += f'<tr><th scope="row">{e(it)}</th>' + ''.join(cell(k >= g) for k in range(3)) + '</tr>'
-    cmp_rows += (f'<tr class="cmp-g"><th scope="rowgroup" colspan="4">{e(t["setupRow"])}</th></tr><tr><th scope="row">{e(t["setupRow"])}</th>'
-                 + ''.join(f'<td class="cmp-v">{fmt(s, L) if s else "—"}</td>' for s in SETUPS) + '</tr>')
+            cmp_rows += f'<tr><th scope="row"><span class="cmp-mk" aria-hidden="true">{CK("#0E1A2B", 10, 4)}</span>{e(it)}</th>' + ''.join(cell(k >= g) for k in range(3)) + '</tr>'
+        cmp_rows += '</tbody>'
+    cmp_rows += (f'<tbody class="cmp-grp" id="cmp-g3">' + grp_head(3, t['setupRow'], '', 1) + f'<tr class="cmp-setup"><th scope="row">{e(t["setupRow"])}</th>'
+                 + ''.join(f'<td class="cmp-v" data-label="{nm}">{fmt(s, L) if s else "—"}</td>' for nm, s in zip(NAMES, SETUPS)) + '</tr></tbody>')
     cmp_head = ''.join(f'<th scope="col"{" class=cmp-hi" if i == 1 else ""}><span class="cmp-n">{nm}</span><span class="cmp-p">{fmt(PRICES[i], L)} <small>{e(t["perMonth"])}</small></span></th>'
                        for i, nm in enumerate(NAMES))
 
@@ -378,7 +383,7 @@ def page(L, variant):
 <div class="stack" style="gap:12px"><div class="kicker">{e(t['cmpK'])}</div><h2 class="h2">{e(t['cmpH'])}</h2></div>
 <div class="cmp-wrap" role="region" aria-label="{e(t['cmpH'])}" tabindex="0">
 <table class="cmp"><thead><tr><th scope="col"><span class="sr">{e(t['cmpH'])}</span></th>{cmp_head}</tr></thead>
-<tbody>{cmp_rows}</tbody></table>
+{cmp_rows}</table>
 </div>
 </div>
 </section>

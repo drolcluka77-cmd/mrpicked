@@ -340,3 +340,16 @@
     rvs.forEach(function (el) { io.observe(el); });
   }
 })();
+
+/* Comparison table: fold/unfold groups (folded by default on phones, except the first) */
+(function () {
+  var grps = document.querySelectorAll('.cmp-grp');
+  if (!grps.length) return;
+  var phone = window.matchMedia && window.matchMedia('(max-width:720px)').matches;
+  Array.prototype.forEach.call(grps, function (g, i) {
+    var b = g.querySelector('.cmp-tg');
+    function set(open) { g.classList.toggle('closed', !open); b.setAttribute('aria-expanded', String(open)); }
+    set(!phone || i === 0);
+    b.addEventListener('click', function () { set(g.classList.contains('closed')); });
+  });
+})();
