@@ -101,7 +101,7 @@ def ld_json(L, t, path, title, desc):
     m = dict(META[L], path=path, title=title, desc=desc)
     org = {"@type": "Organization", "@id": SITE + "#org", "name": "Mr. Picked", "alternateName": "Picked",
            "legalName": "Aurelia Group d.o.o.", "url": SITE, "logo": SITE + "icon-512.png",
-           "image": SITE + "og-image.png", "email": "info@mrpicked.eu", "telephone": "+386 40 290 963", "taxID": "71811435", "vatID": "SI71811435", "identifier": "7533152000",
+           "image": SITE + "og-image.png", "email": "info@mrpicked.eu", "telephone": "+386 40 290 963", "taxID": "71811435", "identifier": "7533152000",
            "address": {"@type": "PostalAddress", "streetAddress": "Zaloška cesta 161", "postalCode": "1000", "addressLocality": "Ljubljana", "addressCountry": "SI"},
            "founder": {"@type": "Person", "name": "Luka Drolc"}, "areaServed": ["SI", "HR", "IT", "AT", "HU"],
            "knowsLanguage": ["en", "sl", "hr", "it", "de", "hu"]}
