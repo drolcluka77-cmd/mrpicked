@@ -60,7 +60,9 @@
   var timers = [];
   function clearTimers() { timers.forEach(function (t) { clearTimeout(t); clearInterval(t); }); timers = []; }
   function city() { return (cityIn.value || '').trim() || 'Ljubljana'; }
-  function fullQ() { return M.dQ.replace('{city}', city()); }
+  var catIn = $('#demo-cat');
+  function cat() { return (catIn && (catIn.value || '').trim()) || M.catDef; }
+  function fullQ() { return M.dQ.replace('{city}', city()).replace('{cat}', cat()); }
   function shownName() { return (nameIn.value || '').trim() || M.dYour; }
 
   if (nameIn) nameIn.addEventListener('input', function () {

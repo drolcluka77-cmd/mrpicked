@@ -1,25 +1,28 @@
 # Mr. Picked
 
-> Mr. Picked helps restaurants, cafés and hotels get recommended by AI assistants such as ChatGPT, Gemini and Perplexity, and rank better on Google. We work in 6 languages (English, Slovenian, Croatian, Italian, German, Hungarian) for businesses in Slovenia, Croatia, Italy, Austria and Hungary.
+> Mr. Picked helps local businesses get recommended by AI assistants such as ChatGPT, Gemini and Perplexity, and rank better on Google. We focus on businesses people look for nearby: restaurants, hotels and apartments, towing and roadside assistance, insurance agents, health and beauty, trades and professional services. We work in 6 languages (English, Slovenian, Croatian, Italian, German, Hungarian) in Slovenia, Croatia, Italy, Austria and Hungary.
 
 ## What we do
 
-- AI Mirror audit: we ask ChatGPT, Gemini, Perplexity and Google’s AI answers the questions guests really ask (30 questions in 6 languages) and show where the business appears, where competitors appear instead, and what the AI gets wrong.
-- Fix in the first 30 days: Google Business Profile, opening hours, menu, photos, categories; listings corrected on 15+ platforms (TripAdvisor, Apple Maps, Bing, TheFork and others); machine-readable menu and booking info on the website.
-- Stay recommended: monthly Mr. Picked Report with an AI visibility score, AI-made short videos from the business’s real photos with voiceover and subtitles in 6 languages, review requests after each visit, and replies to Google reviews.
-- Optional: WhatsApp concierge that answers guests and takes bookings 24/7, and an AI-ready multilingual website.
+- AI Mirror audit: we ask ChatGPT, Gemini, Perplexity and Google’s AI answers the questions customers really ask (30 questions in 6 languages) and show where the business appears, where competitors appear instead, and what the AI gets wrong.
+- Fix in the first 30 days: Google Business Profile (hours, services, photos, categories), listings corrected on 15+ platforms, and services, prices and contact details made machine-readable on the website.
+- Stay recommended: monthly Mr. Picked Report with an AI visibility score, AI-made short videos from the business’s real photos with voiceover and subtitles in 6 languages, review requests after each job or visit, and replies to Google reviews.
+- Optional: WhatsApp concierge that answers customers, sends quotes and takes bookings 24/7, and an AI-ready multilingual website.
 
 ## Packages (per month, excl. VAT)
 
 - Visible — 390 EUR: AI audit and full fix in 30 days, listings on 15+ platforms, local Google SEO for 10 key searches, 4 Google profile posts a month, monthly report.
-- Recommended — 690 EUR: everything in Visible plus 2 AI videos a month in 3 languages, automatic review requests, review replies within 48 h, 50 guest questions and 3 competitors tracked, quarterly results call.
-- Concierge — 990 EUR + 490 EUR one-time setup: everything in Recommended plus 4 AI videos a month in 6 languages, WhatsApp concierge 24/7, booking reminders and no-show follow-up, menu online in 6 languages, monthly strategy call.
+- Recommended — 690 EUR: everything in Visible plus 2 AI videos a month in 3 languages, automatic review requests, review replies within 48 h, 50 customer questions and 3 competitors tracked, quarterly results call.
+- Concierge — 990 EUR + 490 EUR one-time setup: everything in Recommended plus 4 AI videos a month in 6 languages, WhatsApp concierge 24/7, reminders and no-show follow-up, services and price list online in 6 languages, seasonal campaigns, monthly strategy call.
 - Add-ons: AI video pack +3 videos 149 EUR/month; review loop 90 EUR/month; WhatsApp concierge 390 EUR/month + 490 EUR setup; AI-ready website from 1,490 EUR one-off.
 - Monthly contracts, cancel with 30 days’ notice. Promise: higher AI and Google visibility in 90 days, or the fourth month is free.
 
-## Languages
+## Pages
 
-The site is available in English (https://mrpicked.eu/), Slovenian (https://mrpicked.eu/sl/), Croatian (https://mrpicked.eu/hr/), Italian (https://mrpicked.eu/it/), German (https://mrpicked.eu/de/) and Hungarian (https://mrpicked.eu/hu/).
+- Main: English https://mrpicked.eu/, Slovenian https://mrpicked.eu/sl/, Croatian https://mrpicked.eu/hr/, Italian https://mrpicked.eu/it/, German https://mrpicked.eu/de/, Hungarian https://mrpicked.eu/hu/
+- Restaurants, hotels and apartments: https://mrpicked.eu/hospitality/ (Slovenian: https://mrpicked.eu/sl/gostinstvo/)
+- Towing and roadside assistance: https://mrpicked.eu/towing/ (Slovenian: https://mrpicked.eu/sl/avtovleka/)
+- Insurance agents: https://mrpicked.eu/insurance/ (Slovenian: https://mrpicked.eu/sl/zavarovanje/)
 
 ## Free AI check
 
@@ -29,5 +32,5 @@ Any business can request a free AI Mirror report at https://mrpicked.eu/ and rec
 
 - Brand: Mr. Picked, https://mrpicked.eu/
 - Legal entity: Cyberfinance, računalniško programiranje d.o.o., Celovška cesta 136, 1000 Ljubljana, Slovenia. Tax no. 83314512.
-- Founder: Luka Drolc, restaurant owner in Ljubljana.
+- Founder: Luka Drolc, who runs businesses in hospitality, towing and insurance in Slovenia.
 - Contact: info@mrpicked.eu, +386 40 290 963

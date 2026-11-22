@@ -1,0 +1,1476 @@
+{
+ "T": {
+  "EN": {
+   "navHow": "How it works",
+   "navPricing": "Pricing",
+   "navRoi": "ROI",
+   "navFaq": "FAQ",
+   "navCta": "Free AI check",
+   "eyebrow": "AI + Google visibility for restaurants & hotels",
+   "h1": "Your next guest won’t Google you. They’ll ask AI.",
+   "sub": "When a guest asks ChatGPT, Gemini or Perplexity where to eat, AI names three places. We make sure yours is one of them — in six languages.",
+   "cta1": "Run a free AI check",
+   "cta2": "Build your plan",
+   "p1": "3 AIs + Google tracked",
+   "p2": "6 languages",
+   "p3": "Higher score in 90 days — or month 4 is free",
+   "dTitle": "Live preview",
+   "dName": "Restaurant name",
+   "dNamePh": "e.g. Gostilna Primer",
+   "dCity": "City",
+   "dRun": "Run AI check",
+   "dIdle": "Enter your restaurant and press run to see how an AI answers a hungry guest.",
+   "dScan": "Asking the AIs…",
+   "dToday": "Today",
+   "dWith": "With Picked",
+   "dQ": "{city}: where should we have dinner tonight?",
+   "dIntro": "Here are three good options:",
+   "dNot": "You’re not in the answer",
+   "dYes": "You’re the first pick",
+   "dScore": "AI visibility",
+   "dOf": "of 30 guest questions",
+   "dNote": "Simulated preview. Your real AI Mirror report checks 30 questions in 6 languages.",
+   "dOther": "Another restaurant",
+   "dYour": "Your restaurant",
+   "dDesc": "Loved for its terrace and tasting menu. Bookable on WhatsApp.",
+   "dAgain": "Try another",
+   "dDone": "done",
+   "dWait": "waiting",
+   "howK": "How it works",
+   "howH": "Three steps from invisible to recommended.",
+   "steps": [
+    {
+     "tab": "AI Mirror",
+     "h": "We ask the AIs about you",
+     "p": "We run the questions your guests actually ask across ChatGPT, Gemini, Perplexity and Google’s AI answers.",
+     "items": [
+      "30 guest questions in 6 languages",
+      "Where you appear — and where competitors do",
+      "Every wrong fact the AI says about you"
+     ]
+    },
+    {
+     "tab": "Fix",
+     "h": "We make you readable",
+     "p": "In the first 30 days we fix everything AI and Google read about you.",
+     "items": [
+      "Google profile, hours, menu, photos, categories",
+      "Listings corrected on 15+ platforms",
+      "Machine-readable menu and booking info on your site"
+     ]
+    },
+    {
+     "tab": "Stay picked",
+     "h": "We keep you there",
+     "p": "Every month we re-run the questions, add fresh content and report what changed.",
+     "items": [
+      "Monthly Picked Report with your visibility score",
+      "AI videos and Google posts every month",
+      "Review requests after every visit"
+     ]
+    }
+   ],
+   "vidK": "AI video",
+   "vidH": "Videos that work twice.",
+   "vidP": "No filming. Our AI turns your real photos into short clips — content for social, and one more reason for AI to recommend you.",
+   "vids": [
+    {
+     "h": "From your real photos",
+     "p": "Your dishes and your space, never stock footage. You approve every clip."
+    },
+    {
+     "h": "One video, six languages",
+     "p": "AI voiceover and subtitles, so every tourist hears it in their own language."
+    },
+    {
+     "h": "Posted where it counts",
+     "p": "Instagram, TikTok, YouTube Shorts and your Google profile."
+    }
+   ],
+   "pkK": "Pricing",
+   "pkH": "Build your plan.",
+   "pkSub": "Pick a package, add what you need, see the total right away. Prices exclude VAT. Monthly, cancel with 30 days’ notice.",
+   "tags": [
+    "Get found and described correctly",
+    "Get chosen, not just listed",
+    "Picked, then booked"
+   ],
+   "hi": [
+    [
+     "AI audit + full fix in 30 days",
+     "Listings on 15+ platforms",
+     "Monthly Picked Report"
+    ],
+    [
+     "2 AI videos / month",
+     "Review requests + replies in 48 h",
+     "50 questions + 3 competitors tracked"
+    ],
+    [
+     "4 AI videos / month in 6 languages",
+     "WhatsApp concierge 24/7",
+     "Monthly strategy call"
+    ]
+   ],
+   "lists": [
+    [
+     "Starting AI audit: 30 guest questions in 3 AIs and 6 languages",
+     "Full fix in the first 30 days: Google profile, hours, menu, photos, categories",
+     "Your menu, hours and location made machine-readable on your website",
+     "Listings corrected on 15+ platforms (TripAdvisor, Apple Maps, Bing, TheFork…)",
+     "Local Google SEO: tracked Maps ranking for your 10 key searches",
+     "4 Google profile posts per month",
+     "Monthly Picked Report with your visibility score"
+    ],
+    [
+     "Everything in Visible, plus:",
+     "2 AI videos / month in 3 languages, posted to Instagram, TikTok and Google",
+     "Automatic review request after every visit (QR or booking system)",
+     "We draft replies to all your Google reviews within 48 h",
+     "2 new guest-question pages / month in 3 languages",
+     "50 guest questions tracked + 3 nearby competitors",
+     "Quarterly results call"
+    ],
+    [
+     "Everything in Recommended, plus:",
+     "4 AI videos / month in 6 languages",
+     "WhatsApp concierge 24/7: menu, allergens, hours and bookings",
+     "Booking reminders & no-show follow-up",
+     "Your menu online in 6 languages",
+     "One seasonal campaign per quarter (Advent, summer terrace…)",
+     "Monthly strategy call + changes within 24 h"
+    ]
+   ],
+   "popular": "Most popular",
+   "perMonth": "/ month",
+   "addH": "Add-ons",
+   "included": "Included",
+   "once": "one-off",
+   "setup": "setup",
+   "addons": [
+    {
+     "name": "AI video pack",
+     "desc": "+3 AI videos every month"
+    },
+    {
+     "name": "Review loop",
+     "desc": "Review request after every visit"
+    },
+    {
+     "name": "WhatsApp concierge",
+     "desc": "Answers guests and takes bookings, 24/7"
+    },
+    {
+     "name": "AI-ready website",
+     "desc": "Multilingual, fast, readable by AI"
+    }
+   ],
+   "sumH": "Your plan",
+   "sumMonthly": "Monthly",
+   "sumOnce": "One-off",
+   "sumCta": "Start with a free AI check",
+   "inclH": "What’s included in",
+   "roiK": "Return",
+   "roiH": "Does it pay off? Do the math.",
+   "roiP": "Move the sliders to your own numbers.",
+   "roiSpend": "Average spend per guest",
+   "roiGuests": "Extra guests per week",
+   "roiRev": "Extra revenue / month",
+   "roiCost": "Your plan / month",
+   "roiNet": "Left over",
+   "roiBreak": "Picked pays for itself at {n} extra guests a week.",
+   "roiNote": "An estimate from your inputs — not a promise of results.",
+   "proK": "Our promise",
+   "proH": "Higher visibility in 90 days — or month four is on us.",
+   "proP": "We measure your AI and Google visibility on day one. If it isn’t higher after 90 days, you don’t pay for month four.",
+   "mrQuote": "“Of course they picked me.”",
+   "faqK": "FAQ",
+   "faqH": "Questions owners ask us",
+   "faqs": [
+    {
+     "q": "What is GEO, in plain words?",
+     "a": "Making sure AI assistants like ChatGPT, Gemini and Perplexity know your restaurant, describe it correctly and recommend it. It builds on local SEO, so you also rank better on Google."
+    },
+    {
+     "q": "How soon will I see results?",
+     "a": "Fixes to your Google profile and listings often show within weeks. AI answers change more slowly; we measure every month and promise a higher score in 90 days."
+    },
+    {
+     "q": "Do I need a new website?",
+     "a": "Usually not. We fix what you have. Only if AI can’t read your current site do we suggest an AI-ready rebuild."
+    },
+    {
+     "q": "Are the AI videos made from real footage?",
+     "a": "From your real photos of dishes and the space, turned into short clips with AI. You approve each one, and they’re labelled as AI where platforms require it."
+    },
+    {
+     "q": "Can I cancel?",
+     "a": "Yes, monthly with 30 days’ notice. No long contracts."
+    }
+   ],
+   "ctaH": "What does AI say about you today?",
+   "ctaP": "Get a free AI Mirror report in 48 hours. No call needed, no obligation.",
+   "fBiz": "Restaurant or hotel name",
+   "fMail": "Email",
+   "btn": "Send me my free report",
+   "sent": "Thanks — your report is on its way within 48 hours."
+  },
+  "SL": {
+   "navHow": "Kako deluje",
+   "navPricing": "Cenik",
+   "navRoi": "Donos",
+   "navFaq": "Vprašanja",
+   "navCta": "Brezplačen AI pregled",
+   "eyebrow": "AI + Google vidnost za restavracije in hotele",
+   "h1": "Vaš naslednji gost vas ne bo iskal na Googlu. Vprašal bo AI.",
+   "sub": "Ko gost vpraša ChatGPT, Gemini ali Perplexity, kje naj jé, AI imenuje tri lokale. Poskrbimo, da je vaš med njimi — v šestih jezikih.",
+   "cta1": "Brezplačen AI pregled",
+   "cta2": "Sestavite paket",
+   "p1": "Spremljamo 3 AI + Google",
+   "p2": "6 jezikov",
+   "p3": "Višja ocena v 90 dneh — ali 4. mesec brezplačno",
+   "dTitle": "Predogled v živo",
+   "dName": "Ime restavracije",
+   "dNamePh": "npr. Gostilna Primer",
+   "dCity": "Mesto",
+   "dRun": "Zaženi AI pregled",
+   "dIdle": "Vpišite svojo restavracijo in zaženite, da vidite, kako AI odgovori lačnemu gostu.",
+   "dScan": "Sprašujemo AI…",
+   "dToday": "Danes",
+   "dWith": "S Picked",
+   "dQ": "{city}: kje naj nocoj večerjamo?",
+   "dIntro": "Tukaj so tri dobre možnosti:",
+   "dNot": "Vas ni v odgovoru",
+   "dYes": "Ste prva izbira",
+   "dScore": "AI vidnost",
+   "dOf": "od 30 vprašanj gostov",
+   "dNote": "Simuliran predogled. Pravo poročilo AI Mirror preveri 30 vprašanj v 6 jezikih.",
+   "dOther": "Druga restavracija",
+   "dYour": "Vaša restavracija",
+   "dDesc": "Priljubljena zaradi terase in degustacijskega menija. Rezervacija prek WhatsAppa.",
+   "dAgain": "Poskusite znova",
+   "dDone": "končano",
+   "dWait": "čaka",
+   "howK": "Kako deluje",
+   "howH": "Trije koraki od nevidnega do priporočenega.",
+   "steps": [
+    {
+     "tab": "AI Mirror",
+     "h": "AI vprašamo o vas",
+     "p": "Postavimo vprašanja, ki jih gostje res sprašujejo, v ChatGPT, Gemini, Perplexity in Googlovih AI odgovorih.",
+     "items": [
+      "30 vprašanj gostov v 6 jezikih",
+      "Kje se pojavite vi — in kje konkurenca",
+      "Vsak napačen podatek, ki ga AI pove o vas"
+     ]
+    },
+    {
+     "tab": "Popravek",
+     "h": "Poskrbimo, da vas AI razume",
+     "p": "V prvih 30 dneh popravimo vse, kar AI in Google bereta o vas.",
+     "items": [
+      "Google profil, ure, meni, fotografije, kategorije",
+      "Popravljeni vpisi na 15+ platformah",
+      "Strojno berljiv meni in rezervacije na vaši strani"
+     ]
+    },
+    {
+     "tab": "Ostanite izbrani",
+     "h": "Obdržimo vas tam",
+     "p": "Vsak mesec ponovno postavimo vprašanja, dodamo svežo vsebino in poročamo, kaj se je spremenilo.",
+     "items": [
+      "Mesečno poročilo Picked z oceno vidnosti",
+      "AI videi in Google objave vsak mesec",
+      "Prošnje za oceno po vsakem obisku"
+     ]
+    }
+   ],
+   "vidK": "AI video",
+   "vidH": "Videi, ki delujejo dvakrat.",
+   "vidP": "Brez snemanja. Naš AI iz vaših pravih fotografij ustvari kratke posnetke — vsebino za družbena omrežja in še en razlog, da vas AI priporoči.",
+   "vids": [
+    {
+     "h": "Iz vaših pravih fotografij",
+     "p": "Vaše jedi in vaš prostor, nikoli tuji posnetki. Vsak posnetek odobrite."
+    },
+    {
+     "h": "En video, šest jezikov",
+     "p": "AI glas in podnapisi, da ga vsak turist sliši v svojem jeziku."
+    },
+    {
+     "h": "Objavljeno tam, kjer šteje",
+     "p": "Instagram, TikTok, YouTube Shorts in vaš Google profil."
+    }
+   ],
+   "pkK": "Cenik",
+   "pkH": "Sestavite svoj paket.",
+   "pkSub": "Izberite paket, dodajte, kar potrebujete, in takoj vidite skupno ceno. Cene brez DDV. Mesečno, odpoved s 30-dnevnim rokom.",
+   "tags": [
+    "Da vas najdejo in pravilno opišejo",
+    "Da vas izberejo, ne le navedejo",
+    "Izbrani, nato rezervirani"
+   ],
+   "hi": [
+    [
+     "AI pregled + celoten popravek v 30 dneh",
+     "Vpisi na 15+ platformah",
+     "Mesečno poročilo Picked"
+    ],
+    [
+     "2 AI videa na mesec",
+     "Prošnje za ocene + odgovori v 48 urah",
+     "Spremljanje 50 vprašanj + 3 konkurentov"
+    ],
+    [
+     "4 AI videi na mesec v 6 jezikih",
+     "WhatsApp concierge 24/7",
+     "Mesečni strateški sestanek"
+    ]
+   ],
+   "lists": [
+    [
+     "Začetni AI pregled: 30 vprašanj gostov v 3 AI orodjih in 6 jezikih",
+     "Celoten popravek v prvih 30 dneh: Google profil, ure, meni, fotografije, kategorije",
+     "Meni, delovni čas in lokacija strojno berljivi na vaši spletni strani",
+     "Popravljeni vpisi na 15+ platformah (TripAdvisor, Apple Maps, Bing, TheFork…)",
+     "Lokalni Google SEO: spremljamo mesto na Zemljevidih za 10 ključnih iskanj",
+     "4 objave na Google profilu na mesec",
+     "Mesečno poročilo Picked z oceno vidnosti"
+    ],
+    [
+     "Vse iz paketa Visible, plus:",
+     "2 AI videa na mesec v 3 jezikih, objavljena na Instagramu, TikToku in Googlu",
+     "Samodejna prošnja za oceno po vsakem obisku (QR ali rezervacijski sistem)",
+     "Pripravimo odgovore na vse vaše Google ocene v 48 urah",
+     "2 novi strani z vprašanji gostov na mesec v 3 jezikih",
+     "Spremljanje 50 vprašanj gostov + 3 bližnjih konkurentov",
+     "Četrtletni pregled rezultatov"
+    ],
+    [
+     "Vse iz paketa Recommended, plus:",
+     "4 AI videi na mesec v 6 jezikih",
+     "WhatsApp concierge 24/7: meni, alergeni, delovni čas in rezervacije",
+     "Opomniki za rezervacije in sledenje neprihodom",
+     "Vaš meni na spletu v 6 jezikih",
+     "Ena sezonska kampanja na četrtletje (advent, poletna terasa…)",
+     "Mesečni strateški sestanek + spremembe v 24 urah"
+    ]
+   ],
+   "popular": "Najbolj priljubljen",
+   "perMonth": "/ mesec",
+   "addH": "Dodatki",
+   "included": "Vključeno",
+   "once": "enkratno",
+   "setup": "namestitev",
+   "addons": [
+    {
+     "name": "AI video paket",
+     "desc": "+3 AI videi vsak mesec"
+    },
+    {
+     "name": "Zbiranje ocen",
+     "desc": "Prošnja za oceno po vsakem obisku"
+    },
+    {
+     "name": "WhatsApp concierge",
+     "desc": "Odgovarja gostom in sprejema rezervacije, 24/7"
+    },
+    {
+     "name": "Spletna stran za AI",
+     "desc": "Večjezična, hitra, berljiva za AI"
+    }
+   ],
+   "sumH": "Vaš paket",
+   "sumMonthly": "Mesečno",
+   "sumOnce": "Enkratno",
+   "sumCta": "Začnite z brezplačnim AI pregledom",
+   "inclH": "Kaj vključuje paket",
+   "roiK": "Donos",
+   "roiH": "Se splača? Izračunajte.",
+   "roiP": "Premaknite drsnike na svoje številke.",
+   "roiSpend": "Povprečna poraba na gosta",
+   "roiGuests": "Dodatni gostje na teden",
+   "roiRev": "Dodaten prihodek / mesec",
+   "roiCost": "Vaš paket / mesec",
+   "roiNet": "Ostane vam",
+   "roiBreak": "Picked se poplača že pri {n} dodatnih gostih na teden.",
+   "roiNote": "Ocena iz vaših vnosov — ne obljuba rezultatov.",
+   "proK": "Naša obljuba",
+   "proH": "Višja vidnost v 90 dneh — ali četrti mesec plačamo mi.",
+   "proP": "Vašo vidnost v AI in na Googlu izmerimo prvi dan. Če po 90 dneh ni višja, četrtega meseca ne plačate.",
+   "mrQuote": "»Seveda so izbrali mene.«",
+   "faqK": "Vprašanja",
+   "faqH": "Kaj nas sprašujejo lastniki",
+   "faqs": [
+    {
+     "q": "Kaj je GEO, preprosto povedano?",
+     "a": "Poskrbimo, da AI pomočniki, kot so ChatGPT, Gemini in Perplexity, poznajo vašo restavracijo, jo pravilno opišejo in priporočijo. Gradi na lokalnem SEO, zato ste višje tudi na Googlu."
+    },
+    {
+     "q": "Kdaj bom videl rezultate?",
+     "a": "Popravki Google profila in vpisov se pogosto pokažejo v nekaj tednih. AI odgovori se spreminjajo počasneje; merimo vsak mesec in obljubljamo višjo oceno v 90 dneh."
+    },
+    {
+     "q": "Potrebujem novo spletno stran?",
+     "a": "Običajno ne. Popravimo, kar imate. Novo stran predlagamo le, če obstoječe AI ne more prebrati."
+    },
+    {
+     "q": "So AI videi narejeni iz pravih posnetkov?",
+     "a": "Iz vaših pravih fotografij jedi in prostora, ki jih AI spremeni v kratke posnetke. Vsakega odobrite, kjer platforme to zahtevajo, pa so označeni kot AI."
+    },
+    {
+     "q": "Lahko odpovem?",
+     "a": "Da, mesečno s 30-dnevnim rokom. Brez dolgih pogodb."
+    }
+   ],
+   "ctaH": "Kaj AI danes pravi o vas?",
+   "ctaP": "Brezplačno poročilo AI Mirror v 48 urah. Brez klica, brez obveznosti.",
+   "fBiz": "Ime restavracije ali hotela",
+   "fMail": "E-pošta",
+   "btn": "Pošljite mi brezplačno poročilo",
+   "sent": "Hvala — poročilo prejmete v 48 urah."
+  },
+  "HR": {
+   "navHow": "Kako funkcionira",
+   "navPricing": "Cjenik",
+   "navRoi": "Povrat",
+   "navFaq": "Pitanja",
+   "navCta": "Besplatna AI provjera",
+   "eyebrow": "AI + Google vidljivost za restorane i hotele",
+   "h1": "Vaš sljedeći gost vas neće tražiti na Googleu. Pitat će AI.",
+   "sub": "Kad gost pita ChatGPT, Gemini ili Perplexity gdje jesti, AI navede tri mjesta. Pobrinut ćemo se da je vaše među njima — na šest jezika.",
+   "cta1": "Besplatna AI provjera",
+   "cta2": "Složite paket",
+   "p1": "Pratimo 3 AI-ja + Google",
+   "p2": "6 jezika",
+   "p3": "Viša ocjena za 90 dana — ili 4. mjesec besplatno",
+   "dTitle": "Pregled uživo",
+   "dName": "Naziv restorana",
+   "dNamePh": "npr. Konoba Primjer",
+   "dCity": "Grad",
+   "dRun": "Pokreni AI provjeru",
+   "dIdle": "Upišite svoj restoran i pokrenite da vidite kako AI odgovara gladnom gostu.",
+   "dScan": "Pitamo AI…",
+   "dToday": "Danas",
+   "dWith": "S Picked",
+   "dQ": "{city}: gdje da večeras večeramo?",
+   "dIntro": "Evo tri dobre opcije:",
+   "dNot": "Niste u odgovoru",
+   "dYes": "Vi ste prvi izbor",
+   "dScore": "AI vidljivost",
+   "dOf": "od 30 pitanja gostiju",
+   "dNote": "Simulirani pregled. Pravo AI Mirror izvješće provjerava 30 pitanja na 6 jezika.",
+   "dOther": "Drugi restoran",
+   "dYour": "Vaš restoran",
+   "dDesc": "Omiljen zbog terase i degustacijskog menija. Rezervacija putem WhatsAppa.",
+   "dAgain": "Pokušajte ponovno",
+   "dDone": "gotovo",
+   "dWait": "čeka",
+   "howK": "Kako funkcionira",
+   "howH": "Tri koraka od nevidljivog do preporučenog.",
+   "steps": [
+    {
+     "tab": "AI Mirror",
+     "h": "Pitamo AI o vama",
+     "p": "Postavljamo pitanja koja gosti stvarno postavljaju u ChatGPT-u, Geminiju, Perplexityju i Googleovim AI odgovorima.",
+     "items": [
+      "30 pitanja gostiju na 6 jezika",
+      "Gdje se pojavljujete vi — a gdje konkurencija",
+      "Svaki pogrešan podatak koji AI kaže o vama"
+     ]
+    },
+    {
+     "tab": "Popravak",
+     "h": "Činimo vas čitljivima",
+     "p": "U prvih 30 dana ispravljamo sve što AI i Google čitaju o vama.",
+     "items": [
+      "Google profil, radno vrijeme, meni, fotografije, kategorije",
+      "Ispravljeni unosi na 15+ platformi",
+      "Strojno čitljiv meni i rezervacije na vašoj stranici"
+     ]
+    },
+    {
+     "tab": "Ostanite odabrani",
+     "h": "Zadržavamo vas ondje",
+     "p": "Svaki mjesec ponovno postavljamo pitanja, dodajemo svježi sadržaj i javljamo što se promijenilo.",
+     "items": [
+      "Mjesečno Picked izvješće s ocjenom vidljivosti",
+      "AI videi i Google objave svaki mjesec",
+      "Zahtjevi za recenziju nakon svakog posjeta"
+     ]
+    }
+   ],
+   "vidK": "AI video",
+   "vidH": "Videi koji rade dvostruko.",
+   "vidP": "Bez snimanja. Naš AI od vaših pravih fotografija izrađuje kratke isječke — sadržaj za društvene mreže i još jedan razlog da vas AI preporuči.",
+   "vids": [
+    {
+     "h": "Od vaših pravih fotografija",
+     "p": "Vaša jela i vaš prostor, nikad tuđe snimke. Svaki isječak odobravate."
+    },
+    {
+     "h": "Jedan video, šest jezika",
+     "p": "AI glas i titlovi, da ga svaki turist čuje na svom jeziku."
+    },
+    {
+     "h": "Objavljeno gdje se računa",
+     "p": "Instagram, TikTok, YouTube Shorts i vaš Google profil."
+    }
+   ],
+   "pkK": "Cjenik",
+   "pkH": "Složite svoj paket.",
+   "pkSub": "Odaberite paket, dodajte što trebate i odmah vidite ukupnu cijenu. Cijene bez PDV-a. Mjesečno, otkaz uz 30 dana obavijesti.",
+   "tags": [
+    "Da vas pronađu i točno opišu",
+    "Da vas odaberu, a ne samo navedu",
+    "Odabrani, pa rezervirani"
+   ],
+   "hi": [
+    [
+     "AI provjera + potpuni popravak u 30 dana",
+     "Unosi na 15+ platformi",
+     "Mjesečno Picked izvješće"
+    ],
+    [
+     "2 AI videa mjesečno",
+     "Zahtjevi za recenziju + odgovori u 48 h",
+     "Praćenje 50 pitanja + 3 konkurenta"
+    ],
+    [
+     "4 AI videa mjesečno na 6 jezika",
+     "WhatsApp concierge 24/7",
+     "Mjesečni strateški sastanak"
+    ]
+   ],
+   "lists": [
+    [
+     "Početna AI provjera: 30 pitanja gostiju u 3 AI alata i 6 jezika",
+     "Potpuni popravak u prvih 30 dana: Google profil, radno vrijeme, meni, fotografije, kategorije",
+     "Meni, radno vrijeme i lokacija strojno čitljivi na vašoj web stranici",
+     "Ispravljeni unosi na 15+ platformi (TripAdvisor, Apple Maps, Bing, TheFork…)",
+     "Lokalni Google SEO: pratimo položaj na kartama za 10 ključnih pretraga",
+     "4 objave na Google profilu mjesečno",
+     "Mjesečno Picked izvješće s ocjenom vidljivosti"
+    ],
+    [
+     "Sve iz paketa Visible, plus:",
+     "2 AI videa mjesečno na 3 jezika, objavljena na Instagramu, TikToku i Googleu",
+     "Automatski zahtjev za recenziju nakon svakog posjeta (QR ili sustav rezervacija)",
+     "Pripremamo odgovore na sve vaše Google recenzije u 48 sati",
+     "2 nove stranice s pitanjima gostiju mjesečno na 3 jezika",
+     "Praćenje 50 pitanja gostiju + 3 obližnja konkurenta",
+     "Tromjesečni pregled rezultata"
+    ],
+    [
+     "Sve iz paketa Recommended, plus:",
+     "4 AI videa mjesečno na 6 jezika",
+     "WhatsApp concierge 24/7: meni, alergeni, radno vrijeme i rezervacije",
+     "Podsjetnici za rezervacije i praćenje nedolazaka",
+     "Vaš meni online na 6 jezika",
+     "Jedna sezonska kampanja po tromjesečju (advent, ljetna terasa…)",
+     "Mjesečni strateški sastanak + izmjene u 24 sata"
+    ]
+   ],
+   "popular": "Najpopularniji",
+   "perMonth": "/ mjesečno",
+   "addH": "Dodaci",
+   "included": "Uključeno",
+   "once": "jednokratno",
+   "setup": "postavljanje",
+   "addons": [
+    {
+     "name": "AI video paket",
+     "desc": "+3 AI videa svaki mjesec"
+    },
+    {
+     "name": "Prikupljanje recenzija",
+     "desc": "Zahtjev za recenziju nakon svakog posjeta"
+    },
+    {
+     "name": "WhatsApp concierge",
+     "desc": "Odgovara gostima i prima rezervacije, 24/7"
+    },
+    {
+     "name": "Web stranica za AI",
+     "desc": "Višejezična, brza, čitljiva za AI"
+    }
+   ],
+   "sumH": "Vaš paket",
+   "sumMonthly": "Mjesečno",
+   "sumOnce": "Jednokratno",
+   "sumCta": "Započnite besplatnom AI provjerom",
+   "inclH": "Što uključuje paket",
+   "roiK": "Povrat",
+   "roiH": "Isplati li se? Izračunajte.",
+   "roiP": "Pomaknite klizače na svoje brojke.",
+   "roiSpend": "Prosječna potrošnja po gostu",
+   "roiGuests": "Dodatni gosti tjedno",
+   "roiRev": "Dodatni prihod / mjesečno",
+   "roiCost": "Vaš paket / mjesečno",
+   "roiNet": "Ostaje vam",
+   "roiBreak": "Picked se isplati već s {n} dodatnih gostiju tjedno.",
+   "roiNote": "Procjena iz vaših unosa — ne obećanje rezultata.",
+   "proK": "Naše obećanje",
+   "proH": "Veća vidljivost za 90 dana — ili četvrti mjesec plaćamo mi.",
+   "proP": "Vašu vidljivost u AI-ju i na Googleu mjerimo prvi dan. Ako nakon 90 dana nije veća, četvrti mjesec ne plaćate.",
+   "mrQuote": "„Naravno da su odabrali mene.”",
+   "faqK": "Pitanja",
+   "faqH": "Što nas vlasnici pitaju",
+   "faqs": [
+    {
+     "q": "Što je GEO, jednostavno rečeno?",
+     "a": "Pobrinemo se da AI pomoćnici poput ChatGPT-a, Geminija i Perplexityja poznaju vaš restoran, točno ga opišu i preporuče. Temelji se na lokalnom SEO-u, pa ste bolje rangirani i na Googleu."
+    },
+    {
+     "q": "Kada ću vidjeti rezultate?",
+     "a": "Ispravci Google profila i unosa često se vide za nekoliko tjedana. AI odgovori mijenjaju se sporije; mjerimo svaki mjesec i obećavamo višu ocjenu za 90 dana."
+    },
+    {
+     "q": "Trebam li novu web stranicu?",
+     "a": "Obično ne. Popravljamo ono što imate. Novu stranicu predlažemo samo ako postojeću AI ne može pročitati."
+    },
+    {
+     "q": "Jesu li AI videi napravljeni od pravih snimki?",
+     "a": "Od vaših pravih fotografija jela i prostora, koje AI pretvara u kratke isječke. Svaki odobravate, a gdje platforme to traže, označeni su kao AI."
+    },
+    {
+     "q": "Mogu li otkazati?",
+     "a": "Da, mjesečno uz 30 dana obavijesti. Bez dugih ugovora."
+    }
+   ],
+   "ctaH": "Što AI danas kaže o vama?",
+   "ctaP": "Besplatno AI Mirror izvješće u 48 sati. Bez poziva, bez obveze.",
+   "fBiz": "Naziv restorana ili hotela",
+   "fMail": "E-pošta",
+   "btn": "Pošaljite mi besplatno izvješće",
+   "sent": "Hvala — izvješće stiže u roku od 48 sati."
+  },
+  "IT": {
+   "navHow": "Come funziona",
+   "navPricing": "Prezzi",
+   "navRoi": "Ritorno",
+   "navFaq": "Domande",
+   "navCta": "Analisi AI gratuita",
+   "eyebrow": "Visibilità su AI e Google per ristoranti e hotel",
+   "h1": "Il tuo prossimo ospite non ti cercherà su Google. Chiederà all’AI.",
+   "sub": "Quando un ospite chiede a ChatGPT, Gemini o Perplexity dove mangiare, l’AI nomina tre locali. Facciamo in modo che il tuo sia tra questi — in sei lingue.",
+   "cta1": "Analisi AI gratuita",
+   "cta2": "Componi il tuo piano",
+   "p1": "3 AI + Google monitorati",
+   "p2": "6 lingue",
+   "p3": "Punteggio più alto in 90 giorni — o il 4° mese è gratis",
+   "dTitle": "Anteprima dal vivo",
+   "dName": "Nome del ristorante",
+   "dNamePh": "es. Trattoria Esempio",
+   "dCity": "Città",
+   "dRun": "Avvia analisi AI",
+   "dIdle": "Inserisci il tuo ristorante e avvia per vedere come l’AI risponde a un ospite affamato.",
+   "dScan": "Chiediamo alle AI…",
+   "dToday": "Oggi",
+   "dWith": "Con Picked",
+   "dQ": "{city}: dove ceniamo stasera?",
+   "dIntro": "Ecco tre buone opzioni:",
+   "dNot": "Non sei nella risposta",
+   "dYes": "Sei la prima scelta",
+   "dScore": "Visibilità AI",
+   "dOf": "su 30 domande degli ospiti",
+   "dNote": "Anteprima simulata. Il vero report AI Mirror verifica 30 domande in 6 lingue.",
+   "dOther": "Un altro ristorante",
+   "dYour": "Il tuo ristorante",
+   "dDesc": "Amato per la terrazza e il menu degustazione. Prenotabile su WhatsApp.",
+   "dAgain": "Riprova",
+   "dDone": "fatto",
+   "dWait": "in attesa",
+   "howK": "Come funziona",
+   "howH": "Tre passi da invisibile a consigliato.",
+   "steps": [
+    {
+     "tab": "AI Mirror",
+     "h": "Chiediamo all’AI di te",
+     "p": "Facciamo le domande che gli ospiti fanno davvero su ChatGPT, Gemini, Perplexity e le risposte AI di Google.",
+     "items": [
+      "30 domande degli ospiti in 6 lingue",
+      "Dove compari tu — e dove i concorrenti",
+      "Ogni informazione sbagliata che l’AI dice di te"
+     ]
+    },
+    {
+     "tab": "Correzione",
+     "h": "Ti rendiamo leggibile",
+     "p": "Nei primi 30 giorni correggiamo tutto ciò che AI e Google leggono di te.",
+     "items": [
+      "Profilo Google, orari, menu, foto, categorie",
+      "Schede corrette su oltre 15 piattaforme",
+      "Menu e prenotazioni leggibili dalle macchine sul tuo sito"
+     ]
+    },
+    {
+     "tab": "Resta scelto",
+     "h": "Ti teniamo lì",
+     "p": "Ogni mese ripetiamo le domande, aggiungiamo contenuti nuovi e ti diciamo cosa è cambiato.",
+     "items": [
+      "Picked Report mensile con il punteggio di visibilità",
+      "Video AI e post Google ogni mese",
+      "Richieste di recensione dopo ogni visita"
+     ]
+    }
+   ],
+   "vidK": "Video AI",
+   "vidH": "Video che funzionano due volte.",
+   "vidP": "Niente riprese. La nostra AI trasforma le tue foto reali in clip brevi — contenuti per i social e un motivo in più per cui l’AI ti consiglia.",
+   "vids": [
+    {
+     "h": "Dalle tue foto reali",
+     "p": "I tuoi piatti e il tuo locale, mai immagini di repertorio. Approvi ogni clip."
+    },
+    {
+     "h": "Un video, sei lingue",
+     "p": "Voce AI e sottotitoli, così ogni turista lo ascolta nella sua lingua."
+    },
+    {
+     "h": "Pubblicato dove conta",
+     "p": "Instagram, TikTok, YouTube Shorts e il tuo profilo Google."
+    }
+   ],
+   "pkK": "Prezzi",
+   "pkH": "Componi il tuo piano.",
+   "pkSub": "Scegli un pacchetto, aggiungi ciò che ti serve e vedi subito il totale. Prezzi IVA esclusa. Mensile, disdetta con 30 giorni di preavviso.",
+   "tags": [
+    "Farti trovare e descrivere correttamente",
+    "Farti scegliere, non solo elencare",
+    "Scelto, poi prenotato"
+   ],
+   "hi": [
+    [
+     "Analisi AI + correzione completa in 30 giorni",
+     "Schede su oltre 15 piattaforme",
+     "Picked Report mensile"
+    ],
+    [
+     "2 video AI al mese",
+     "Richieste di recensione + risposte in 48 h",
+     "50 domande + 3 concorrenti monitorati"
+    ],
+    [
+     "4 video AI al mese in 6 lingue",
+     "Concierge WhatsApp 24/7",
+     "Call strategica mensile"
+    ]
+   ],
+   "lists": [
+    [
+     "Analisi AI iniziale: 30 domande degli ospiti su 3 AI e in 6 lingue",
+     "Correzione completa nei primi 30 giorni: profilo Google, orari, menu, foto, categorie",
+     "Menu, orari e posizione leggibili dalle macchine sul tuo sito",
+     "Schede corrette su oltre 15 piattaforme (TripAdvisor, Apple Maps, Bing, TheFork…)",
+     "SEO locale: monitoriamo la posizione su Maps per le tue 10 ricerche chiave",
+     "4 post al mese sul profilo Google",
+     "Picked Report mensile con il tuo punteggio di visibilità"
+    ],
+    [
+     "Tutto di Visible, più:",
+     "2 video AI al mese in 3 lingue, pubblicati su Instagram, TikTok e Google",
+     "Richiesta automatica di recensione dopo ogni visita (QR o sistema di prenotazione)",
+     "Prepariamo le risposte a tutte le tue recensioni Google entro 48 ore",
+     "2 nuove pagine di domande degli ospiti al mese in 3 lingue",
+     "50 domande degli ospiti monitorate + 3 concorrenti vicini",
+     "Call trimestrale sui risultati"
+    ],
+    [
+     "Tutto di Recommended, più:",
+     "4 video AI al mese in 6 lingue",
+     "Concierge WhatsApp 24/7: menu, allergeni, orari e prenotazioni",
+     "Promemoria delle prenotazioni e follow-up dei no-show",
+     "Il tuo menu online in 6 lingue",
+     "Una campagna stagionale a trimestre (Natale, terrazza estiva…)",
+     "Call strategica mensile + modifiche entro 24 ore"
+    ]
+   ],
+   "popular": "Il più scelto",
+   "perMonth": "/ mese",
+   "addH": "Extra",
+   "included": "Incluso",
+   "once": "una tantum",
+   "setup": "attivazione",
+   "addons": [
+    {
+     "name": "Pacchetto video AI",
+     "desc": "+3 video AI ogni mese"
+    },
+    {
+     "name": "Raccolta recensioni",
+     "desc": "Richiesta di recensione dopo ogni visita"
+    },
+    {
+     "name": "Concierge WhatsApp",
+     "desc": "Risponde agli ospiti e prende prenotazioni, 24/7"
+    },
+    {
+     "name": "Sito pronto per l’AI",
+     "desc": "Multilingue, veloce, leggibile dall’AI"
+    }
+   ],
+   "sumH": "Il tuo piano",
+   "sumMonthly": "Mensile",
+   "sumOnce": "Una tantum",
+   "sumCta": "Inizia con un’analisi AI gratuita",
+   "inclH": "Cosa include",
+   "roiK": "Ritorno",
+   "roiH": "Conviene? Fai i conti.",
+   "roiP": "Sposta i cursori sui tuoi numeri.",
+   "roiSpend": "Spesa media per ospite",
+   "roiGuests": "Ospiti in più a settimana",
+   "roiRev": "Ricavi in più / mese",
+   "roiCost": "Il tuo piano / mese",
+   "roiNet": "Ti resta",
+   "roiBreak": "Picked si ripaga già con {n} ospiti in più a settimana.",
+   "roiNote": "Una stima dai tuoi dati — non una promessa di risultati.",
+   "proK": "La nostra promessa",
+   "proH": "Più visibilità in 90 giorni — o il quarto mese lo offriamo noi.",
+   "proP": "Misuriamo la tua visibilità su AI e Google il primo giorno. Se dopo 90 giorni non è più alta, il quarto mese non lo paghi.",
+   "mrQuote": "«Ovviamente hanno scelto me.»",
+   "faqK": "Domande",
+   "faqH": "Cosa ci chiedono i titolari",
+   "faqs": [
+    {
+     "q": "Cos’è la GEO, in parole semplici?",
+     "a": "Fare in modo che assistenti AI come ChatGPT, Gemini e Perplexity conoscano il tuo ristorante, lo descrivano correttamente e lo consiglino. Si basa sulla SEO locale, quindi sali anche su Google."
+    },
+    {
+     "q": "Quando vedrò i risultati?",
+     "a": "Le correzioni al profilo Google e alle schede si vedono spesso in poche settimane. Le risposte dell’AI cambiano più lentamente; misuriamo ogni mese e promettiamo un punteggio più alto in 90 giorni."
+    },
+    {
+     "q": "Mi serve un nuovo sito?",
+     "a": "Di solito no. Sistemiamo quello che hai. Proponiamo un nuovo sito solo se l’AI non riesce a leggere quello attuale."
+    },
+    {
+     "q": "I video AI sono fatti con immagini reali?",
+     "a": "Dalle tue foto reali di piatti e locale, trasformate in clip brevi con l’AI. Approvi ognuno e, dove le piattaforme lo richiedono, sono etichettati come AI."
+    },
+    {
+     "q": "Posso disdire?",
+     "a": "Sì, mensilmente con 30 giorni di preavviso. Nessun contratto lungo."
+    }
+   ],
+   "ctaH": "Cosa dice oggi l’AI di te?",
+   "ctaP": "Ricevi un report AI Mirror gratuito in 48 ore. Nessuna chiamata, nessun impegno.",
+   "fBiz": "Nome del ristorante o hotel",
+   "fMail": "Email",
+   "btn": "Inviami il report gratuito",
+   "sent": "Grazie — il report arriva entro 48 ore."
+  },
+  "DE": {
+   "navHow": "So funktioniert’s",
+   "navPricing": "Preise",
+   "navRoi": "Rendite",
+   "navFaq": "FAQ",
+   "navCta": "Gratis KI-Check",
+   "eyebrow": "KI- und Google-Sichtbarkeit für Restaurants & Hotels",
+   "h1": "Ihr nächster Gast googelt Sie nicht. Er fragt die KI.",
+   "sub": "Wenn ein Gast ChatGPT, Gemini oder Perplexity fragt, wo er essen soll, nennt die KI drei Lokale. Wir sorgen dafür, dass Ihres dabei ist — in sechs Sprachen.",
+   "cta1": "Gratis KI-Check starten",
+   "cta2": "Paket zusammenstellen",
+   "p1": "3 KIs + Google im Blick",
+   "p2": "6 Sprachen",
+   "p3": "Höherer Wert in 90 Tagen — sonst Monat 4 gratis",
+   "dTitle": "Live-Vorschau",
+   "dName": "Name des Restaurants",
+   "dNamePh": "z. B. Gasthaus Beispiel",
+   "dCity": "Stadt",
+   "dRun": "KI-Check starten",
+   "dIdle": "Geben Sie Ihr Restaurant ein und starten Sie — so sehen Sie, wie eine KI einem hungrigen Gast antwortet.",
+   "dScan": "Wir fragen die KIs…",
+   "dToday": "Heute",
+   "dWith": "Mit Picked",
+   "dQ": "{city}: Wo essen wir heute Abend?",
+   "dIntro": "Hier drei gute Optionen:",
+   "dNot": "Sie kommen in der Antwort nicht vor",
+   "dYes": "Sie sind die erste Wahl",
+   "dScore": "KI-Sichtbarkeit",
+   "dOf": "von 30 Gästefragen",
+   "dNote": "Simulierte Vorschau. Der echte AI-Mirror-Bericht prüft 30 Fragen in 6 Sprachen.",
+   "dOther": "Ein anderes Restaurant",
+   "dYour": "Ihr Restaurant",
+   "dDesc": "Beliebt für Terrasse und Degustationsmenü. Reservierung über WhatsApp.",
+   "dAgain": "Neu versuchen",
+   "dDone": "fertig",
+   "dWait": "wartet",
+   "howK": "So funktioniert’s",
+   "howH": "Drei Schritte von unsichtbar zu empfohlen.",
+   "steps": [
+    {
+     "tab": "AI Mirror",
+     "h": "Wir fragen die KI nach Ihnen",
+     "p": "Wir stellen die Fragen, die Gäste wirklich stellen, in ChatGPT, Gemini, Perplexity und Googles KI-Antworten.",
+     "items": [
+      "30 Gästefragen in 6 Sprachen",
+      "Wo Sie erscheinen — und wo die Konkurrenz",
+      "Jede falsche Angabe, die die KI über Sie macht"
+     ]
+    },
+    {
+     "tab": "Korrektur",
+     "h": "Wir machen Sie lesbar",
+     "p": "In den ersten 30 Tagen korrigieren wir alles, was KI und Google über Sie lesen.",
+     "items": [
+      "Google-Profil, Öffnungszeiten, Speisekarte, Fotos, Kategorien",
+      "Einträge auf 15+ Plattformen korrigiert",
+      "Maschinenlesbare Speisekarte und Reservierung auf Ihrer Website"
+     ]
+    },
+    {
+     "tab": "Gewählt bleiben",
+     "h": "Wir halten Sie dort",
+     "p": "Jeden Monat stellen wir die Fragen neu, liefern frische Inhalte und berichten, was sich geändert hat.",
+     "items": [
+      "Monatlicher Picked-Bericht mit Sichtbarkeitswert",
+      "KI-Videos und Google-Beiträge jeden Monat",
+      "Bewertungsanfragen nach jedem Besuch"
+     ]
+    }
+   ],
+   "vidK": "KI-Video",
+   "vidH": "Videos, die doppelt wirken.",
+   "vidP": "Kein Dreh. Unsere KI macht aus Ihren echten Fotos kurze Clips — Inhalte für Social Media und ein Grund mehr für die KI, Sie zu empfehlen.",
+   "vids": [
+    {
+     "h": "Aus Ihren echten Fotos",
+     "p": "Ihre Gerichte und Ihre Räume, nie Stockbilder. Sie geben jeden Clip frei."
+    },
+    {
+     "h": "Ein Video, sechs Sprachen",
+     "p": "KI-Sprecherstimme und Untertitel, damit jeder Tourist es in seiner Sprache hört."
+    },
+    {
+     "h": "Veröffentlicht, wo es zählt",
+     "p": "Instagram, TikTok, YouTube Shorts und Ihr Google-Profil."
+    }
+   ],
+   "pkK": "Preise",
+   "pkH": "Stellen Sie Ihr Paket zusammen.",
+   "pkSub": "Paket wählen, Extras hinzufügen, Gesamtpreis sofort sehen. Preise exkl. MwSt. Monatlich, kündbar mit 30 Tagen Frist.",
+   "tags": [
+    "Gefunden und richtig beschrieben werden",
+    "Gewählt werden, nicht nur gelistet",
+    "Gewählt, dann reserviert"
+   ],
+   "hi": [
+    [
+     "KI-Analyse + komplette Korrektur in 30 Tagen",
+     "Einträge auf 15+ Plattformen",
+     "Monatlicher Picked-Bericht"
+    ],
+    [
+     "2 KI-Videos pro Monat",
+     "Bewertungsanfragen + Antworten in 48 h",
+     "50 Fragen + 3 Mitbewerber im Blick"
+    ],
+    [
+     "4 KI-Videos pro Monat in 6 Sprachen",
+     "WhatsApp-Concierge 24/7",
+     "Monatliches Strategiegespräch"
+    ]
+   ],
+   "lists": [
+    [
+     "KI-Startanalyse: 30 Gästefragen in 3 KI-Tools und 6 Sprachen",
+     "Komplette Korrektur in den ersten 30 Tagen: Google-Profil, Öffnungszeiten, Speisekarte, Fotos, Kategorien",
+     "Speisekarte, Öffnungszeiten und Standort maschinenlesbar auf Ihrer Website",
+     "Einträge auf 15+ Plattformen korrigiert (TripAdvisor, Apple Maps, Bing, TheFork…)",
+     "Lokales Google-SEO: Maps-Ranking für Ihre 10 wichtigsten Suchen im Blick",
+     "4 Beiträge pro Monat auf Ihrem Google-Profil",
+     "Monatlicher Picked-Bericht mit Ihrem Sichtbarkeitswert"
+    ],
+    [
+     "Alles aus Visible, plus:",
+     "2 KI-Videos pro Monat in 3 Sprachen, auf Instagram, TikTok und Google veröffentlicht",
+     "Automatische Bewertungsanfrage nach jedem Besuch (QR oder Reservierungssystem)",
+     "Wir entwerfen Antworten auf alle Google-Bewertungen innerhalb von 48 h",
+     "2 neue Seiten mit Gästefragen pro Monat in 3 Sprachen",
+     "50 Gästefragen + 3 Mitbewerber in der Nähe im Blick",
+     "Quartalsgespräch zu den Ergebnissen"
+    ],
+    [
+     "Alles aus Recommended, plus:",
+     "4 KI-Videos pro Monat in 6 Sprachen",
+     "WhatsApp-Concierge 24/7: Speisekarte, Allergene, Öffnungszeiten und Reservierungen",
+     "Reservierungserinnerungen und No-Show-Nachfassung",
+     "Ihre Speisekarte online in 6 Sprachen",
+     "Eine saisonale Kampagne pro Quartal (Advent, Sommerterrasse…)",
+     "Monatliches Strategiegespräch + Änderungen innerhalb von 24 h"
+    ]
+   ],
+   "popular": "Am beliebtesten",
+   "perMonth": "/ Monat",
+   "addH": "Extras",
+   "included": "Inklusive",
+   "once": "einmalig",
+   "setup": "Einrichtung",
+   "addons": [
+    {
+     "name": "KI-Video-Paket",
+     "desc": "+3 KI-Videos jeden Monat"
+    },
+    {
+     "name": "Bewertungsschleife",
+     "desc": "Bewertungsanfrage nach jedem Besuch"
+    },
+    {
+     "name": "WhatsApp-Concierge",
+     "desc": "Beantwortet Gäste und nimmt Reservierungen an, 24/7"
+    },
+    {
+     "name": "KI-taugliche Website",
+     "desc": "Mehrsprachig, schnell, für KI lesbar"
+    }
+   ],
+   "sumH": "Ihr Paket",
+   "sumMonthly": "Monatlich",
+   "sumOnce": "Einmalig",
+   "sumCta": "Mit einem Gratis-KI-Check starten",
+   "inclH": "Enthalten in",
+   "roiK": "Rendite",
+   "roiH": "Lohnt es sich? Rechnen Sie nach.",
+   "roiP": "Stellen Sie die Regler auf Ihre eigenen Zahlen.",
+   "roiSpend": "Durchschnittlicher Umsatz pro Gast",
+   "roiGuests": "Zusätzliche Gäste pro Woche",
+   "roiRev": "Zusätzlicher Umsatz / Monat",
+   "roiCost": "Ihr Paket / Monat",
+   "roiNet": "Bleibt übrig",
+   "roiBreak": "Picked rechnet sich schon ab {n} zusätzlichen Gästen pro Woche.",
+   "roiNote": "Eine Schätzung aus Ihren Eingaben — kein Ergebnisversprechen.",
+   "proK": "Unser Versprechen",
+   "proH": "Mehr Sichtbarkeit in 90 Tagen — sonst geht Monat vier auf uns.",
+   "proP": "Wir messen Ihre Sichtbarkeit in KI und Google am ersten Tag. Ist sie nach 90 Tagen nicht höher, zahlen Sie den vierten Monat nicht.",
+   "mrQuote": "„Natürlich haben sie mich gewählt.“",
+   "faqK": "FAQ",
+   "faqH": "Was Gastronomen uns fragen",
+   "faqs": [
+    {
+     "q": "Was ist GEO, einfach erklärt?",
+     "a": "Wir sorgen dafür, dass KI-Assistenten wie ChatGPT, Gemini und Perplexity Ihr Restaurant kennen, richtig beschreiben und empfehlen. Es baut auf lokalem SEO auf, deshalb ranken Sie auch bei Google besser."
+    },
+    {
+     "q": "Wann sehe ich Ergebnisse?",
+     "a": "Korrekturen an Google-Profil und Einträgen zeigen sich oft in wenigen Wochen. KI-Antworten ändern sich langsamer; wir messen jeden Monat und versprechen einen höheren Wert in 90 Tagen."
+    },
+    {
+     "q": "Brauche ich eine neue Website?",
+     "a": "Meist nicht. Wir verbessern, was Sie haben. Eine neue Website schlagen wir nur vor, wenn die KI die bestehende nicht lesen kann."
+    },
+    {
+     "q": "Werden die KI-Videos aus echtem Material gemacht?",
+     "a": "Aus Ihren echten Fotos von Gerichten und Räumen, die eine KI in kurze Clips verwandelt. Sie geben jeden frei, und wo Plattformen es verlangen, sind sie als KI gekennzeichnet."
+    },
+    {
+     "q": "Kann ich kündigen?",
+     "a": "Ja, monatlich mit 30 Tagen Frist. Keine langen Verträge."
+    }
+   ],
+   "ctaH": "Was sagt die KI heute über Sie?",
+   "ctaP": "Gratis AI-Mirror-Bericht in 48 Stunden. Ohne Anruf, ohne Verpflichtung.",
+   "fBiz": "Name des Restaurants oder Hotels",
+   "fMail": "E-Mail",
+   "btn": "Gratis-Bericht anfordern",
+   "sent": "Danke — Ihr Bericht kommt innerhalb von 48 Stunden."
+  },
+  "HU": {
+   "navHow": "Hogyan működik",
+   "navPricing": "Árak",
+   "navRoi": "Megtérülés",
+   "navFaq": "GYIK",
+   "navCta": "Ingyenes AI-ellenőrzés",
+   "eyebrow": "AI- és Google-láthatóság éttermeknek és szállodáknak",
+   "h1": "A következő vendége nem a Google-ön keresi. Az AI-t kérdezi.",
+   "sub": "Amikor egy vendég megkérdezi a ChatGPT-t, a Geminit vagy a Perplexityt, hol egyen, az AI három helyet nevez meg. Mi gondoskodunk róla, hogy az Öné köztük legyen — hat nyelven.",
+   "cta1": "Ingyenes AI-ellenőrzés",
+   "cta2": "Csomag összeállítása",
+   "p1": "3 AI + Google követése",
+   "p2": "6 nyelv",
+   "p3": "Magasabb pontszám 90 nap alatt — vagy a 4. hónap ingyenes",
+   "dTitle": "Élő előnézet",
+   "dName": "Az étterem neve",
+   "dNamePh": "pl. Példa Csárda",
+   "dCity": "Város",
+   "dRun": "AI-ellenőrzés indítása",
+   "dIdle": "Írja be az éttermét, és indítsa el, hogy lássa, hogyan válaszol az AI egy éhes vendégnek.",
+   "dScan": "Kérdezzük az AI-okat…",
+   "dToday": "Ma",
+   "dWith": "Pickeddel",
+   "dQ": "{city}: hol vacsorázzunk ma este?",
+   "dIntro": "Íme három jó lehetőség:",
+   "dNot": "Ön nem szerepel a válaszban",
+   "dYes": "Ön az első választás",
+   "dScore": "AI-láthatóság",
+   "dOf": "/ 30 vendégkérdés",
+   "dNote": "Szimulált előnézet. A valódi AI Mirror jelentés 30 kérdést ellenőriz 6 nyelven.",
+   "dOther": "Egy másik étterem",
+   "dYour": "Az Ön étterme",
+   "dDesc": "Kedvelt a terasza és a kóstolómenüje miatt. Foglalás WhatsAppon.",
+   "dAgain": "Új próba",
+   "dDone": "kész",
+   "dWait": "várakozik",
+   "howK": "Hogyan működik",
+   "howH": "Három lépés a láthatatlantól az ajánlottig.",
+   "steps": [
+    {
+     "tab": "AI Mirror",
+     "h": "Megkérdezzük az AI-t Önről",
+     "p": "Feltesszük azokat a kérdéseket, amelyeket a vendégek valóban feltesznek, a ChatGPT-ben, a Geminiben, a Perplexityben és a Google AI-válaszaiban.",
+     "items": [
+      "30 vendégkérdés 6 nyelven",
+      "Hol jelenik meg Ön — és hol a versenytársak",
+      "Minden téves adat, amit az AI Önről mond"
+     ]
+    },
+    {
+     "tab": "Javítás",
+     "h": "Olvashatóvá tesszük Önt",
+     "p": "Az első 30 napban kijavítunk mindent, amit az AI és a Google Önről olvas.",
+     "items": [
+      "Google-profil, nyitvatartás, étlap, fotók, kategóriák",
+      "Javított bejegyzések 15+ platformon",
+      "Gépileg olvasható étlap és foglalás a weboldalán"
+     ]
+    },
+    {
+     "tab": "Maradjon kiválasztott",
+     "h": "Ott tartjuk Önt",
+     "p": "Minden hónapban újra feltesszük a kérdéseket, friss tartalmat adunk, és beszámolunk a változásokról.",
+     "items": [
+      "Havi Picked-jelentés láthatósági pontszámmal",
+      "AI-videók és Google-bejegyzések minden hónapban",
+      "Értékeléskérés minden látogatás után"
+     ]
+    }
+   ],
+   "vidK": "AI-videó",
+   "vidH": "Videók, amelyek kétszer dolgoznak.",
+   "vidP": "Nincs forgatás. AI-unk az Ön valódi fotóiból rövid klipeket készít — tartalmat a közösségi médiára, és még egy okot, hogy az AI Önt ajánlja.",
+   "vids": [
+    {
+     "h": "Az Ön valódi fotóiból",
+     "p": "Az Ön ételei és terei, soha nem stockfelvételek. Minden klipet Ön hagy jóvá."
+    },
+    {
+     "h": "Egy videó, hat nyelv",
+     "p": "AI-narráció és felirat, hogy minden turista a saját nyelvén hallja."
+    },
+    {
+     "h": "Ott jelenik meg, ahol számít",
+     "p": "Instagram, TikTok, YouTube Shorts és az Ön Google-profilja."
+    }
+   ],
+   "pkK": "Árak",
+   "pkH": "Állítsa össze a csomagját.",
+   "pkSub": "Válasszon csomagot, adja hozzá, amire szüksége van, és azonnal látja a végösszeget. Az árak ÁFA nélkül értendők. Havi díjas, 30 napos felmondással.",
+   "tags": [
+    "Hogy megtalálják és pontosan írják le",
+    "Hogy válasszák, ne csak felsorolják",
+    "Kiválasztva, majd lefoglalva"
+   ],
+   "hi": [
+    [
+     "AI-audit + teljes javítás 30 nap alatt",
+     "Bejegyzések 15+ platformon",
+     "Havi Picked-jelentés"
+    ],
+    [
+     "Havi 2 AI-videó",
+     "Értékeléskérés + válasz 48 órán belül",
+     "50 kérdés + 3 versenytárs követése"
+    ],
+    [
+     "Havi 4 AI-videó 6 nyelven",
+     "WhatsApp concierge 0–24",
+     "Havi stratégiai megbeszélés"
+    ]
+   ],
+   "lists": [
+    [
+     "Kezdő AI-audit: 30 vendégkérdés 3 AI-eszközben és 6 nyelven",
+     "Teljes javítás az első 30 napban: Google-profil, nyitvatartás, étlap, fotók, kategóriák",
+     "Étlap, nyitvatartás és helyszín gépileg olvashatóan a weboldalán",
+     "Javított bejegyzések 15+ platformon (TripAdvisor, Apple Maps, Bing, TheFork…)",
+     "Helyi Google SEO: Térkép-helyezés követése a 10 fő keresésére",
+     "Havi 4 bejegyzés a Google-profilján",
+     "Havi Picked-jelentés láthatósági pontszámmal"
+    ],
+    [
+     "Minden, ami a Visible csomagban, plusz:",
+     "Havi 2 AI-videó 3 nyelven, Instagramon, TikTokon és a Google-ön",
+     "Automatikus értékeléskérés minden látogatás után (QR vagy foglalási rendszer)",
+     "48 órán belül megírjuk a válaszokat minden Google-értékelésre",
+     "Havi 2 új vendégkérdés-oldal 3 nyelven",
+     "50 vendégkérdés + 3 közeli versenytárs követése",
+     "Negyedéves eredménymegbeszélés"
+    ],
+    [
+     "Minden, ami a Recommended csomagban, plusz:",
+     "Havi 4 AI-videó 6 nyelven",
+     "WhatsApp concierge 0–24: étlap, allergének, nyitvatartás és foglalások",
+     "Foglalási emlékeztetők és a meg nem jelenők utánkövetése",
+     "Az étlapja online 6 nyelven",
+     "Negyedévente egy szezonális kampány (advent, nyári terasz…)",
+     "Havi stratégiai megbeszélés + módosítások 24 órán belül"
+    ]
+   ],
+   "popular": "Legnépszerűbb",
+   "perMonth": "/ hó",
+   "addH": "Kiegészítők",
+   "included": "Benne van",
+   "once": "egyszeri",
+   "setup": "beállítás",
+   "addons": [
+    {
+     "name": "AI-videócsomag",
+     "desc": "+3 AI-videó minden hónapban"
+    },
+    {
+     "name": "Értékelésgyűjtés",
+     "desc": "Értékeléskérés minden látogatás után"
+    },
+    {
+     "name": "WhatsApp concierge",
+     "desc": "Válaszol a vendégeknek és foglalásokat fogad, 0–24"
+    },
+    {
+     "name": "AI-ra kész weboldal",
+     "desc": "Többnyelvű, gyors, AI számára olvasható"
+    }
+   ],
+   "sumH": "Az Ön csomagja",
+   "sumMonthly": "Havonta",
+   "sumOnce": "Egyszeri",
+   "sumCta": "Kezdje ingyenes AI-ellenőrzéssel",
+   "inclH": "Mit tartalmaz:",
+   "roiK": "Megtérülés",
+   "roiH": "Megéri? Számolja ki.",
+   "roiP": "Állítsa a csúszkákat a saját számaira.",
+   "roiSpend": "Átlagos költés vendégenként",
+   "roiGuests": "Plusz vendég hetente",
+   "roiRev": "Plusz bevétel / hó",
+   "roiCost": "Az Ön csomagja / hó",
+   "roiNet": "Marad",
+   "roiBreak": "A Picked már heti {n} plusz vendégnél megtérül.",
+   "roiNote": "Becslés az Ön adataiból — nem eredményígéret.",
+   "proK": "Ígéretünk",
+   "proH": "Nagyobb láthatóság 90 nap alatt — vagy a negyedik hónap a miénk.",
+   "proP": "Az első napon megmérjük AI- és Google-láthatóságát. Ha 90 nap után nem nagyobb, a negyedik hónapot nem fizeti.",
+   "mrQuote": "„Persze, hogy engem választottak.”",
+   "faqK": "GYIK",
+   "faqH": "Amit a tulajdonosok kérdeznek",
+   "faqs": [
+    {
+     "q": "Mi az a GEO, egyszerűen?",
+     "a": "Gondoskodunk róla, hogy az olyan AI-asszisztensek, mint a ChatGPT, a Gemini és a Perplexity ismerjék az éttermét, pontosan írják le és ajánlják. Helyi SEO-ra épül, így a Google-ön is jobb helyen lesz."
+    },
+    {
+     "q": "Mikor látok eredményt?",
+     "a": "A Google-profil és a bejegyzések javítása gyakran néhány hét alatt látszik. Az AI-válaszok lassabban változnak; havonta mérünk, és 90 napon belül magasabb pontszámot ígérünk."
+    },
+    {
+     "q": "Új weboldal kell?",
+     "a": "Általában nem. A meglévőt javítjuk. Új oldalt csak akkor javaslunk, ha az AI nem tudja olvasni a jelenlegit."
+    },
+    {
+     "q": "Valódi anyagból készülnek az AI-videók?",
+     "a": "Az Ön ételeiről és tereiről készült valódi fotókból, amelyeket AI alakít rövid klipekké. Mindegyiket Ön hagyja jóvá, és ahol a platformok előírják, AI-ként jelöljük."
+    },
+    {
+     "q": "Lemondhatom?",
+     "a": "Igen, havonta, 30 napos felmondással. Nincs hosszú szerződés."
+    }
+   ],
+   "ctaH": "Mit mond ma Önről az AI?",
+   "ctaP": "Ingyenes AI Mirror jelentés 48 órán belül. Hívás és kötelezettség nélkül.",
+   "fBiz": "Az étterem vagy szálloda neve",
+   "fMail": "E-mail",
+   "btn": "Kérem az ingyenes jelentést",
+   "sent": "Köszönjük — a jelentés 48 órán belül érkezik."
+  }
+ },
+ "T2": {
+  "EN": {
+   "dGet": "Send me the real report",
+   "dEmailPh": "Your email",
+   "tyH": "Your report is on its way",
+   "tyP": "You’ll get it within 48 hours. Want us to walk you through it? Book a free 15-minute call.",
+   "tyBtn": "Book 15 min",
+   "roiCta": "See where you stand today — free",
+   "mbar": "Free AI check",
+   "consent": "Send me tips and follow-ups about my report (optional)",
+   "privT": "We only use your email for your report.",
+   "privL": "Privacy policy",
+   "fdK": "Who’s behind Picked",
+   "fdH": "Built by a restaurant owner, not an agency.",
+   "fdP": "I run a restaurant in Ljubljana. I built Picked for my own place first — now we do it for yours.",
+   "fdName": "Luka Drolc, founder",
+   "wkK": "Recent work",
+   "wkH": "Projects we’ve worked on.",
+   "wk": [
+    "Pools, stone soaking tubs and wellness",
+    "Sourcing machinery and equipment from China for EU buyers",
+    "AI back office for building managers and trades — our own product"
+   ],
+   "wkVisit": "Visit site"
+  },
+  "SL": {
+   "dGet": "Pošljite mi pravo poročilo",
+   "dEmailPh": "Vaš e-mail",
+   "tyH": "Poročilo je na poti",
+   "tyP": "Prejmete ga v 48 urah. Želite, da vam ga razložimo? Rezervirajte brezplačen 15-minutni klic.",
+   "tyBtn": "Rezerviraj 15 min",
+   "roiCta": "Preverite, kje ste danes — brezplačno",
+   "mbar": "Brezplačen AI pregled",
+   "consent": "Pošiljajte mi nasvete in nadaljnja sporočila o poročilu (neobvezno)",
+   "privT": "Vaš e-mail uporabimo samo za poročilo.",
+   "privL": "Politika zasebnosti",
+   "fdK": "Kdo stoji za Picked",
+   "fdH": "Naredil ga je gostinec, ne agencija.",
+   "fdP": "Vodim restavracijo v Ljubljani. Picked sem najprej naredil za svoj lokal — zdaj ga delamo za vašega.",
+   "fdName": "Luka Drolc, ustanovitelj",
+   "wkK": "Naše delo",
+   "wkH": "Projekti, na katerih smo delali.",
+   "wk": [
+    "Bazeni, kamnite kadi in wellness",
+    "Nabava strojev in opreme iz Kitajske za kupce v EU",
+    "AI zaledje za upravnike stavb in obrtnike — naš lasten produkt"
+   ],
+   "wkVisit": "Obiščite stran"
+  },
+  "HR": {
+   "dGet": "Pošaljite mi pravo izvješće",
+   "dEmailPh": "Vaš e-mail",
+   "tyH": "Izvješće je na putu",
+   "tyP": "Stiže u roku od 48 sati. Želite da vam ga objasnimo? Rezervirajte besplatan poziv od 15 minuta.",
+   "tyBtn": "Rezerviraj 15 min",
+   "roiCta": "Pogledajte gdje ste danas — besplatno",
+   "mbar": "Besplatna AI provjera",
+   "consent": "Šaljite mi savjete i daljnje poruke o izvješću (neobavezno)",
+   "privT": "Vaš e-mail koristimo samo za izvješće.",
+   "privL": "Pravila privatnosti",
+   "fdK": "Tko stoji iza Picked",
+   "fdH": "Izradio ga je ugostitelj, a ne agencija.",
+   "fdP": "Vodim restoran u Ljubljani. Picked sam najprije napravio za svoj lokal — sada ga radimo za vaš.",
+   "fdName": "Luka Drolc, osnivač",
+   "wkK": "Naš rad",
+   "wkH": "Projekti na kojima smo radili.",
+   "wk": [
+    "Bazeni, kamene kade i wellness",
+    "Nabava strojeva i opreme iz Kine za kupce u EU",
+    "AI pozadinski ured za upravitelje zgrada i obrtnike — naš vlastiti proizvod"
+   ],
+   "wkVisit": "Posjetite stranicu"
+  },
+  "IT": {
+   "dGet": "Inviami il report reale",
+   "dEmailPh": "La tua email",
+   "tyH": "Il report è in arrivo",
+   "tyP": "Lo ricevi entro 48 ore. Vuoi che te lo spieghiamo? Prenota una call gratuita di 15 minuti.",
+   "tyBtn": "Prenota 15 min",
+   "roiCta": "Scopri dove sei oggi — gratis",
+   "mbar": "Analisi AI gratuita",
+   "consent": "Inviami consigli e aggiornamenti sul report (facoltativo)",
+   "privT": "Usiamo la tua email solo per il report.",
+   "privL": "Informativa privacy",
+   "fdK": "Chi c’è dietro Picked",
+   "fdH": "Creato da un ristoratore, non da un’agenzia.",
+   "fdP": "Gestisco un ristorante a Lubiana. Ho creato Picked prima per il mio locale — ora lo facciamo per il tuo.",
+   "fdName": "Luka Drolc, fondatore",
+   "wkK": "I nostri lavori",
+   "wkH": "Progetti a cui abbiamo lavorato.",
+   "wk": [
+    "Piscine, vasche in pietra e wellness",
+    "Approvvigionamento di macchinari e attrezzature dalla Cina per acquirenti UE",
+    "Back office AI per amministratori di condominio e artigiani — un nostro prodotto"
+   ],
+   "wkVisit": "Visita il sito"
+  },
+  "DE": {
+   "dGet": "Echten Bericht anfordern",
+   "dEmailPh": "Ihre E-Mail",
+   "tyH": "Ihr Bericht ist unterwegs",
+   "tyP": "Sie erhalten ihn innerhalb von 48 Stunden. Sollen wir ihn mit Ihnen durchgehen? Buchen Sie ein kostenloses 15-Minuten-Gespräch.",
+   "tyBtn": "15 Min. buchen",
+   "roiCta": "Gratis sehen, wo Sie heute stehen",
+   "mbar": "Gratis KI-Check",
+   "consent": "Senden Sie mir Tipps und weitere Infos zu meinem Bericht (optional)",
+   "privT": "Wir nutzen Ihre E-Mail nur für Ihren Bericht.",
+   "privL": "Datenschutz",
+   "fdK": "Wer hinter Picked steht",
+   "fdH": "Gebaut von einem Gastronomen, nicht von einer Agentur.",
+   "fdP": "Ich führe ein Restaurant in Ljubljana. Ich habe Picked zuerst für mein eigenes Lokal gebaut — jetzt machen wir es für Ihres.",
+   "fdName": "Luka Drolc, Gründer",
+   "wkK": "Unsere Arbeit",
+   "wkH": "Projekte, an denen wir gearbeitet haben.",
+   "wk": [
+    "Pools, Steinbadewannen und Wellness",
+    "Beschaffung von Maschinen und Ausrüstung aus China für EU-Käufer",
+    "KI-Backoffice für Hausverwaltungen und Handwerker — unser eigenes Produkt"
+   ],
+   "wkVisit": "Website ansehen"
+  },
+  "HU": {
+   "dGet": "Kérem a valódi jelentést",
+   "dEmailPh": "Az Ön e-mail-címe",
+   "tyH": "A jelentés úton van",
+   "tyP": "48 órán belül megkapja. Szeretné, ha végigvennénk Önnel? Foglaljon egy ingyenes 15 perces hívást.",
+   "tyBtn": "15 perc foglalása",
+   "roiCta": "Nézze meg ingyen, hol tart ma",
+   "mbar": "Ingyenes AI-ellenőrzés",
+   "consent": "Kérek tippeket és további üzeneteket a jelentésemről (nem kötelező)",
+   "privT": "E-mail-címét csak a jelentéshez használjuk.",
+   "privL": "Adatvédelem",
+   "fdK": "Ki áll a Picked mögött",
+   "fdH": "Egy vendéglátós építette, nem egy ügynökség.",
+   "fdP": "Éttermet vezetek Ljubljanában. A Pickedet először a saját helyemnek építettem — most az Önének csináljuk.",
+   "fdName": "Luka Drolc, alapító",
+   "wkK": "Munkáink",
+   "wkH": "Projektek, amelyeken dolgoztunk.",
+   "wk": [
+    "Medencék, kőkádak és wellness",
+    "Gépek és berendezések beszerzése Kínából uniós vevőknek",
+    "AI háttériroda társasházkezelőknek és szakembereknek — saját termékünk"
+   ],
+   "wkVisit": "Weboldal megtekintése"
+  }
+ },
+ "NAMES": [
+  "Visible",
+  "Recommended",
+  "Concierge"
+ ],
+ "PRICES": [
+  390,
+  690,
+  990
+ ],
+ "ADDONS": [
+  {
+   "id": "video",
+   "mo": 149,
+   "once": 0,
+   "inc": null
+  },
+  {
+   "id": "reviews",
+   "mo": 90,
+   "once": 0,
+   "inc": 1
+  },
+  {
+   "id": "wa",
+   "mo": 390,
+   "once": 490,
+   "inc": 2
+  },
+  {
+   "id": "web",
+   "mo": 0,
+   "once": 1490,
+   "inc": null
+  }
+ ]
+}

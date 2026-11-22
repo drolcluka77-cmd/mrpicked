@@ -205,6 +205,32 @@ button{font:inherit}
 .sum-row.once b{font-size:24px}
 .sum-row[hidden]{display:none}
 
+/* Compare table */
+.cmp-wrap{position:relative;overflow-x:auto;background:#fff;border:1px solid var(--bl);border-radius:22px}
+.cmp{width:100%;min-width:680px;border-collapse:separate;border-spacing:0;font-size:15px}
+.cmp th,.cmp td{padding:12px 18px;border-bottom:1px solid var(--bl);text-align:center;vertical-align:middle}
+.cmp thead th{padding:22px 18px 16px;vertical-align:bottom;position:sticky;top:0;background:#fff}
+.cmp thead th:first-child{text-align:left}
+.cmp-n{display:block;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.02em}
+.cmp-p{display:block;font-family:var(--display);font-weight:600;font-size:16px;margin-top:2px}
+.cmp-p small{font-family:Inter,system-ui,sans-serif;font-weight:400;font-size:12px;color:var(--ink2)}
+.cmp thead .cmp-hi{border-top:3px solid var(--accent);background:#F7FCEF}
+.cmp tbody th[scope=row]{text-align:left;font-weight:500;width:46%}
+.cmp tbody td:nth-child(3){background:#F7FCEF}
+.cmp-g th{background:#EEF2F7;text-align:left;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);padding:10px 18px}
+.cmp .cmp-ck{display:inline-block;width:24px;height:24px;padding:6px;border-radius:999px;background:var(--accent);margin:0}
+.cmp-no{color:#B6C1D2;font-size:18px}
+.cmp-v{font-weight:600;font-variant-numeric:tabular-nums}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+
+/* Industries */
+.ind-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.ind{background:#fff;border:1px solid var(--bl);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.ind h3{font-size:20px;letter-spacing:-.015em}
+.ind p{color:var(--ink2)}
+.ind-live{border-color:var(--navy)}
+.ind-more{margin-top:auto;padding-top:8px;font-weight:600;color:var(--blue)}
+
 /* ROI */
 .slider{display:flex;flex-direction:column;gap:10px}
 .slider-top{display:flex;justify-content:space-between;gap:12px}
