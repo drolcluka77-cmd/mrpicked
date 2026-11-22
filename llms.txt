@@ -20,9 +20,11 @@
 ## Pages
 
 - Main: English https://mrpicked.eu/, Slovenian https://mrpicked.eu/sl/, Croatian https://mrpicked.eu/hr/, Italian https://mrpicked.eu/it/, German https://mrpicked.eu/de/, Hungarian https://mrpicked.eu/hu/
-- Restaurants, hotels and apartments: https://mrpicked.eu/hospitality/ (Slovenian: https://mrpicked.eu/sl/gostinstvo/)
+- Restaurants and hotels: https://mrpicked.eu/hospitality/ (Slovenian: https://mrpicked.eu/sl/gostinstvo/)
+- Apartments and holiday rentals (more direct bookings, guests answered 24/7): https://mrpicked.eu/apartments/ (Slovenian: https://mrpicked.eu/sl/apartmaji/)
 - Towing and roadside assistance: https://mrpicked.eu/towing/ (Slovenian: https://mrpicked.eu/sl/avtovleka/)
 - Insurance agents: https://mrpicked.eu/insurance/ (Slovenian: https://mrpicked.eu/sl/zavarovanje/)
+- Dentists and aesthetic clinics, including patients from abroad: https://mrpicked.eu/dental/ (Slovenian: https://mrpicked.eu/sl/zobozdravniki/)
 
 ## Free AI check
 

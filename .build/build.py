@@ -5,7 +5,7 @@ from html import escape as _e
 SRC, OUT = sys.argv[1], sys.argv[2]
 D = json.load(open(SRC, encoding='utf-8'))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from content import GEN, IND, ROI, IND_PATH, META_MAIN, META_IND
+from content import GEN, IND, ROI, IND_PATH, META_MAIN, META_IND, IND_ORDER
 
 CMP = {
  'EN': dict(cmpK="Compare", cmpH="Compare packages", g0="In every package", g1="Added in Recommended", g2="Added in Concierge", setupRow="One-time setup"),
@@ -193,15 +193,15 @@ def page(L, variant):
     # Industries (main pages only)
     inds_html = ''
     if variant == 'main':
-        keys = ['hospitality', 'towing', 'insurance']
+        keys = IND_ORDER
         for i, ind in enumerate(t['inds']):
-            if i < 3:
+            if i < len(keys):
                 target = IND_PATH[keys[i]].get(L) or IND_PATH[keys[i]]['EN']
                 more = t['indMore'] + ('' if L in ('EN', 'SL') else ' (EN)')
                 link = f'<a class="ind-more" href="{rel(path, target)}">{e(more)} →</a>'
             else:
                 link = ''
-            inds_html += f'<div class="ind{" ind-live" if i < 3 else ""}"><h3>{e(ind["name"])}</h3><p>{e(ind["desc"])}</p>{link}</div>'
+            inds_html += f'<div class="ind{" ind-live" if i < len(keys) else ""}"><h3>{e(ind["name"])}</h3><p>{e(ind["desc"])}</p>{link}</div>'
         inds_html = (f'<section id="industries" class="sec-tight"><div class="wrap stack rv" data-rv="industries" style="gap:32px">'
                      f'<div class="stack" style="gap:12px;max-width:760px"><div class="kicker">{e(t["indK"])}</div><h2 class="h2">{e(t["indH"])}</h2><p class="lead">{e(t["indP"])}</p></div>'
                      f'<div class="grid-auto ind-grid">{inds_html}</div></div></section>')
@@ -437,7 +437,7 @@ def page(L, variant):
 </html>
 '''
 
-PAGES = [(L, 'main') for L in LANGS] + [(L, v) for v in ('hospitality', 'towing', 'insurance') for L in ('EN', 'SL')]
+PAGES = [(L, 'main') for L in LANGS] + [(L, v) for v in IND_ORDER for L in ('EN', 'SL')]
 for L, v in PAGES:
     p = os.path.join(OUT, page_path(L, v), 'index.html')
     os.makedirs(os.path.dirname(p), exist_ok=True)

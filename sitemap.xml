@@ -81,6 +81,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/hospitality/"/>
   </url>
   <url>
+    <loc>https://mrpicked.eu/apartments/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/apartments/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/apartmaji/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/apartments/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/sl/apartmaji/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/apartments/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/apartmaji/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/apartments/"/>
+  </url>
+  <url>
     <loc>https://mrpicked.eu/towing/</loc>
     <lastmod>2026-11-22</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/towing/"/>
@@ -107,5 +121,19 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/insurance/"/>
     <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zavarovanje/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/insurance/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/dental/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/dental/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zobozdravniki/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/dental/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/sl/zobozdravniki/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/dental/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zobozdravniki/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/dental/"/>
   </url>
 </urlset>

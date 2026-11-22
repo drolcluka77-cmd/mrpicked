@@ -320,3 +320,154 @@ IND['towing']['EN']['dOf'] = "of 30 driver questions"
 IND['towing']['SL']['dOf'] = "od 30 vprašanj voznikov"
 IND['insurance']['EN']['dOf'] = "of 30 client questions"
 IND['insurance']['SL']['dOf'] = "od 30 vprašanj strank"
+
+# ---------------------------------------------------------------------------
+# Apartments & dental clinics (EN + SL); hospitality narrowed to restaurants & hotels.
+
+IND['hospitality']['EN']['eyebrow'] = "AI + Google visibility for restaurants & hotels"
+IND['hospitality']['SL']['eyebrow'] = "AI + Google vidnost za restavracije in hotele"
+META_IND['hospitality']['EN'] = ("Mr. Picked for restaurants & hotels — get recommended by AI", META_IND['hospitality']['EN'][1])
+META_IND['hospitality']['SL'] = ("Mr. Picked za restavracije in hotele — naj vas priporoči AI", META_IND['hospitality']['SL'][1])
+
+IND['apartments'] = {
+ 'EN': dict(
+  eyebrow="AI + Google visibility for apartments & holiday rentals",
+  h1="Your next guest won’t scroll Airbnb. They’ll ask AI where to stay.",
+  sub="When travellers ask ChatGPT, Gemini or Perplexity for a place to stay, AI names only a few. We make sure yours is one of them — with a link to book you directly, without platform commission.",
+  dName="Property name", dNamePh="e.g. Apartments Primer", dQ="{city}: nice apartment for 2 nights, close to the centre, with parking?",
+  dYour="Your apartments", dOther="Another apartment", dIdle="Enter your property and press run to see what AI tells a traveller.",
+  dDesc="Self check-in, free parking, best price when you book directly.", dOf="of 30 traveller questions",
+  steps=[
+   dict(tab="AI Mirror", h="We ask the AIs about you", p="We run the questions travellers actually ask across ChatGPT, Gemini, Perplexity and Google’s AI answers — in their own languages.", items=["30 traveller questions in 6 languages","Where you appear — and which places appear instead","Wrong prices, locations or rules the AI gives about you"]),
+   dict(tab="Fix", h="We make you readable", p="In the first 30 days we fix everything AI and Google read about you.", items=["Google profile, photos, amenities, location and check-in times","Listings corrected on 15+ platforms, consistent with Airbnb and Booking","A direct booking page AI can read: prices, availability, house rules"]),
+   dict(tab="Stay picked", h="We keep you there", p="Every month we re-run the questions, add fresh content and report what changed.", items=["Monthly Mr. Picked Report with your visibility score","AI videos and Google posts every month","Review request after every stay"])],
+  vidP="No filming. Our AI turns photos of your rooms, view and surroundings into short clips that make travellers want to book.",
+  vids=[dict(h="From your real photos", p="Your rooms, your view and your neighbourhood, never stock footage. You approve every clip."), dict(h="One video, six languages", p="Every guest hears it in their own language."), dict(h="Posted where it counts", p="Instagram, TikTok, YouTube Shorts and your Google profile.")],
+  lists=[
+   ["Starting AI audit: 30 traveller questions in 3 AIs and 6 languages","Full fix in the first 30 days: Google profile, photos, amenities, location, check-in times","Prices, amenities and house rules machine-readable on your website","Listings corrected on 15+ platforms (Apple Maps, Bing, travel directories…)","Local Google SEO: tracked Maps ranking for your 10 key searches (e.g. “apartment Piran with parking”)","4 Google profile posts per month","Monthly Mr. Picked Report with your visibility score"],
+   ["Everything in Visible, plus:","2 AI videos / month in 3 languages, posted to Instagram, TikTok and Google","Automatic review request after every stay","We draft replies to all your Google reviews within 48 h","2 new traveller-question pages / month in 3 languages (e.g. “where to park in the old town”)","50 traveller questions tracked + 3 nearby competitors","Quarterly results call"],
+   ["Everything in Recommended, plus:","4 AI videos / month in 6 languages","WhatsApp concierge 24/7: answers guests about check-in, parking, Wi-Fi and house rules, and takes direct booking requests","Arrival instructions and check-out reminders sent automatically","House rules and a local guide online in 6 languages","One seasonal campaign per quarter (summer, holidays, off-season deals…)","Monthly strategy call + changes within 24 h (working days)"]],
+  addons=[dict(name="AI video pack", desc="+3 AI videos every month"), dict(name="Review loop", desc="Review request after every stay"), dict(name="WhatsApp concierge", desc="Answers guests and takes direct booking requests, 24/7"), dict(name="AI-ready website", desc="Multilingual, fast, readable by AI")],
+  roiSpend="Average value of a direct booking", roiGuests="Extra direct bookings per week", roiBreak="Mr. Picked pays for itself at {n} extra direct bookings a week.",
+  fdH="Built by an apartment host, not an agency.",
+  fdP="I rent out several apartments myself. I know what it’s like to answer guests at midnight and pay platform commission on every booking — so I built Mr. Picked for my own apartments first.",
+  faqs=[dict(q="What is GEO, in plain words?", a="Making sure AI assistants like ChatGPT, Gemini and Perplexity know your apartments, describe them correctly and recommend them. It builds on local SEO, so you also rank better on Google."),
+   dict(q="Does this replace Airbnb and Booking?", a="No, keep them. We make sure AI also recommends you directly, so more guests book through your own page or WhatsApp, without commission."), 1,
+   dict(q="What does the WhatsApp concierge answer?", a="Check-in and check-out times, parking, Wi-Fi, house rules, directions and local tips, in the guest’s language. Anything unusual it passes to you."), 4],
+  fBiz="Property name", mailPh="you@apartments.si"),
+ 'SL': dict(
+  eyebrow="AI + Google vidnost za apartmaje in turistične sobe",
+  h1="Vaš naslednji gost ne bo brskal po Airbnbju. Vprašal bo AI, kje prespati.",
+  sub="Ko popotniki vprašajo ChatGPT, Gemini ali Perplexity za prenočišče, AI imenuje le nekaj mest. Poskrbimo, da je vaše med njimi — s povezavo za neposredno rezervacijo, brez provizije platform.",
+  dName="Ime nastanitve", dNamePh="npr. Apartmaji Primer", dQ="{city}: lep apartma za 2 noči blizu centra, s parkiriščem?",
+  dYour="Vaši apartmaji", dOther="Druga nastanitev", dIdle="Vpišite svojo nastanitev in zaženite, da vidite, kaj AI pove popotniku.",
+  dDesc="Samostojna prijava, brezplačno parkiranje, najboljša cena ob neposredni rezervaciji.", dOf="od 30 vprašanj popotnikov",
+  steps=[
+   dict(tab="AI Mirror", h="AI vprašamo o vas", p="Postavimo vprašanja, ki jih popotniki res sprašujejo, v ChatGPT, Gemini, Perplexity in Googlovih AI odgovorih — v njihovih jezikih.", items=["30 vprašanj popotnikov v 6 jezikih","Kje se pojavite vi — in katere nastanitve namesto vas","Napačne cene, lokacije ali pravila, ki jih AI navaja o vas"]),
+   dict(tab="Popravek", h="Poskrbimo, da vas AI razume", p="V prvih 30 dneh popravimo vse, kar AI in Google bereta o vas.", items=["Google profil, fotografije, oprema, lokacija in časi prihoda","Popravljeni vpisi na 15+ platformah, usklajeni z Airbnbjem in Bookingom","Stran za neposredne rezervacije, ki jo AI prebere: cene, razpoložljivost, hišni red"]),
+   dict(tab="Ostanite izbrani", h="Obdržimo vas tam", p="Vsak mesec ponovno postavimo vprašanja, dodamo svežo vsebino in poročamo, kaj se je spremenilo.", items=["Mesečno poročilo Mr. Picked z oceno vidnosti","AI videi in Google objave vsak mesec","Prošnja za oceno po vsakem bivanju"])],
+  vidP="Brez snemanja. Naš AI iz fotografij sob, razgleda in okolice ustvari kratke posnetke, zaradi katerih popotniki želijo rezervirati.",
+  vids=[dict(h="Iz vaših pravih fotografij", p="Vaše sobe, vaš razgled in vaša soseska, nikoli tuji posnetki. Vsak posnetek odobrite."), dict(h="En video, šest jezikov", p="Vsak gost ga sliši v svojem jeziku."), dict(h="Objavljeno tam, kjer šteje", p="Instagram, TikTok, YouTube Shorts in vaš Google profil.")],
+  lists=[
+   ["Začetni AI pregled: 30 vprašanj popotnikov v 3 AI orodjih in 6 jezikih","Celoten popravek v prvih 30 dneh: Google profil, fotografije, oprema, lokacija, časi prihoda","Cene, oprema in hišni red strojno berljivi na vaši spletni strani","Popravljeni vpisi na 15+ platformah (Apple Maps, Bing, turistični imeniki …)","Lokalni Google SEO: spremljamo mesto na Zemljevidih za 10 ključnih iskanj (npr. »apartma Piran s parkiriščem«)","4 objave na Google profilu na mesec","Mesečno poročilo Mr. Picked z oceno vidnosti"],
+   ["Vse iz paketa Visible, plus:","2 AI videa na mesec v 3 jezikih, objavljena na Instagramu, TikToku in Googlu","Samodejna prošnja za oceno po vsakem bivanju","Pripravimo odgovore na vse vaše Google ocene v 48 urah","2 novi strani z vprašanji popotnikov na mesec v 3 jezikih (npr. »kje parkirati v starem mestnem jedru«)","Spremljanje 50 vprašanj popotnikov + 3 bližnjih konkurentov","Četrtletni pregled rezultatov"],
+   ["Vse iz paketa Recommended, plus:","4 AI videi na mesec v 6 jezikih","WhatsApp concierge 24/7: odgovarja gostom o prihodu, parkiranju, Wi-Fi in hišnem redu ter sprejema povpraševanja za neposredne rezervacije","Navodila za prihod in opomniki za odhod se pošljejo samodejno","Hišni red in lokalni vodič na spletu v 6 jezikih","Ena sezonska kampanja na četrtletje (poletje, prazniki, ponudbe izven sezone …)","Mesečni strateški sestanek + spremembe v 24 urah (delovni dnevi)"]],
+  addons=[dict(name="AI video paket", desc="+3 AI videi vsak mesec"), dict(name="Zbiranje ocen", desc="Prošnja za oceno po vsakem bivanju"), dict(name="WhatsApp concierge", desc="Odgovarja gostom in sprejema povpraševanja za rezervacije, 24/7"), dict(name="Spletna stran za AI", desc="Večjezična, hitra, berljiva za AI")],
+  roiSpend="Povprečna vrednost neposredne rezervacije", roiGuests="Dodatne neposredne rezervacije na teden", roiBreak="Mr. Picked se poplača že pri {n} dodatnih neposrednih rezervacijah na teden.",
+  fdH="Naredil ga je gostitelj apartmajev, ne agencija.",
+  fdP="Tudi sam oddajam več apartmajev. Vem, kako je odgovarjati gostom ob polnoči in plačevati provizijo za vsako rezervacijo — zato sem Mr. Picked najprej naredil za svoje apartmaje.",
+  faqs=[dict(q="Kaj je GEO, preprosto povedano?", a="Poskrbimo, da AI pomočniki, kot so ChatGPT, Gemini in Perplexity, poznajo vaše apartmaje, jih pravilno opišejo in priporočijo. Gradi na lokalnem SEO, zato ste višje tudi na Googlu."),
+   dict(q="Ali to nadomesti Airbnb in Booking?", a="Ne, obdržite ju. Poskrbimo, da vas AI priporoči tudi neposredno, zato več gostov rezervira prek vaše strani ali WhatsAppa, brez provizije."), 1,
+   dict(q="Na kaj odgovarja WhatsApp concierge?", a="Na čas prihoda in odhoda, parkiranje, Wi-Fi, hišni red, navodila za pot in lokalne nasvete, v jeziku gosta. Kar je neobičajno, preda vam."), 4],
+  fBiz="Ime nastanitve", mailPh="vi@apartmaji.si"),
+}
+
+IND['dental'] = {
+ 'EN': dict(
+  eyebrow="AI + Google visibility for dentists & aesthetic clinics",
+  h1="Your next patient won’t ask a friend. They’ll ask AI which clinic to trust.",
+  sub="When someone asks ChatGPT, Gemini or Perplexity for a good dentist or implant clinic — at home or from Italy and Austria — AI names two or three. We make sure your clinic is one of them, in your patients’ language.",
+  dName="Clinic name", dNamePh="e.g. Dental Clinic Primer", dQ="{city}: which dental clinic would you recommend for implants?",
+  dYour="Your clinic", dOther="Another clinic", dIdle="Enter your clinic and press run to see what AI tells a patient.",
+  dDesc="Experienced team, transparent prices, appointments this week.", dOf="of 30 patient questions",
+  steps=[
+   dict(tab="AI Mirror", h="We ask the AIs about you", p="We run the questions patients actually ask before they choose a clinic, across ChatGPT, Gemini, Perplexity and Google’s AI answers.", items=["30 patient questions in 6 languages","Where you appear — and which clinics appear instead","Wrong hours, treatments or prices the AI gives about you"]),
+   dict(tab="Fix", h="We make you readable", p="In the first 30 days we fix everything AI and Google read about you.", items=["Google profile: treatments, hours, team, photos, accessibility","Listings corrected on 15+ platforms and health directories","Treatments, price ranges and booking info machine-readable on your site"]),
+   dict(tab="Stay picked", h="We keep you there", p="Every month we re-run the questions, add fresh content and report what changed.", items=["Monthly Mr. Picked Report with your visibility score","AI videos and Google posts every month","Review request after every completed treatment"])],
+  vidP="No filming. Our AI turns photos of your clinic and team into short, calm clips that explain treatments and build trust before the first visit.",
+  vids=[dict(h="From your real photos", p="Your clinic, your team and your equipment, never stock footage. You approve every clip."), dict(h="One video, six languages", p="Patients from Italy, Austria or Croatia hear it in their own language."), dict(h="Posted where it counts", p="Instagram, TikTok, YouTube Shorts and your Google profile.")],
+  lists=[
+   ["Starting AI audit: 30 patient questions in 3 AIs and 6 languages","Full fix in the first 30 days: Google profile, treatments, hours, team, photos","Treatments, price ranges and booking info machine-readable on your website","Listings corrected on 15+ platforms (Apple Maps, Bing, health directories…)","Local Google SEO: tracked Maps ranking for your 10 key searches (e.g. “dental implants Ljubljana”)","4 Google profile posts per month","Monthly Mr. Picked Report with your visibility score"],
+   ["Everything in Visible, plus:","2 AI explainer videos / month in 3 languages, posted to Instagram, TikTok and Google","Automatic review request after every completed treatment","We draft replies to all your Google reviews within 48 h","2 new patient-question pages / month in 3 languages (e.g. “how long does an implant take”)","50 patient questions tracked + 3 nearby competitors","Quarterly results call"],
+   ["Everything in Recommended, plus:","4 AI videos / month in 6 languages","WhatsApp concierge 24/7: answers questions about treatments, prices and hours, and takes appointment requests","Appointment reminders & no-show follow-up","Treatments and price list online in 6 languages, for patients from abroad","One seasonal campaign per quarter (check-ups before summer, whitening before the holidays…)","Monthly strategy call + changes within 24 h (working days)"]],
+  addons=[dict(name="AI video pack", desc="+3 AI videos every month"), dict(name="Review loop", desc="Review request after every completed treatment"), dict(name="WhatsApp concierge", desc="Answers patients and takes appointment requests, 24/7"), dict(name="AI-ready website", desc="Multilingual, fast, readable by AI")],
+  roiSpend="Average value of a new patient", roiGuests="Extra new patients per week", roiBreak="Mr. Picked pays for itself at {n} extra new patients a week.",
+  fdH=GEN['EN']['fdH'], fdP=GEN['EN']['fdP'],
+  faqs=[dict(q="What is GEO, in plain words?", a="Making sure AI assistants like ChatGPT, Gemini and Perplexity know your clinic, describe it correctly and recommend it. It builds on local SEO, so you also rank better on Google."),
+   dict(q="Can we show prices and treatments?", a="Yes, within the rules for advertising health services. We publish factual information: treatments, price ranges, team and hours. No promised results, and no before-and-after material without your approval."), 1,
+   dict(q="Will the WhatsApp concierge give medical advice?", a="No. It answers practical questions about hours, prices, location and the treatments you offer, and takes appointment requests. Medical questions always go to your team."), 4],
+  fBiz="Clinic name", mailPh="you@clinic.si"),
+ 'SL': dict(
+  eyebrow="AI + Google vidnost za zobozdravnike in estetske klinike",
+  h1="Vaš naslednji pacient ne bo vprašal prijatelja. Vprašal bo AI, kateri ambulanti zaupati.",
+  sub="Ko nekdo vpraša ChatGPT, Gemini ali Perplexity za dobrega zobozdravnika ali kliniko za vsadke — doma ali iz Italije in Avstrije — AI imenuje dve ali tri. Poskrbimo, da je vaša med njimi, v jeziku vaših pacientov.",
+  dName="Ime ambulante", dNamePh="npr. Zobna ambulanta Primer", dQ="{city}: katero zobno ambulanto priporočaš za vsadke?",
+  dYour="Vaša ambulanta", dOther="Druga ambulanta", dIdle="Vpišite svojo ambulanto in zaženite, da vidite, kaj AI pove pacientu.",
+  dDesc="Izkušena ekipa, pregledne cene, termini še ta teden.", dOf="od 30 vprašanj pacientov",
+  steps=[
+   dict(tab="AI Mirror", h="AI vprašamo o vas", p="Postavimo vprašanja, ki jih pacienti res postavljajo, preden izberejo ambulanto, v ChatGPT, Gemini, Perplexity in Googlovih AI odgovorih.", items=["30 vprašanj pacientov v 6 jezikih","Kje se pojavite vi — in katere ambulante namesto vas","Napačne ure, storitve ali cene, ki jih AI navaja o vas"]),
+   dict(tab="Popravek", h="Poskrbimo, da vas AI razume", p="V prvih 30 dneh popravimo vse, kar AI in Google bereta o vas.", items=["Google profil: storitve, delovni čas, ekipa, fotografije, dostopnost","Popravljeni vpisi na 15+ platformah in zdravstvenih imenikih","Storitve, cenovni razponi in naročanje strojno berljivi na vaši strani"]),
+   dict(tab="Ostanite izbrani", h="Obdržimo vas tam", p="Vsak mesec ponovno postavimo vprašanja, dodamo svežo vsebino in poročamo, kaj se je spremenilo.", items=["Mesečno poročilo Mr. Picked z oceno vidnosti","AI videi in Google objave vsak mesec","Prošnja za oceno po vsakem zaključenem zdravljenju"])],
+  vidP="Brez snemanja. Naš AI iz fotografij vaše ambulante in ekipe ustvari kratke, mirne posnetke, ki razložijo posege in zgradijo zaupanje še pred prvim obiskom.",
+  vids=[dict(h="Iz vaših pravih fotografij", p="Vaša ambulanta, ekipa in oprema, nikoli tuji posnetki. Vsak posnetek odobrite."), dict(h="En video, šest jezikov", p="Pacienti iz Italije, Avstrije ali Hrvaške ga slišijo v svojem jeziku."), dict(h="Objavljeno tam, kjer šteje", p="Instagram, TikTok, YouTube Shorts in vaš Google profil.")],
+  lists=[
+   ["Začetni AI pregled: 30 vprašanj pacientov v 3 AI orodjih in 6 jezikih","Celoten popravek v prvih 30 dneh: Google profil, storitve, delovni čas, ekipa, fotografije","Storitve, cenovni razponi in naročanje strojno berljivi na vaši spletni strani","Popravljeni vpisi na 15+ platformah (Apple Maps, Bing, zdravstveni imeniki …)","Lokalni Google SEO: spremljamo mesto na Zemljevidih za 10 ključnih iskanj (npr. »zobni vsadki Ljubljana«)","4 objave na Google profilu na mesec","Mesečno poročilo Mr. Picked z oceno vidnosti"],
+   ["Vse iz paketa Visible, plus:","2 AI razlagalna videa na mesec v 3 jezikih, objavljena na Instagramu, TikToku in Googlu","Samodejna prošnja za oceno po vsakem zaključenem zdravljenju","Pripravimo odgovore na vse vaše Google ocene v 48 urah","2 novi strani z vprašanji pacientov na mesec v 3 jezikih (npr. »kako dolgo traja vsadek«)","Spremljanje 50 vprašanj pacientov + 3 bližnjih konkurentov","Četrtletni pregled rezultatov"],
+   ["Vse iz paketa Recommended, plus:","4 AI videi na mesec v 6 jezikih","WhatsApp concierge 24/7: odgovarja na vprašanja o storitvah, cenah in delovnem času ter sprejema prošnje za termin","Opomniki za termine in sledenje neprihodom","Storitve in cenik na spletu v 6 jezikih, za paciente iz tujine","Ena sezonska kampanja na četrtletje (pregledi pred poletjem, beljenje pred prazniki …)","Mesečni strateški sestanek + spremembe v 24 urah (delovni dnevi)"]],
+  addons=[dict(name="AI video paket", desc="+3 AI videi vsak mesec"), dict(name="Zbiranje ocen", desc="Prošnja za oceno po vsakem zaključenem zdravljenju"), dict(name="WhatsApp concierge", desc="Odgovarja pacientom in sprejema prošnje za termin, 24/7"), dict(name="Spletna stran za AI", desc="Večjezična, hitra, berljiva za AI")],
+  roiSpend="Povprečna vrednost novega pacienta", roiGuests="Dodatni novi pacienti na teden", roiBreak="Mr. Picked se poplača že pri {n} dodatnih novih pacientih na teden.",
+  fdH=GEN['SL']['fdH'], fdP=GEN['SL']['fdP'],
+  faqs=[dict(q="Kaj je GEO, preprosto povedano?", a="Poskrbimo, da AI pomočniki, kot so ChatGPT, Gemini in Perplexity, poznajo vašo ambulanto, jo pravilno opišejo in priporočijo. Gradi na lokalnem SEO, zato ste višje tudi na Googlu."),
+   dict(q="Ali lahko objavimo cene in posege?", a="Da, v okviru pravil za oglaševanje zdravstvenih storitev. Objavljamo dejanske podatke: storitve, cenovne razpone, ekipo in delovni čas. Brez obljub rezultatov in brez fotografij pred in po brez vašega soglasja."), 1,
+   dict(q="Ali WhatsApp concierge daje zdravniške nasvete?", a="Ne. Odgovarja na praktična vprašanja o urah, cenah, lokaciji in storitvah, ki jih ponujate, ter sprejema prošnje za termin. Zdravstvena vprašanja vedno preda vaši ekipi."), 4],
+  fBiz="Ime ambulante", mailPh="vi@ambulanta.si"),
+}
+
+ROI['apartments'] = ((300, 50, 1500, 10), (2, 0, 30, 1))
+ROI['dental'] = ((400, 100, 3000, 50), (2, 0, 20, 1))
+IND_PATH['apartments'] = {'EN': 'apartments/', 'SL': 'sl/apartmaji/'}
+IND_PATH['dental'] = {'EN': 'dental/', 'SL': 'sl/zobozdravniki/'}
+META_IND['apartments'] = {
+ 'EN': ("Mr. Picked for apartments & holiday rentals — more direct bookings from AI", "When travellers ask ChatGPT, Gemini or Perplexity where to stay, AI names only a few places. Mr. Picked makes sure yours is one of them, with a direct booking link. Free AI check."),
+ 'SL': ("Mr. Picked za apartmaje in turistične sobe — več neposrednih rezervacij prek AI", "Ko popotniki vprašajo ChatGPT, Gemini ali Perplexity, kje prespati, AI imenuje le nekaj mest. Mr. Picked poskrbi, da je vaše med njimi, s povezavo za neposredno rezervacijo. Brezplačen AI pregled.")}
+META_IND['dental'] = {
+ 'EN': ("Mr. Picked for dentists & aesthetic clinics — be the clinic AI recommends", "When patients ask ChatGPT, Gemini or Google which dental clinic to trust, AI names two or three. Mr. Picked makes sure yours is one of them, in 6 languages. Free AI check."),
+ 'SL': ("Mr. Picked za zobozdravnike in estetske klinike — bodite ambulanta, ki jo priporoči AI", "Ko pacienti vprašajo ChatGPT, Gemini ali Google, kateri zobni ambulanti zaupati, AI imenuje dve ali tri. Mr. Picked poskrbi, da je vaša med njimi, v 6 jezikih. Brezplačen AI pregled.")}
+
+# Industry cards on the main pages, in this order; the first five link to their pages.
+IND_ORDER = ['hospitality', 'apartments', 'towing', 'insurance', 'dental']
+_cards = {
+ 'EN': [("Restaurants & hotels", "Get picked when guests ask where to eat or stay."), ("Apartments & holiday rentals", "More direct bookings, fewer commissions, guests answered 24/7."), ("Towing & roadside assistance", "Be the number AI gives when a car breaks down."), ("Insurance agents", "Be the agent AI recommends for car, home and travel insurance."), ("Dentists & aesthetic clinics", "Be the clinic AI recommends, in your patients’ language."), ("Trades, car repair & more", "Plumbers, electricians, mechanics, salons and professional services.")],
+ 'SL': [("Restavracije in hoteli", "Da vas izberejo, ko gostje vprašajo, kje jesti ali spati."), ("Apartmaji in turistične sobe", "Več neposrednih rezervacij, manj provizij, odgovori gostom 24/7."), ("Avtovleka in pomoč na cesti", "Bodite številka, ki jo AI da, ko se avto pokvari."), ("Zavarovalniški zastopniki", "Bodite zastopnik, ki ga AI priporoči za avto, dom in potovanja."), ("Zobozdravniki in estetske klinike", "Bodite ambulanta, ki jo AI priporoči, v jeziku vaših pacientov."), ("Obrtniki, avtoservisi in drugi", "Vodovodarji, električarji, mehaniki, saloni in strokovne storitve.")],
+ 'HR': [("Restorani i hoteli", "Da vas odaberu kad gosti pitaju gdje jesti ili spavati."), ("Apartmani i sobe za iznajmljivanje", "Više izravnih rezervacija, manje provizija, odgovori gostima 24/7."), ("Vuča vozila i pomoć na cesti", "Budite broj koji AI daje kad se auto pokvari."), ("Zastupnici osiguranja", "Budite zastupnik kojeg AI preporuča za auto, dom i putovanja."), ("Stomatolozi i estetske klinike", "Budite ordinacija koju AI preporuča, na jeziku vaših pacijenata."), ("Obrtnici, autoservisi i ostali", "Vodoinstalateri, električari, mehaničari, saloni i stručne usluge.")],
+ 'IT': [("Ristoranti e hotel", "Fatti scegliere quando gli ospiti chiedono dove mangiare o dormire."), ("Appartamenti e case vacanza", "Più prenotazioni dirette, meno commissioni, ospiti seguiti 24/7."), ("Soccorso stradale", "Sii il numero che l’AI dà quando un’auto si guasta."), ("Agenti assicurativi", "Sii l’agente che l’AI consiglia per auto, casa e viaggi."), ("Dentisti e cliniche estetiche", "Sii lo studio che l’AI consiglia, nella lingua dei tuoi pazienti."), ("Artigiani, officine e altri", "Idraulici, elettricisti, meccanici, saloni e servizi professionali.")],
+ 'DE': [("Restaurants & Hotels", "Gewählt werden, wenn Gäste fragen, wo sie essen oder schlafen sollen."), ("Ferienwohnungen & Apartments", "Mehr Direktbuchungen, weniger Provisionen, Gäste rund um die Uhr betreut."), ("Abschlepp- und Pannendienst", "Die Nummer sein, die die KI bei einer Panne nennt."), ("Versicherungsberater", "Der Berater sein, den die KI für Auto, Haus und Reise empfiehlt."), ("Zahnärzte & Ästhetikkliniken", "Die Praxis sein, die die KI empfiehlt — in der Sprache Ihrer Patienten."), ("Handwerk, Kfz & mehr", "Installateure, Elektriker, Werkstätten, Salons und freie Berufe.")],
+ 'HU': [("Éttermek és szállodák", "Válasszák Önt, amikor a vendégek azt kérdezik, hol egyenek vagy aludjanak."), ("Apartmanok és szálláshelyek", "Több közvetlen foglalás, kevesebb jutalék, vendégválasz 0–24."), ("Autómentés és segélyszolgálat", "Legyen az a szám, amit az AI ad, ha lerobban az autó."), ("Biztosítási tanácsadók", "Legyen az a tanácsadó, akit az AI ajánl autóra, otthonra és utazásra."), ("Fogorvosok és esztétikai klinikák", "Legyen az a rendelő, amelyet az AI ajánl, a páciensei nyelvén."), ("Szakiparosok, autószervizek és mások", "Vízszerelők, villanyszerelők, szerelők, szalonok és szakmai szolgáltatók.")],
+}
+for _L, _c in _cards.items():
+    GEN[_L]['inds'] = [dict(name=n, desc=d) for n, d in _c]
+
+# Break-even line phrased so it reads correctly for any number (1, 2, 5 …)
+_BRK = {
+ 'main': {'EN': "Extra customers a week to cover Mr. Picked: {n}", 'SL': "Dodatne stranke na teden, ki pokrijejo Mr. Picked: {n}",
+          'HR': "Dodatni klijenti tjedno koji pokrivaju Mr. Picked: {n}", 'IT': "Clienti in più a settimana per coprire Mr. Picked: {n}",
+          'DE': "Zusätzliche Kunden pro Woche, um Mr. Picked zu decken: {n}", 'HU': "Ennyi plusz ügyfél hetente fedezi a Mr. Pickedet: {n}"},
+ 'hospitality': {'EN': "Extra guests a week to cover Mr. Picked: {n}", 'SL': "Dodatni gostje na teden, ki pokrijejo Mr. Picked: {n}"},
+ 'towing': {'EN': "Extra calls a week to cover Mr. Picked: {n}", 'SL': "Dodatni klici na teden, ki pokrijejo Mr. Picked: {n}"},
+ 'insurance': {'EN': "Extra clients a week to cover Mr. Picked: {n}", 'SL': "Dodatne stranke na teden, ki pokrijejo Mr. Picked: {n}"},
+ 'apartments': {'EN': "Extra direct bookings a week to cover Mr. Picked: {n}", 'SL': "Dodatne neposredne rezervacije na teden, ki pokrijejo Mr. Picked: {n}"},
+ 'dental': {'EN': "Extra new patients a week to cover Mr. Picked: {n}", 'SL': "Dodatni novi pacienti na teden, ki pokrijejo Mr. Picked: {n}"},
+}
+for _v, _m in _BRK.items():
+    for _L, _s in _m.items():
+        (GEN[_L] if _v == 'main' else IND[_v][_L])['roiBreak'] = _s
