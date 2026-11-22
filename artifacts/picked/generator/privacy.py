@@ -8,18 +8,18 @@ Keep the facts identical across languages when editing.
 PRIV_PATH = {'EN': 'privacy/', 'SL': 'sl/zasebnost/', 'HR': 'hr/privatnost/', 'IT': 'it/privacy/',
              'DE': 'de/datenschutz/', 'HU': 'hu/adatvedelem/'}
 
-CO = 'Cyberfinance, računalniško programiranje d.o.o., Celovška cesta 136, 1000 Ljubljana, Slovenia'
+CO = 'Aurelia Group d.o.o., Zaloška cesta 161, 1000 Ljubljana, Slovenia'
 IP_RS = 'Informacijski pooblaščenec RS, Dunajska cesta 22, 1000 Ljubljana, www.ip-rs.si'
 
 PRIV = {
 'EN': dict(
  title='Privacy policy — Mr. Picked',
- desc='How Mr. Picked (Cyberfinance d.o.o.) handles personal data on mrpicked.eu: what we collect, why, for how long, who processes it, and your GDPR rights.',
+ desc='How Mr. Picked (Aurelia Group d.o.o.) handles personal data on mrpicked.eu: what we collect, why, for how long, who processes it, and your GDPR rights.',
  h1='Privacy policy', updated='Last updated: 22 November 2026', back='Back to the home page',
  intro='This policy explains how we handle personal data when you visit mrpicked.eu, request a free AI report, book a call or work with us. We collect as little as possible and never sell your data.',
  sections=[
   ('1. Who is responsible', [
-   f'The controller is {CO}, tax no. 83314512 (“Mr. Picked”, “we”).',
+   f'The controller is {CO}, tax no. 71811435, registration no. 7533152000 (“Mr. Picked”, “we”).',
    'Contact for all privacy questions: info@mrpicked.eu, +386 40 290 963.']),
   ('2. What we collect and why', [[
    'Free AI report form: business name, email address, page language, whether you ticked the optional box, time of the request and a technical reference number. We use them to prepare and send your report, send a confirmation email and reply to you. Legal basis: steps taken at your request before a contract (Art. 6(1)(b) GDPR).',
@@ -55,12 +55,12 @@ PRIV = {
 
 'SL': dict(
  title='Politika zasebnosti — Mr. Picked',
- desc='Kako Mr. Picked (Cyberfinance d.o.o.) obdeluje osebne podatke na mrpicked.eu: kaj zbiramo, zakaj, kako dolgo, kdo jih obdeluje in vaše pravice po GDPR.',
+ desc='Kako Mr. Picked (Aurelia Group d.o.o.) obdeluje osebne podatke na mrpicked.eu: kaj zbiramo, zakaj, kako dolgo, kdo jih obdeluje in vaše pravice po GDPR.',
  h1='Politika zasebnosti', updated='Zadnja sprememba: 22. november 2026', back='Nazaj na prvo stran',
  intro='Ta politika pojasnjuje, kako obdelujemo osebne podatke, ko obiščete mrpicked.eu, naročite brezplačno AI poročilo, rezervirate klic ali z nami sodelujete. Zbiramo čim manj podatkov in jih nikoli ne prodajamo.',
  sections=[
   ('1. Kdo je upravljavec', [
-   f'Upravljavec je {CO.replace(", Slovenia", "")}, davčna številka 83314512 (»Mr. Picked«, »mi«).',
+   f'Upravljavec je {CO.replace(", Slovenia", "")}, davčna številka 71811435, matična številka 7533152000 (»Mr. Picked«, »mi«).',
    'Kontakt za vsa vprašanja o zasebnosti: info@mrpicked.eu, 040 290 963.']),
   ('2. Kaj zbiramo in zakaj', [[
    'Obrazec za brezplačno AI poročilo: ime podjetja, e-poštni naslov, jezik strani, ali ste označili neobvezno polje, čas zahteve in tehnična referenčna številka. Uporabimo jih, da pripravimo in pošljemo poročilo, vam pošljemo potrditveno sporočilo in vam odgovorimo. Pravna podlaga: ukrepi na vašo zahtevo pred sklenitvijo pogodbe (6(1)(b) člen GDPR).',
@@ -96,12 +96,12 @@ PRIV = {
 
 'HR': dict(
  title='Pravila privatnosti — Mr. Picked',
- desc='Kako Mr. Picked (Cyberfinance d.o.o.) obrađuje osobne podatke na mrpicked.eu: što prikupljamo, zašto, koliko dugo, tko ih obrađuje i vaša prava prema GDPR-u.',
+ desc='Kako Mr. Picked (Aurelia Group d.o.o.) obrađuje osobne podatke na mrpicked.eu: što prikupljamo, zašto, koliko dugo, tko ih obrađuje i vaša prava prema GDPR-u.',
  h1='Pravila privatnosti', updated='Zadnja izmjena: 22. studenoga 2026.', back='Natrag na početnu stranicu',
  intro='Ova pravila objašnjavaju kako obrađujemo osobne podatke kada posjetite mrpicked.eu, zatražite besplatno AI izvješće, rezervirate poziv ili surađujete s nama. Prikupljamo što manje podataka i nikada ih ne prodajemo.',
  sections=[
   ('1. Tko je voditelj obrade', [
-   f'Voditelj obrade je {CO}, porezni broj 83314512 („Mr. Picked”, „mi”).',
+   f'Voditelj obrade je {CO}, porezni broj 71811435, matični broj 7533152000 („Mr. Picked”, „mi”).',
    'Kontakt za sva pitanja o privatnosti: info@mrpicked.eu, +386 40 290 963.']),
   ('2. Što prikupljamo i zašto', [[
    'Obrazac za besplatno AI izvješće: naziv tvrtke, e-adresa, jezik stranice, jeste li označili neobavezno polje, vrijeme zahtjeva i tehnički referentni broj. Koristimo ih kako bismo pripremili i poslali izvješće, poslali potvrdu i odgovorili vam. Pravna osnova: radnje na vaš zahtjev prije sklapanja ugovora (čl. 6. st. 1. t. (b) GDPR-a).',
@@ -137,12 +137,12 @@ PRIV = {
 
 'IT': dict(
  title='Informativa privacy — Mr. Picked',
- desc='Come Mr. Picked (Cyberfinance d.o.o.) tratta i dati personali su mrpicked.eu: cosa raccogliamo, perché, per quanto tempo, chi li tratta e i tuoi diritti ai sensi del GDPR.',
+ desc='Come Mr. Picked (Aurelia Group d.o.o.) tratta i dati personali su mrpicked.eu: cosa raccogliamo, perché, per quanto tempo, chi li tratta e i tuoi diritti ai sensi del GDPR.',
  h1='Informativa privacy', updated='Ultimo aggiornamento: 22 novembre 2026', back='Torna alla home page',
  intro='Questa informativa spiega come trattiamo i dati personali quando visiti mrpicked.eu, richiedi il report AI gratuito, prenoti una call o lavori con noi. Raccogliamo il minimo indispensabile e non vendiamo mai i tuoi dati.',
  sections=[
   ('1. Titolare del trattamento', [
-   f'Il titolare è {CO}, codice fiscale 83314512 (“Mr. Picked”, “noi”).',
+   f'Il titolare è {CO}, codice fiscale 71811435, numero di registrazione 7533152000 (“Mr. Picked”, “noi”).',
    'Contatto per ogni domanda sulla privacy: info@mrpicked.eu, +386 40 290 963.']),
   ('2. Cosa raccogliamo e perché', [[
    'Modulo del report AI gratuito: nome dell’attività, indirizzo email, lingua della pagina, se hai spuntato la casella facoltativa, ora della richiesta e un numero di riferimento tecnico. Li usiamo per preparare e inviare il report, inviarti un’email di conferma e risponderti. Base giuridica: misure precontrattuali adottate su tua richiesta (art. 6, par. 1, lett. b GDPR).',
@@ -178,12 +178,12 @@ PRIV = {
 
 'DE': dict(
  title='Datenschutzerklärung — Mr. Picked',
- desc='Wie Mr. Picked (Cyberfinance d.o.o.) personenbezogene Daten auf mrpicked.eu verarbeitet: was wir erheben, warum, wie lange, wer sie verarbeitet und Ihre Rechte nach der DSGVO.',
+ desc='Wie Mr. Picked (Aurelia Group d.o.o.) personenbezogene Daten auf mrpicked.eu verarbeitet: was wir erheben, warum, wie lange, wer sie verarbeitet und Ihre Rechte nach der DSGVO.',
  h1='Datenschutzerklärung', updated='Stand: 22. November 2026', back='Zurück zur Startseite',
  intro='Diese Erklärung beschreibt, wie wir personenbezogene Daten verarbeiten, wenn Sie mrpicked.eu besuchen, den kostenlosen KI-Bericht anfordern, ein Gespräch buchen oder mit uns zusammenarbeiten. Wir erheben so wenig wie möglich und verkaufen Ihre Daten nie.',
  sections=[
   ('1. Verantwortlicher', [
-   f'Verantwortlich ist {CO}, Steuernummer 83314512 („Mr. Picked“, „wir“).',
+   f'Verantwortlich ist {CO}, Steuernummer 71811435, Firmennummer 7533152000 („Mr. Picked“, „wir“).',
    'Kontakt für alle Datenschutzfragen: info@mrpicked.eu, +386 40 290 963.']),
   ('2. Welche Daten wir erheben und warum', [[
    'Formular für den kostenlosen KI-Bericht: Firmenname, E-Mail-Adresse, Sprache der Seite, ob Sie das optionale Kästchen angekreuzt haben, Zeitpunkt der Anfrage und eine technische Referenznummer. Wir nutzen sie, um Ihren Bericht zu erstellen und zu senden, Ihnen eine Bestätigung zu schicken und Ihnen zu antworten. Rechtsgrundlage: vorvertragliche Maßnahmen auf Ihre Anfrage (Art. 6 Abs. 1 lit. b DSGVO).',
@@ -219,12 +219,12 @@ PRIV = {
 
 'HU': dict(
  title='Adatvédelmi tájékoztató — Mr. Picked',
- desc='Hogyan kezeli a Mr. Picked (Cyberfinance d.o.o.) a személyes adatokat a mrpicked.eu oldalon: mit gyűjtünk, miért, meddig, ki kezeli, és milyen jogai vannak a GDPR szerint.',
+ desc='Hogyan kezeli a Mr. Picked (Aurelia Group d.o.o.) a személyes adatokat a mrpicked.eu oldalon: mit gyűjtünk, miért, meddig, ki kezeli, és milyen jogai vannak a GDPR szerint.',
  h1='Adatvédelmi tájékoztató', updated='Utolsó módosítás: 2026. november 22.', back='Vissza a kezdőlapra',
  intro='Ez a tájékoztató elmagyarázza, hogyan kezeljük a személyes adatokat, amikor felkeresi a mrpicked.eu oldalt, ingyenes AI-jelentést kér, hívást foglal vagy együtt dolgozik velünk. A lehető legkevesebb adatot gyűjtjük, és soha nem adjuk el.',
  sections=[
   ('1. Ki az adatkezelő', [
-   f'Az adatkezelő: {CO}, adószám: 83314512 („Mr. Picked”, „mi”).',
+   f'Az adatkezelő: {CO}, adószám: 71811435, cégjegyzékszám: 7533152000 („Mr. Picked”, „mi”).',
    'Kapcsolat minden adatvédelmi kérdésben: info@mrpicked.eu, +386 40 290 963.']),
   ('2. Milyen adatokat gyűjtünk és miért', [[
    'Ingyenes AI-jelentés űrlap: cégnév, e-mail-cím, az oldal nyelve, bejelölte-e a nem kötelező mezőt, a kérés időpontja és egy technikai hivatkozási szám. Ezeket a jelentés elkészítésére és elküldésére, a visszaigazoló e-mail küldésére és a válaszadásra használjuk. Jogalap: az Ön kérésére a szerződés megkötését megelőzően tett lépések (GDPR 6. cikk (1) b)).',

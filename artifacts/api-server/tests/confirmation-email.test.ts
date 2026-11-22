@@ -30,8 +30,8 @@ for (const language of Object.keys(subjects) as (keyof typeof subjects)[]) {
     assert.match(message.text, /15/);
     assert.ok(message.text.includes("👉 https://calendly.com/drolcluka77/30min"));
     assert.ok(message.text.includes("Luka Drolc\nMr. Picked"));
-    assert.ok(message.text.includes("Cyberfinance, računalniško programiranje d.o.o."));
-    assert.ok(message.text.includes("Celovška cesta 136, 1000 Ljubljana, Slovenia"));
+    assert.ok(message.text.includes("Aurelia Group d.o.o."));
+    assert.ok(message.text.includes("Zaloška cesta 161, 1000 Ljubljana, Slovenia"));
     assert.ok(message.text.includes("+386 40 290 963 · info@mrpicked.eu"));
     assert.ok(!message.text.includes("{company_name}"));
     if (language !== "EN") assert.ok(!message.text.includes("You're receiving this email because"));
@@ -53,8 +53,8 @@ Best regards,
 Luka Drolc
 Mr. Picked
 
-Cyberfinance, računalniško programiranje d.o.o.
-Celovška cesta 136, 1000 Ljubljana, Slovenia
+Aurelia Group d.o.o.
+Zaloška cesta 161, 1000 Ljubljana, Slovenia
 +386 40 290 963 · info@mrpicked.eu
 
 You're receiving this email because you requested a free AI check on mrpicked.eu.`);

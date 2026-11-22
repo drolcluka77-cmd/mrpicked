@@ -4,8 +4,8 @@ const bookingUrl = "https://calendly.com/drolcluka77/30min";
 const signature = `Luka Drolc
 Mr. Picked
 
-Cyberfinance, računalniško programiranje d.o.o.
-Celovška cesta 136, 1000 Ljubljana, Slovenia
+Aurelia Group d.o.o.
+Zaloška cesta 161, 1000 Ljubljana, Slovenia
 +386 40 290 963 · info@mrpicked.eu`;
 
 type Copy = { subject: string; body: string; notice: string };

@@ -100,9 +100,9 @@ WORK = [
 def ld_json(L, t, path, title, desc):
     m = dict(META[L], path=path, title=title, desc=desc)
     org = {"@type": "Organization", "@id": SITE + "#org", "name": "Mr. Picked", "alternateName": "Picked",
-           "legalName": "Cyberfinance, računalniško programiranje d.o.o.", "url": SITE, "logo": SITE + "icon-512.png",
-           "image": SITE + "og-image.png", "email": "info@mrpicked.eu", "telephone": "+386 40 290 963", "taxID": "83314512",
-           "address": {"@type": "PostalAddress", "streetAddress": "Celovška cesta 136", "postalCode": "1000", "addressLocality": "Ljubljana", "addressCountry": "SI"},
+           "legalName": "Aurelia Group d.o.o.", "url": SITE, "logo": SITE + "icon-512.png",
+           "image": SITE + "og-image.png", "email": "info@mrpicked.eu", "telephone": "+386 40 290 963", "taxID": "71811435", "vatID": "SI71811435", "identifier": "7533152000",
+           "address": {"@type": "PostalAddress", "streetAddress": "Zaloška cesta 161", "postalCode": "1000", "addressLocality": "Ljubljana", "addressCountry": "SI"},
            "founder": {"@type": "Person", "name": "Luka Drolc"}, "areaServed": ["SI", "HR", "IT", "AT", "HU"],
            "knowsLanguage": ["en", "sl", "hr", "it", "de", "hu"]}
     site = {"@type": "WebSite", "@id": SITE + "#website", "url": SITE, "name": "Mr. Picked", "publisher": {"@id": SITE + "#org"},
@@ -464,9 +464,10 @@ def page(L, variant):
 <footer>
 <div class="wrap foot">
 <div><b>Mr. Picked</b> · Ljubljana · SI · HR · IT · AT · HU</div>
-<div class="co"><span style="font-weight:600;color:var(--navy)">Cyberfinance, računalniško programiranje d.o.o.</span>
-<span>Celovška cesta 136, 1000 Ljubljana, Slovenia</span>
-<span>DŠ: 83314512 · <a href="tel:+38640290963">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu">info@mrpicked.eu</a></span>
+<div class="co"><span style="font-weight:600;color:var(--navy)">Aurelia Group d.o.o.</span>
+<span>Zaloška cesta 161, 1000 Ljubljana, Slovenia</span>
+<span>Davčna št.: 71811435 · Matična št.: 7533152000</span>
+<span><a href="tel:+38640290963">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu">info@mrpicked.eu</a></span>
 <span><a href="{rel(path, PRIV_PATH[L])}">{e(t['privL'])}</a></span></div>
 </div>
 </footer>
@@ -530,9 +531,10 @@ def privacy_page(L):
 <footer>
 <div class="wrap foot">
 <div><b>Mr. Picked</b> · Ljubljana · SI · HR · IT · AT · HU</div>
-<div class="co"><span style="font-weight:600;color:var(--navy)">Cyberfinance, računalniško programiranje d.o.o.</span>
-<span>Celovška cesta 136, 1000 Ljubljana, Slovenia</span>
-<span>DŠ: 83314512 · <a href="tel:+38640290963">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu">info@mrpicked.eu</a></span></div>
+<div class="co"><span style="font-weight:600;color:var(--navy)">Aurelia Group d.o.o.</span>
+<span>Zaloška cesta 161, 1000 Ljubljana, Slovenia</span>
+<span>Davčna št.: 71811435 · Matična št.: 7533152000</span>
+<span><a href="tel:+38640290963">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu">info@mrpicked.eu</a></span></div>
 </div>
 </footer>
 <script>document.querySelectorAll('.langs a').forEach(function(a){{a.addEventListener('click',function(){{try{{localStorage.setItem('mp-lang',a.getAttribute('data-lang'))}}catch(e){{}}}})}})</script>
