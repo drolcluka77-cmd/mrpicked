@@ -89,7 +89,7 @@
    ],
    "pkK": "Pricing",
    "pkH": "Build your plan.",
-   "pkSub": "Pick a package, add what you need, see the total right away. Prices exclude VAT. Monthly, cancel with 30 days’ notice.",
+   "pkSub": "Pick a package, add what you need, see the total right away. Prices exclude VAT. Monthly, cancel with 60 days’ notice.",
    "tags": [
     "Get found and described correctly",
     "Get chosen, not just listed",
@@ -205,7 +205,7 @@
     },
     {
      "q": "Can I cancel?",
-     "a": "Yes, monthly with 30 days’ notice. No long contracts."
+     "a": "Yes, monthly with 60 days’ notice. No long contracts."
     }
    ],
    "ctaH": "What does AI say about you today?",
@@ -304,7 +304,7 @@
    ],
    "pkK": "Cenik",
    "pkH": "Sestavite svoj paket.",
-   "pkSub": "Izberite paket, dodajte, kar potrebujete, in takoj vidite skupno ceno. Cene brez DDV. Mesečno, odpoved s 30-dnevnim rokom.",
+   "pkSub": "Izberite paket, dodajte, kar potrebujete, in takoj vidite skupno ceno. Cene brez DDV. Mesečno, odpoved s 60-dnevnim rokom.",
    "tags": [
     "Da vas najdejo in pravilno opišejo",
     "Da vas izberejo, ne le navedejo",
@@ -420,7 +420,7 @@
     },
     {
      "q": "Lahko odpovem?",
-     "a": "Da, mesečno s 30-dnevnim rokom. Brez dolgih pogodb."
+     "a": "Da, mesečno s 60-dnevnim rokom. Brez dolgih pogodb."
     }
    ],
    "ctaH": "Kaj AI danes pravi o vas?",
@@ -519,7 +519,7 @@
    ],
    "pkK": "Cjenik",
    "pkH": "Složite svoj paket.",
-   "pkSub": "Odaberite paket, dodajte što trebate i odmah vidite ukupnu cijenu. Cijene bez PDV-a. Mjesečno, otkaz uz 30 dana obavijesti.",
+   "pkSub": "Odaberite paket, dodajte što trebate i odmah vidite ukupnu cijenu. Cijene bez PDV-a. Mjesečno, otkaz uz 60 dana obavijesti.",
    "tags": [
     "Da vas pronađu i točno opišu",
     "Da vas odaberu, a ne samo navedu",
@@ -635,7 +635,7 @@
     },
     {
      "q": "Mogu li otkazati?",
-     "a": "Da, mjesečno uz 30 dana obavijesti. Bez dugih ugovora."
+     "a": "Da, mjesečno uz 60 dana obavijesti. Bez dugih ugovora."
     }
    ],
    "ctaH": "Što AI danas kaže o vama?",
@@ -734,7 +734,7 @@
    ],
    "pkK": "Prezzi",
    "pkH": "Componi il tuo piano.",
-   "pkSub": "Scegli un pacchetto, aggiungi ciò che ti serve e vedi subito il totale. Prezzi IVA esclusa. Mensile, disdetta con 30 giorni di preavviso.",
+   "pkSub": "Scegli un pacchetto, aggiungi ciò che ti serve e vedi subito il totale. Prezzi IVA esclusa. Mensile, disdetta con 60 giorni di preavviso.",
    "tags": [
     "Farti trovare e descrivere correttamente",
     "Farti scegliere, non solo elencare",
@@ -850,7 +850,7 @@
     },
     {
      "q": "Posso disdire?",
-     "a": "Sì, mensilmente con 30 giorni di preavviso. Nessun contratto lungo."
+     "a": "Sì, mensilmente con 60 giorni di preavviso. Nessun contratto lungo."
     }
    ],
    "ctaH": "Cosa dice oggi l’AI di te?",
@@ -949,7 +949,7 @@
    ],
    "pkK": "Preise",
    "pkH": "Stellen Sie Ihr Paket zusammen.",
-   "pkSub": "Paket wählen, Extras hinzufügen, Gesamtpreis sofort sehen. Preise exkl. MwSt. Monatlich, kündbar mit 30 Tagen Frist.",
+   "pkSub": "Paket wählen, Extras hinzufügen, Gesamtpreis sofort sehen. Preise exkl. MwSt. Monatlich, kündbar mit 60 Tagen Frist.",
    "tags": [
     "Gefunden und richtig beschrieben werden",
     "Gewählt werden, nicht nur gelistet",
@@ -1065,7 +1065,7 @@
     },
     {
      "q": "Kann ich kündigen?",
-     "a": "Ja, monatlich mit 30 Tagen Frist. Keine langen Verträge."
+     "a": "Ja, monatlich mit 60 Tagen Frist. Keine langen Verträge."
     }
    ],
    "ctaH": "Was sagt die KI heute über Sie?",
@@ -1164,7 +1164,7 @@
    ],
    "pkK": "Árak",
    "pkH": "Állítsa össze a csomagját.",
-   "pkSub": "Válasszon csomagot, adja hozzá, amire szüksége van, és azonnal látja a végösszeget. Az árak ÁFA nélkül értendők. Havi díjas, 30 napos felmondással.",
+   "pkSub": "Válasszon csomagot, adja hozzá, amire szüksége van, és azonnal látja a végösszeget. Az árak ÁFA nélkül értendők. Havi díjas, 60 napos felmondással.",
    "tags": [
     "Hogy megtalálják és pontosan írják le",
     "Hogy válasszák, ne csak felsorolják",
@@ -1280,7 +1280,7 @@
     },
     {
      "q": "Lemondhatom?",
-     "a": "Igen, havonta, 30 napos felmondással. Nincs hosszú szerződés."
+     "a": "Igen, havonta, 60 napos felmondással. Nincs hosszú szerződés."
     }
    ],
    "ctaH": "Mit mond ma Önről az AI?",
