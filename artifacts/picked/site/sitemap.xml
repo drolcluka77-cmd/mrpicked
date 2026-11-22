@@ -178,4 +178,64 @@
     <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zobozdravniki/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mrpicked.eu/dental/"/>
   </url>
+  <url>
+    <loc>https://mrpicked.eu/privacy/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zasebnost/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://mrpicked.eu/hr/privatnost/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mrpicked.eu/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrpicked.eu/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://mrpicked.eu/hu/adatvedelem/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/sl/zasebnost/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zasebnost/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://mrpicked.eu/hr/privatnost/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mrpicked.eu/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrpicked.eu/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://mrpicked.eu/hu/adatvedelem/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/hr/privatnost/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zasebnost/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://mrpicked.eu/hr/privatnost/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mrpicked.eu/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrpicked.eu/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://mrpicked.eu/hu/adatvedelem/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/it/privacy/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zasebnost/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://mrpicked.eu/hr/privatnost/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mrpicked.eu/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrpicked.eu/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://mrpicked.eu/hu/adatvedelem/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/de/datenschutz/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zasebnost/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://mrpicked.eu/hr/privatnost/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mrpicked.eu/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrpicked.eu/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://mrpicked.eu/hu/adatvedelem/"/>
+  </url>
+  <url>
+    <loc>https://mrpicked.eu/hu/adatvedelem/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrpicked.eu/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mrpicked.eu/sl/zasebnost/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://mrpicked.eu/hr/privatnost/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://mrpicked.eu/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrpicked.eu/de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://mrpicked.eu/hu/adatvedelem/"/>
+  </url>
 </urlset>

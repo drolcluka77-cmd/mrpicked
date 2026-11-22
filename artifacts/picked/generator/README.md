@@ -7,6 +7,7 @@ Run from the repository root (no dependencies, Python 3 only):
 
 - `copy.json` — base copy (hospitality wording), package names, prices and add-ons.
 - `content.py` — generic main-page copy (6 languages), industry pages (EN + SL), ROI defaults, page titles.
+- `privacy.py` — privacy policy text in 6 languages (pages /privacy/, /sl/zasebnost/, /hr/privatnost/, /it/privacy/, /de/datenschutz/, /hu/adatvedelem/).
 - `build.py` — writes every `index.html` and `sitemap.xml` into `../site/`, plus the video texts and form messages.
 
 Static files in `../site/` (`assets/app.js`, `assets/style.css`, icons, `llms.txt`, `robots.txt`) are edited directly.

@@ -8,6 +8,7 @@ OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(_here, '..', 'site')
 D = json.load(open(SRC, encoding='utf-8'))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import GEN, IND, ROI, IND_PATH, META_MAIN, META_IND, IND_ORDER
+from privacy import PRIV, PRIV_PATH
 
 CMP = {
  'EN': dict(cmpK="Compare", cmpH="Compare packages", g0="In every package", g1="Added in Recommended", g2="Added in Concierge", setupRow="One-time setup"),
@@ -252,7 +253,7 @@ def page(L, variant):
                             'dDesc', 'dAgain', 'dDone', 'dWait', 'dGet', 'dEmailPh', 'btn', 'privT', 'privL', 'tyH', 'tyP', 'tyBtn', 'roiBreak',
                             'perMonth', 'included', 'once', 'setup', 'inclH']}
     mp.update(lang=L, names=NAMES, prices=PRICES, setups=SETUPS, addons=ADDONS, addonNames=[a['name'] for a in t['addons']], cal=CAL,
-              catDef=t.get('catDef', ''), mailText=MAIL_TEXT[L])
+              catDef=t.get('catDef', ''), mailText=MAIL_TEXT[L], privUrl=rel(path, PRIV_PATH[L]))
     mp_json = json.dumps(mp, ensure_ascii=False).replace('</', '<\\/')
     logo_href = rel(path, main_path(L))
 
@@ -439,7 +440,7 @@ def page(L, variant):
 <label class="l" for="cta-mail">{e(t['fMail'])}</label>
 <input id="cta-mail" name="email" class="inp-light" type="email" autocomplete="email" required placeholder="{e(t['mailPh'])}">
 <label class="consent"><input type="checkbox" name="consent" value="yes">{e(t['consent'])}</label>
-<div class="priv">{e(t['privT'])} <a href="#privacy">{e(t['privL'])}</a></div>
+<div class="priv">{e(t['privT'])} <a href="{rel(path, PRIV_PATH[L])}">{e(t['privL'])}</a></div>
 <button type="submit" class="btn btn-navy">{e(t['btn'])}</button>
 </form>
 <div class="thanks" id="check-thanks" hidden aria-live="polite">
@@ -460,7 +461,8 @@ def page(L, variant):
 <div><b>Mr. Picked</b> · Ljubljana · SI · HR · IT · AT · HU</div>
 <div class="co"><span style="font-weight:600;color:var(--navy)">Cyberfinance, računalniško programiranje d.o.o.</span>
 <span>Celovška cesta 136, 1000 Ljubljana, Slovenia</span>
-<span>DŠ: 83314512 · <a href="tel:+38640290963">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu">info@mrpicked.eu</a></span></div>
+<span>DŠ: 83314512 · <a href="tel:+38640290963">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu">info@mrpicked.eu</a></span>
+<span><a href="{rel(path, PRIV_PATH[L])}">{e(t['privL'])}</a></span></div>
 </div>
 </footer>
 
@@ -470,11 +472,79 @@ def page(L, variant):
 </html>
 '''
 
+def privacy_page(L):
+    P = brand(PRIV[L]); t = {**D['T'][L], **D['T2'][L]}
+    path = PRIV_PATH[L]; A = '../' * path.count('/'); url = SITE + path; m = META[L]
+    alt = '\n'.join(f'<link rel="alternate" hreflang="{META[x]["hl"]}" href="{SITE + PRIV_PATH[x]}">' for x in LANGS)
+    alt += f'\n<link rel="alternate" hreflang="x-default" href="{SITE + PRIV_PATH["EN"]}">'
+    langs = ''.join(f'<a href="{rel(path, PRIV_PATH[x])}" hreflang="{META[x]["hl"]}" lang="{META[x]["hl"]}" data-lang="{x.lower()}"'
+                    + (' aria-current="page"' if x == L else '') + f'>{x}</a>' for x in LANGS)
+    body = ''
+    for h, blocks in P['sections']:
+        body += f'<h2>{e(h)}</h2>'
+        for b in blocks:
+            body += ('<ul>' + ''.join(f'<li>{e(x)}</li>' for x in b) + '</ul>') if isinstance(b, list) else f'<p>{e(b)}</p>'
+    home = rel(path, main_path(L))
+    return f"""<!doctype html>
+<html lang="{m['html']}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{e(P['title'])}</title>
+<meta name="description" content="{e(P['desc'])}">
+<link rel="canonical" href="{url}">
+{alt}
+<meta name="theme-color" content="#0E1A2B">
+<link rel="icon" href="{A}favicon.ico" sizes="any">
+<link rel="icon" href="{A}favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{A}apple-touch-icon.png">
+<link rel="manifest" href="{A}site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{A}assets/style.css">
+</head>
+<body class="legal-page">
+<header class="dark">
+<div class="wrap">
+<nav class="nav" aria-label="Main">
+<a class="logo" href="{home}"><span class="logo-mark">{CK('#0E1A2B', 16, 3)}</span><span class="logo-word">Mr. Picked</span></a>
+<div class="langs" role="navigation" aria-label="Language">{langs}</div>
+</nav>
+</div>
+</header>
+<main class="legal">
+<div class="wrap">
+<h1 class="h2">{e(P['h1'])}</h1>
+<p class="legal-upd">{e(P['updated'])}</p>
+<p class="lead">{e(P['intro'])}</p>
+{body}
+<p class="legal-back"><a href="{home}">← {e(P['back'])}</a></p>
+</div>
+</main>
+<footer>
+<div class="wrap foot">
+<div><b>Mr. Picked</b> · Ljubljana · SI · HR · IT · AT · HU</div>
+<div class="co"><span style="font-weight:600;color:var(--navy)">Cyberfinance, računalniško programiranje d.o.o.</span>
+<span>Celovška cesta 136, 1000 Ljubljana, Slovenia</span>
+<span>DŠ: 83314512 · <a href="tel:+38640290963">+386 40 290 963</a> · <a href="mailto:info@mrpicked.eu">info@mrpicked.eu</a></span></div>
+</div>
+</footer>
+<script>document.querySelectorAll('.langs a').forEach(function(a){{a.addEventListener('click',function(){{try{{localStorage.setItem('mp-lang',a.getAttribute('data-lang'))}}catch(e){{}}}})}})</script>
+</body>
+</html>
+"""
+
 PAGES = [(L, 'main') for L in LANGS] + [(L, v) for v in IND_ORDER for L in ('EN', 'SL')]
 for L, v in PAGES:
     p = os.path.join(OUT, page_path(L, v), 'index.html')
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, 'w', encoding='utf-8').write(page(L, v))
+    print('wrote', p)
+for L in LANGS:
+    p = os.path.join(OUT, PRIV_PATH[L], 'index.html')
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    open(p, 'w', encoding='utf-8').write(privacy_page(L))
     print('wrote', p)
 
 # sitemap with hreflang alternates
@@ -483,6 +553,9 @@ for L, v in PAGES:
     alts = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{META[x]["hl"]}" href="{SITE + page_path(x, v)}"/>' for x in group(v))
     alts += f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE + page_path("EN", v)}"/>'
     urls += f'  <url>\n    <loc>{SITE + page_path(L, v)}</loc>\n    <lastmod>2026-11-22</lastmod>{alts}\n  </url>\n'
+palts = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{META[x]["hl"]}" href="{SITE + PRIV_PATH[x]}"/>' for x in LANGS)
+for L in LANGS:
+    urls += f'  <url>\n    <loc>{SITE + PRIV_PATH[L]}</loc>\n    <lastmod>2026-11-22</lastmod>{palts}\n  </url>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8').write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '</urlset>\n')
 print('wrote sitemap')

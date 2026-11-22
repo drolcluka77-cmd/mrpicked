@@ -159,7 +159,7 @@
         '<input id="demo-mail" class="inp-dark" type="email" autocomplete="email" placeholder="' + esc(M.dEmailPh) + '" value="' + esc(S.mail) + '">' +
         '<button type="button" data-act="send"' + (S.busy ? ' disabled' : '') + '>' + esc(S.busy ? MT[0] : M.btn) + '</button></div>' +
         (S.err ? '<div class="form-msg" role="status">' + esc(MT[S.err] || '') + '</div>' : '') +
-        '<div class="tiny">' + esc(M.privT) + ' <a href="#privacy">' + esc(M.privL) + '</a></div></div>';
+        '<div class="tiny">' + esc(M.privT) + ' <a href="' + esc(M.privUrl || '#check') + '">' + esc(M.privL) + '</a></div></div>';
     } else if (!D.auto && S.sent) {
       html += '<div class="ask in"><div class="ty-h">' + esc(M.tyH) + '</div><div class="ty-p">' + esc(M.tyP) + '</div>' +
         (S.warn ? '<div class="form-msg warn">' + esc(MT[4] || '') + '</div>' : '') +
