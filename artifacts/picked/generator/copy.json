@@ -1471,6 +1471,22 @@
    "mo": 0,
    "once": 1490,
    "inc": null
+  },
+  {
+   "id": "social",
+   "mo": 290,
+   "mo1": 190,
+   "once": 0,
+   "inc": null,
+   "group": "social"
+  },
+  {
+   "id": "socialplus",
+   "mo": 490,
+   "mo1": 390,
+   "once": 0,
+   "inc": null,
+   "group": "social"
   }
  ]
 }

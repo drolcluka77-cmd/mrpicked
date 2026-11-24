@@ -255,9 +255,10 @@
   var P = { tier: 1, sel: {} };
   var ADD = M.addons;
   var monthly = M.prices[1];
+  function addonMo(a) { return (a.mo1 != null && P.tier >= 1) ? a.mo1 : a.mo; }
   function priceLabel(a) {
-    var parts = [];
-    if (a.mo) parts.push(fmt(a.mo) + ' ' + M.perMonth);
+    var parts = [], mo = addonMo(a);
+    if (mo) parts.push(fmt(mo) + ' ' + M.perMonth);
     if (a.once) parts.push(fmt(a.once) + ' ' + (a.mo ? M.setup : M.once));
     return parts.join(' + ');
   }
@@ -278,7 +279,7 @@
         btn.setAttribute('aria-pressed', String(on));
         $('.a-pr', btn).textContent = included ? M.included : priceLabel(a);
       }
-      if (on) { monthly += a.mo; once += a.once; lines.push([M.addonNames[i], priceLabel(a)]); }
+      if (on) { monthly += addonMo(a); once += a.once; lines.push([M.addonNames[i], priceLabel(a)]); }
     });
     var sl = $('#sum-lines');
     if (sl) sl.innerHTML = lines.map(function (l) { return '<div><span>' + esc(l[0]) + '</span><span>' + esc(l[1]) + '</span></div>'; }).join('');
@@ -288,7 +289,10 @@
   }
   $$('.tier').forEach(function (b) { b.addEventListener('click', function () { P.tier = +b.getAttribute('data-tier'); renderPricing(); }); });
   $$('.addon').forEach(function (b) {
-    b.addEventListener('click', function () { var id = b.getAttribute('data-addon'); P.sel[id] = !P.sel[id]; renderPricing(); });
+    b.addEventListener('click', function () { var id = b.getAttribute('data-addon'); P.sel[id] = !P.sel[id];
+      var g = null; ADD.forEach(function (a) { if (a.id === id) g = a.group; });
+      if (g && P.sel[id]) ADD.forEach(function (a) { if (a.group === g && a.id !== id) P.sel[a.id] = false; });
+      renderPricing(); });
   });
 
   var spendIn = $('#roi-spend'), guestsIn = $('#roi-guests');

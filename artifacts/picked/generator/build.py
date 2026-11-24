@@ -141,10 +141,35 @@ MAIL_TEXT = {
     'HU': ['Küldés…', 'Adjon meg érvényes e-mail-címet és cégnevet.', 'Sikertelen küldés. Próbálja újra, vagy írjon: info@mrpicked.eu.', 'Túl sok kérés. Próbálja újra 15 perc múlva.', 'Kérését megkaptuk, de a visszaigazolást nem sikerült elküldeni. Nem kell újra beküldenie.'],
 }
 
+# Social media add-ons (appended to every page's add-on list) + one FAQ item.
+# Prices: copy.json ADDONS 'social'/'socialplus' ('mo1' = price with Recommended or Concierge).
+SOCIAL = {
+ 'EN': dict(addons=[dict(name="Social Start", desc="8 posts/month on Facebook + Instagram and 4 Google posts, made from your Mr. Picked content. −100 € with Recommended or Concierge"),
+                    dict(name="Social Plus", desc="12–16 posts + stories, Google posts, replies to comments and messages on working days. −100 € with Recommended or Concierge")],
+            faq=dict(q="Do you also run our social media?", a="Yes, as an add-on. We make your posts from the content we already create for your AI visibility (videos, answers to customer questions, reviews), so it costs less than a separate agency. Google posts are always included, because they also help local search.")),
+ 'SL': dict(addons=[dict(name="Social Start", desc="8 objav/mesec na Facebooku + Instagramu in 4 Google objave iz vaše Mr. Picked vsebine. −100 € z Recommended ali Concierge"),
+                    dict(name="Social Plus", desc="12–16 objav + zgodbe, Google objave, odgovori na komentarje in sporočila ob delavnikih. −100 € z Recommended ali Concierge")],
+            faq=dict(q="Ali vodite tudi naša družbena omrežja?", a="Da, kot dodatek. Objave pripravimo iz vsebine, ki jo že naredimo za vašo AI vidnost (videi, odgovori na vprašanja strank, ocene), zato je ceneje kot pri ločeni agenciji. Google objave so vedno vključene, ker pomagajo tudi pri lokalnem iskanju.")),
+ 'HR': dict(addons=[dict(name="Social Start", desc="8 objava mjesečno na Facebooku + Instagramu i 4 Google objave iz vašeg Mr. Picked sadržaja. −100 € uz Recommended ili Concierge"),
+                    dict(name="Social Plus", desc="12–16 objava + priče, Google objave, odgovori na komentare i poruke radnim danima. −100 € uz Recommended ili Concierge")],
+            faq=dict(q="Vodite li i naše društvene mreže?", a="Da, kao dodatak. Objave radimo iz sadržaja koji već pripremamo za vašu AI vidljivost (videi, odgovori na pitanja klijenata, recenzije), pa je jeftinije nego kod zasebne agencije. Google objave su uvijek uključene jer pomažu i lokalnom pretraživanju.")),
+ 'IT': dict(addons=[dict(name="Social Start", desc="8 post al mese su Facebook + Instagram e 4 post Google, creati dai tuoi contenuti Mr. Picked. −100 € con Recommended o Concierge"),
+                    dict(name="Social Plus", desc="12–16 post + storie, post Google, risposte a commenti e messaggi nei giorni lavorativi. −100 € con Recommended o Concierge")],
+            faq=dict(q="Gestite anche i nostri social?", a="Sì, come extra. Creiamo i post dai contenuti che prepariamo già per la tua visibilità sull’AI (video, risposte alle domande dei clienti, recensioni), quindi costa meno di un’agenzia separata. I post Google sono sempre inclusi, perché aiutano anche la ricerca locale.")),
+ 'DE': dict(addons=[dict(name="Social Start", desc="8 Beiträge/Monat auf Facebook + Instagram und 4 Google-Beiträge aus Ihren Mr.-Picked-Inhalten. −100 € mit Recommended oder Concierge"),
+                    dict(name="Social Plus", desc="12–16 Beiträge + Storys, Google-Beiträge, Antworten auf Kommentare und Nachrichten an Werktagen. −100 € mit Recommended oder Concierge")],
+            faq=dict(q="Betreuen Sie auch unsere Social-Media-Kanäle?", a="Ja, als Zusatz. Wir erstellen die Beiträge aus Inhalten, die wir ohnehin für Ihre KI-Sichtbarkeit produzieren (Videos, Antworten auf Kundenfragen, Bewertungen), deshalb ist es günstiger als eine eigene Agentur. Google-Beiträge sind immer dabei, weil sie auch der lokalen Suche helfen.")),
+ 'HU': dict(addons=[dict(name="Social Start", desc="Havi 8 poszt Facebookon + Instagramon és 4 Google-poszt a Mr. Picked tartalmaiból. −100 € a Recommended vagy Concierge csomaggal"),
+                    dict(name="Social Plus", desc="12–16 poszt + történetek, Google-posztok, válasz kommentekre és üzenetekre munkanapokon. −100 € a Recommended vagy Concierge csomaggal")],
+            faq=dict(q="A közösségi médiánkat is kezelik?", a="Igen, kiegészítőként. A posztokat abból a tartalomból készítjük, amit amúgy is elkészítünk az AI-láthatóságához (videók, válaszok az ügyfélkérdésekre, értékelések), így olcsóbb, mint egy külön ügynökség. A Google-posztok mindig benne vannak, mert a helyi keresésben is segítenek.")),
+}
+
 def page(L, variant):
     base = {**D['T'][L], **D['T2'][L], 'mailPh': 'you@restaurant.si'}
     base.update(GEN[L] if variant == 'main' else IND[variant][L])
     base['faqs'] = [D['T'][L]['faqs'][f] if isinstance(f, int) else f for f in base['faqs']]
+    base['addons'] = list(base['addons'])[:4] + SOCIAL[L]['addons']
+    base['faqs'] = base['faqs'][:-1] + [SOCIAL[L]['faq']] + base['faqs'][-1:]
     t = brand({**base, **CMP[L]})
     path = page_path(L, variant)
     title, desc = META_MAIN[L] if variant == 'main' else META_IND[variant][L]
@@ -191,7 +216,8 @@ def page(L, variant):
                    + ''.join(f'<li>{CK(ACC)}{e(x)}</li>' for x in lst) + '</ul>' for i, lst in enumerate(t['lists']))
     def plabel(a):
         parts = []
-        if a['mo']: parts.append(fmt(a['mo'], L) + ' ' + t['perMonth'])
+        mo = a['mo1'] if a.get('mo1') is not None else a['mo']  # page loads with Recommended selected
+        if mo: parts.append(fmt(mo, L) + ' ' + t['perMonth'])
         if a['once']: parts.append(fmt(a['once'], L) + ' ' + (t['setup'] if a['mo'] else t['once']))
         return ' + '.join(parts)
     addons = ''
