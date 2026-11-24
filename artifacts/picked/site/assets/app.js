@@ -69,8 +69,26 @@
         if (!r.ok) throw r.status;
         return r.json().catch(function () { return {}; });
       })
-      .then(function (res) { S.busy = false; S.warn = res && res.confirmationSent === false; markSent(); })
+      .then(function (res) { S.busy = false; S.warn = res && res.confirmationSent === false; markSent(); sendToCrm(business, email); })
       .catch(function (st) { S.busy = false; S.err = st === 429 ? 3 : st === 400 ? 1 : 2; showFormState(); renderDemo(); });
+  }
+  // Copy of the request to the sales CRM (a seller follows up; with city + activity the CRM also runs an AI analysis).
+  // Best effort: the visitor's request is already accepted, so failures here are ignored.
+  function sendToCrm(business, email) {
+    try {
+      var n = document.getElementById('demo-name'), c = document.getElementById('demo-city'), k = document.getElementById('demo-cat');
+      var ranDemo = n && (n.value || '').trim();
+      var body = {
+        ime: business.slice(0, 120), podjetje: business.slice(0, 160), email: email,
+        jezik: M.lang, stran: location.pathname, vrsta: 'brezplačno poročilo', website: ''
+      };
+      if (ranDemo && c && (c.value || '').trim()) body.kraj = c.value.trim().slice(0, 80);
+      if (ranDemo && k && (k.value || '').trim()) body.dejavnost = k.value.trim().slice(0, 80);
+      fetch('https://portal.aureliagroup.eu/api/public/povprasevanje?produkt=picked', {
+        method: 'POST', mode: 'cors', keepalive: true,
+        headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+      }).catch(function () {});
+    } catch (e) { /* ignore */ }
   }
   if (form) {
     form.addEventListener('submit', function (e) {
