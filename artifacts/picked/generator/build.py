@@ -568,6 +568,49 @@ def privacy_page(L):
 </html>
 """
 
+NOTFOUND = {
+    'EN': ("Page not found", "This page doesn’t exist or has moved. Here is where to go instead:", "Back to the home page"),
+    'SL': ("Stran ne obstaja", "Ta stran ne obstaja ali je bila premaknjena. Nadaljujte tukaj:", "Nazaj na prvo stran"),
+}
+
+def notfound_page():
+    A = '/'
+    langs = ''.join(f'<li><a href="/{main_path(x)}" hreflang="{META[x]["hl"]}">{e(META_MAIN[x][0].split(" — ")[1])} ({x})</a></li>' for x in LANGS)
+    blocks = ''.join(f'<div class="nf-block" lang="{META[L]["hl"]}"><h1 class="h2">{e(NOTFOUND[L][0])}</h1><p class="lead">{e(NOTFOUND[L][1])}</p></div>' for L in ('EN', 'SL'))
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Mr. Picked</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E1A2B">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="legal-page">
+<header class="dark">
+<div class="wrap">
+<nav class="nav" aria-label="Main">
+<a class="logo" href="/"><span class="logo-mark">{CK('#0E1A2B', 16, 3)}</span><span class="logo-word">Mr. Picked</span></a>
+</nav>
+</div>
+</header>
+<main class="legal">
+<div class="wrap">
+{blocks}
+<ul class="nf-links">{langs}</ul>
+<p class="legal-back"><a href="/">← {e(NOTFOUND['EN'][2])} · {e(NOTFOUND['SL'][2])}</a></p>
+</div>
+</main>
+</body>
+</html>
+"""
+
 PAGES = [(L, 'main') for L in LANGS] + [(L, v) for v in IND_ORDER for L in ('EN', 'SL')]
 for L, v in PAGES:
     p = os.path.join(OUT, page_path(L, v), 'index.html')
@@ -589,6 +632,8 @@ for L, v in PAGES:
 palts = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{META[x]["hl"]}" href="{SITE + PRIV_PATH[x]}"/>' for x in LANGS)
 for L in LANGS:
     urls += f'  <url>\n    <loc>{SITE + PRIV_PATH[L]}</loc>\n    <lastmod>2026-11-22</lastmod>{palts}\n  </url>\n'
+open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(notfound_page())
+print('wrote 404.html')
 open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8').write(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + '</urlset>\n')
 print('wrote sitemap')

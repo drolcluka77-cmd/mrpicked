@@ -674,3 +674,33 @@ for _L, _n in _new.items():
     _c = GEN[_L]['inds']  # current: hospitality, apartments, towing, insurance, dental, other
     _d = lambda t: dict(name=t[0], desc=t[1])
     GEN[_L]['inds'] = [_c[0], _c[1], _d(_n[0]), _c[2], _d(_n[1]), _d(_n[2]), _c[3], _c[4], _d(_n[3])]
+
+# Search titles (≤ 60 characters) and descriptions (≤ 160) — what Google shows in results.
+META_MAIN = {
+ 'EN': ("Mr. Picked — Get recommended by ChatGPT and Google", "When customers ask ChatGPT, Gemini or Google who to call, AI names only a few businesses. We make sure yours is one of them. Free AI check."),
+ 'SL': ("Mr. Picked — Naj vas priporočita ChatGPT in Google", "Ko stranke vprašajo ChatGPT, Gemini ali Google, koga poklicati, AI imenuje le nekaj podjetij. Poskrbimo, da je vaše med njimi. Brezplačen AI pregled."),
+ 'HR': ("Mr. Picked — Neka vas preporuče ChatGPT i Google", "Kad klijenti pitaju ChatGPT, Gemini ili Google koga nazvati, AI navede samo nekoliko tvrtki. Pobrinut ćemo se da je vaša među njima. Besplatna provjera."),
+ 'IT': ("Mr. Picked — Fatti consigliare da ChatGPT e Google", "Quando i clienti chiedono a ChatGPT, Gemini o Google chi chiamare, l’AI nomina poche attività. Facciamo in modo che la tua sia tra queste. Analisi gratuita."),
+ 'DE': ("Mr. Picked — Von ChatGPT und Google empfohlen werden", "Wenn Kunden ChatGPT, Gemini oder Google fragen, wen sie anrufen sollen, nennt die KI nur wenige Firmen. Wir sorgen dafür, dass Ihre dabei ist. Gratis-Check."),
+ 'HU': ("Mr. Picked — Ajánlja Önt a ChatGPT és a Google", "Ha az ügyfelek a ChatGPT-t vagy a Google-t kérdezik, kit hívjanak, az AI csak pár céget nevez meg. Elérjük, hogy az Öné köztük legyen. Ingyenes AI-teszt."),
+}
+_IND_META = {
+ 'hospitality': {'EN': ("Restaurants & hotels: get recommended by AI | Mr. Picked", "When guests ask ChatGPT, Gemini or Perplexity where to eat or stay, AI names only a few places. We make sure yours is one of them. Free AI check."),
+                 'SL': ("Restavracije in hoteli: naj vas priporoči AI | Mr. Picked", "Ko gostje vprašajo ChatGPT, Gemini ali Perplexity, kje jesti ali spati, AI imenuje le nekaj lokalov. Poskrbimo, da je vaš med njimi. Brezplačen AI pregled.")},
+ 'towing': {'EN': ("Towing: be the number AI gives drivers | Mr. Picked", "When a driver asks ChatGPT, Gemini or Google for a towing service, AI names one or two companies. We make sure yours is one of them. Free AI check."),
+            'SL': ("Avtovleka: bodite številka, ki jo da AI | Mr. Picked", "Ko voznik vpraša ChatGPT, Gemini ali Google za vlečno službo, AI imenuje eno ali dve podjetji. Poskrbimo, da je vaše med njimi. Brezplačen AI pregled.")},
+ 'insurance': {'EN': ("Insurance agents: be the one AI recommends | Mr. Picked", "When someone asks ChatGPT, Gemini or Google which insurance agent to trust, AI names two or three. We make sure you are one of them. Free AI check."),
+               'SL': ("Zavarovalni zastopniki: priporoči vas AI | Mr. Picked", "Ko nekdo vpraša ChatGPT, Gemini ali Google, kateremu zastopniku zaupati, AI imenuje dva ali tri. Poskrbimo, da ste med njimi. Brezplačen AI pregled.")},
+ 'apartments': {'EN': ("Apartments: more direct bookings via AI | Mr. Picked", "When travellers ask ChatGPT, Gemini or Perplexity where to stay, AI names only a few places. We make sure yours is one, with a direct booking link."),
+                'SL': ("Apartmaji: več direktnih rezervacij prek AI | Mr. Picked", "Ko popotniki vprašajo ChatGPT, Gemini ali Perplexity, kje prespati, AI imenuje le nekaj mest. Poskrbimo, da je vaše med njimi. Brezplačen AI pregled.")},
+ 'dental': {'EN': ("Dentists & clinics: be the one AI recommends | Mr. Picked", "When patients ask ChatGPT, Gemini or Google which dental clinic to trust, AI names two or three. We make sure yours is one of them. Free AI check."),
+            'SL': ("Zobne ambulante: naj vas priporoči AI | Mr. Picked", "Ko pacienti vprašajo ChatGPT, Gemini ali Google, kateri ambulanti zaupati, AI imenuje dve ali tri. Poskrbimo, da je vaša med njimi. Brezplačen AI pregled.")},
+ 'carrepair': {'EN': ("Car repair & tyres: be the garage AI picks | Mr. Picked", "When drivers ask ChatGPT, Gemini or Google which garage to trust, AI names two or three. We make sure yours is one of them. Free AI check."),
+               'SL': ("Avtoservisi in gume: naj vas priporoči AI | Mr. Picked", "Ko vozniki vprašajo ChatGPT, Gemini ali Google, kateremu servisu zaupati, AI imenuje dva ali tri. Poskrbimo, da ste med njimi. Brezplačen AI pregled.")},
+ 'trades': {'EN': ("Plumbers & electricians: be the number AI gives | Mr. Picked", "When someone asks ChatGPT or Google for a plumber or electrician who can come now, AI names one or two. We make sure you are one of them. Free AI check."),
+            'SL': ("Vodovodarji in električarji: priporoči vas AI | Mr. Picked", "Ko nekdo vpraša ChatGPT ali Google za vodovodarja ali električarja, ki pride takoj, AI imenuje enega ali dva. Poskrbimo, da ste med njimi.")},
+ 'activities': {'EN': ("Tours & activities: get recommended by AI | Mr. Picked", "When travellers ask ChatGPT, Gemini or Perplexity what to do nearby, AI names two or three tours. We make sure yours is one of them. Free AI check."),
+                'SL': ("Izleti in aktivnosti: naj vas priporoči AI | Mr. Picked", "Ko popotniki vprašajo ChatGPT, Gemini ali Perplexity, kaj početi v bližini, AI imenuje dve ali tri ture. Poskrbimo, da ste med njimi. Brezplačen AI pregled.")},
+}
+for _k, _v in _IND_META.items():
+    META_IND[_k].update(_v)

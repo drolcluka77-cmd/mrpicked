@@ -22,6 +22,7 @@ createServer(async (req, res) => {
     const body = await readFile(file);
     res.writeHead(200, { "Content-Type": types[extname(file)] || "application/octet-stream" }).end(body);
   } catch {
-    res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" }).end("Not found");
+    const page = await readFile(join(root, "404.html")).catch(() => "Not found");
+    res.writeHead(404, { "Content-Type": "text/html; charset=utf-8" }).end(page);
   }
 }).listen(port, "0.0.0.0", () => console.log(`Mr. Picked site on http://0.0.0.0:${port}`));

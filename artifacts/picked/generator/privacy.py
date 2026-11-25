@@ -137,7 +137,7 @@ PRIV = {
 
 'IT': dict(
  title='Informativa privacy — Mr. Picked',
- desc='Come Mr. Picked (Aurelia Group d.o.o.) tratta i dati personali su mrpicked.eu: cosa raccogliamo, perché, per quanto tempo, chi li tratta e i tuoi diritti ai sensi del GDPR.',
+ desc='Come Mr. Picked tratta i dati personali su mrpicked.eu: cosa raccogliamo, perché, per quanto tempo, chi li tratta e i tuoi diritti ai sensi del GDPR.',
  h1='Informativa privacy', updated='Ultimo aggiornamento: 22 novembre 2026', back='Torna alla home page',
  intro='Questa informativa spiega come trattiamo i dati personali quando visiti mrpicked.eu, richiedi il report AI gratuito, prenoti una call o lavori con noi. Raccogliamo il minimo indispensabile e non vendiamo mai i tuoi dati.',
  sections=[
@@ -178,7 +178,7 @@ PRIV = {
 
 'DE': dict(
  title='Datenschutzerklärung — Mr. Picked',
- desc='Wie Mr. Picked (Aurelia Group d.o.o.) personenbezogene Daten auf mrpicked.eu verarbeitet: was wir erheben, warum, wie lange, wer sie verarbeitet und Ihre Rechte nach der DSGVO.',
+ desc='Wie Mr. Picked personenbezogene Daten auf mrpicked.eu verarbeitet: was wir erheben, warum, wie lange, wer sie verarbeitet und Ihre Rechte nach der DSGVO.',
  h1='Datenschutzerklärung', updated='Stand: 22. November 2026', back='Zurück zur Startseite',
  intro='Diese Erklärung beschreibt, wie wir personenbezogene Daten verarbeiten, wenn Sie mrpicked.eu besuchen, den kostenlosen KI-Bericht anfordern, ein Gespräch buchen oder mit uns zusammenarbeiten. Wir erheben so wenig wie möglich und verkaufen Ihre Daten nie.',
  sections=[
@@ -219,7 +219,7 @@ PRIV = {
 
 'HU': dict(
  title='Adatvédelmi tájékoztató — Mr. Picked',
- desc='Hogyan kezeli a Mr. Picked (Aurelia Group d.o.o.) a személyes adatokat a mrpicked.eu oldalon: mit gyűjtünk, miért, meddig, ki kezeli, és milyen jogai vannak a GDPR szerint.',
+ desc='Hogyan kezeli a Mr. Picked a személyes adatokat a mrpicked.eu oldalon: mit gyűjtünk, miért, meddig, ki kezeli, és milyen jogai vannak a GDPR szerint.',
  h1='Adatvédelmi tájékoztató', updated='Utolsó módosítás: 2026. november 22.', back='Vissza a kezdőlapra',
  intro='Ez a tájékoztató elmagyarázza, hogyan kezeljük a személyes adatokat, amikor felkeresi a mrpicked.eu oldalt, ingyenes AI-jelentést kér, hívást foglal vagy együtt dolgozik velünk. A lehető legkevesebb adatot gyűjtjük, és soha nem adjuk el.',
  sections=[

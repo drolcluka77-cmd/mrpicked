@@ -387,3 +387,7 @@ button[disabled]{opacity:.7;cursor:progress}
   .cmp-grp:last-child tr:last-child,.cmp-grp:last-child .cmp-g th{border-bottom:0}
   .cmp-grp.closed:last-child .cmp-g th{border-bottom:0}
 }
+
+/* 404 page */
+.nf-block + .nf-block { margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--bl); }
+.nf-links { margin: 28px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; }
