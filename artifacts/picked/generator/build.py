@@ -164,11 +164,22 @@ SOCIAL = {
             faq=dict(q="A közösségi médiánkat is kezelik?", a="Igen, kiegészítőként. A posztokat abból a tartalomból készítjük, amit amúgy is elkészítünk az AI-láthatóságához (videók, válaszok az ügyfélkérdésekre, értékelések), így olcsóbb, mint egy külön ügynökség. A Google-posztok mindig benne vannak, mert a helyi keresésben is segítenek.")),
 }
 
+# Lead Engine add-on (Google Ads + lead magnet + email sequences). Only with Recommended or Concierge (copy.json minTier 1).
+# desc = tagline / what is included / small print, shown as three lines in the same add-on card.
+LEAD = {
+ 'EN': dict(name="Lead Engine", desc=["Turn visibility into enquiries.", "Google Ads campaign setup and management, a landing page built to convert, a lead magnet (free guide, checklist or offer), an automated sequence of 4–5 emails and a monthly report on leads, cost per lead and results.", "Ad budget paid by the client directly to Google (recommended from €300/month). Minimum 3 months. Available with the Recommended or Concierge package."], locked="Available with Recommended or Concierge"),
+ 'SL': dict(name="Lead Engine", desc=["Vidnost spremenimo v povpraševanja.", "Postavitev in upravljanje Google Ads oglasov, pristajalna stran, narejena za konverzije, lead magnet (brezplačen vodič, kontrolni seznam ali ponudba), avtomatizirano zaporedje 4–5 e-mailov in mesečno poročilo: povpraševanja, cena na povpraševanje, rezultati.", "Oglaševalski proračun stranka plača neposredno Googlu (priporočeno od 300 €/mesec). Minimalno trajanje 3 mesece. Na voljo s paketom Recommended ali Concierge."], locked="Na voljo s paketom Recommended ali Concierge"),
+ 'HR': dict(name="Lead Engine", desc=["Vidljivost pretvaramo u upite.", "Postavljanje i vođenje Google Ads oglasa, landing stranica napravljena za konverzije, lead magnet (besplatan vodič, kontrolni popis ili ponuda), automatizirani niz od 4–5 e-mailova i mjesečno izvješće: upiti, cijena po upitu, rezultati.", "Oglasni budžet klijent plaća izravno Googleu (preporučeno od 300 €/mj.). Najmanje 3 mjeseca. Dostupno uz paket Recommended ili Concierge."], locked="Dostupno uz Recommended ili Concierge"),
+ 'IT': dict(name="Lead Engine", desc=["Trasformiamo la visibilità in richieste.", "Configurazione e gestione di campagne Google Ads, landing page pensata per convertire, lead magnet (guida gratuita, checklist o offerta), sequenza automatica di 4–5 email e report mensile: richieste, costo per richiesta, risultati.", "Il budget pubblicitario è pagato dal cliente direttamente a Google (consigliato da 300 €/mese). Durata minima 3 mesi. Disponibile con il pacchetto Recommended o Concierge."], locked="Disponibile con Recommended o Concierge"),
+ 'DE': dict(name="Lead Engine", desc=["Aus Sichtbarkeit werden Anfragen.", "Einrichtung und Betreuung von Google-Ads-Kampagnen, eine auf Conversions ausgelegte Landingpage, ein Lead-Magnet (Gratis-Leitfaden, Checkliste oder Angebot), eine automatische E-Mail-Serie mit 4–5 E-Mails und ein Monatsbericht: Anfragen, Kosten pro Anfrage, Ergebnisse.", "Das Werbebudget zahlt der Kunde direkt an Google (empfohlen ab 300 €/Monat). Mindestlaufzeit 3 Monate. Erhältlich mit Recommended oder Concierge."], locked="Erhältlich mit Recommended oder Concierge"),
+ 'HU': dict(name="Lead Engine", desc=["A láthatóságból érdeklődés lesz.", "Google Ads kampányok beállítása és kezelése, konverzióra épített landing oldal, lead magnet (ingyenes útmutató, ellenőrzőlista vagy ajánlat), automatikus 4–5 e-mailes sorozat és havi jelentés: érdeklődések, költség érdeklődésenként, eredmények.", "A hirdetési keretet az ügyfél közvetlenül a Google-nek fizeti (ajánlott havi 300 €-tól). Minimum 3 hónap. A Recommended vagy Concierge csomaggal érhető el."], locked="A Recommended vagy Concierge csomaggal érhető el"),
+}
+
 def page(L, variant):
     base = {**D['T'][L], **D['T2'][L], 'mailPh': 'you@restaurant.si'}
     base.update(GEN[L] if variant == 'main' else IND[variant][L])
     base['faqs'] = [D['T'][L]['faqs'][f] if isinstance(f, int) else f for f in base['faqs']]
-    base['addons'] = list(base['addons'])[:4] + SOCIAL[L]['addons']
+    base['addons'] = list(base['addons'])[:4] + SOCIAL[L]['addons'] + [dict(name=LEAD[L]['name'], desc=LEAD[L]['desc'])]
     base['faqs'] = base['faqs'][:-1] + [SOCIAL[L]['faq']] + base['faqs'][-1:]
     t = brand({**base, **CMP[L]})
     path = page_path(L, variant)
@@ -220,12 +231,13 @@ def page(L, variant):
         if mo: parts.append(fmt(mo, L) + ' ' + t['perMonth'])
         if a['once']: parts.append(fmt(a['once'], L) + ' ' + (t['setup'] if a['mo'] else t['once']))
         return ' + '.join(parts)
+    def ad_desc(d): return '<br>'.join(e(x) for x in d) if isinstance(d, list) else e(d)
     addons = ''
     for i, a in enumerate(ADDONS):
         inc = a['inc'] is not None and 1 >= a['inc']
         addons += (f'<button type="button" class="addon" data-addon="{a["id"]}" aria-pressed="false"{" disabled" if inc else ""}>'
                    f'<span class="cb">{CK("#0E1A2B", 12, 4)}</span><span class="a-txt"><span class="a-nm">{e(t["addons"][i]["name"])}</span>'
-                   f'<span class="a-ds">{e(t["addons"][i]["desc"])}</span><span class="a-pr">{e(t["included"] if inc else plabel(a))}</span></span></button>')
+                   f'<span class="a-ds">{ad_desc(t["addons"][i]["desc"])}</span><span class="a-pr">{e(t["included"] if inc else plabel(a))}</span></span></button>')
 
     # Comparison table: grouped by the package that adds each item
     def cell(on): return f'<td>{CK("#0E1A2B", 12, 4, "cmp-ck") if on else ""}<span class="sr">{"✓" if on else "—"}</span>{"" if on else "<span class=cmp-no aria-hidden=true>—</span>"}</td>'
@@ -284,7 +296,7 @@ def page(L, variant):
                             'dDesc', 'dAgain', 'dDone', 'dWait', 'dGet', 'dEmailPh', 'btn', 'privT', 'privL', 'tyH', 'tyP', 'tyBtn', 'roiBreak',
                             'perMonth', 'included', 'once', 'setup', 'inclH']}
     mp.update(lang=L, names=NAMES, prices=PRICES, setups=SETUPS, addons=ADDONS, addonNames=[a['name'] for a in t['addons']], cal=CAL,
-              catDef=t.get('catDef', ''), mailText=MAIL_TEXT[L], privUrl=rel(path, PRIV_PATH[L]))
+              catDef=t.get('catDef', ''), mailText=MAIL_TEXT[L], lockedNote=LEAD[L]['locked'], privUrl=rel(path, PRIV_PATH[L]))
     mp_json = json.dumps(mp, ensure_ascii=False).replace('</', '<\\/')
     logo_href = rel(path, main_path(L))
 

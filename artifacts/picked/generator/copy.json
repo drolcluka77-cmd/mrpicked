@@ -1487,6 +1487,13 @@
    "once": 0,
    "inc": null,
    "group": "social"
+  },
+  {
+   "id": "lead",
+   "mo": 390,
+   "once": 790,
+   "inc": null,
+   "minTier": 1
   }
  ]
 }

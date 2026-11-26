@@ -291,11 +291,13 @@
     ADD.forEach(function (a, i) {
       var btn = $('.addon[data-addon="' + a.id + '"]');
       var included = a.inc != null && P.tier >= a.inc;
-      var on = !included && !!P.sel[a.id];
+      var locked = a.minTier != null && P.tier < a.minTier;  // e.g. Lead Engine: only with Recommended or Concierge
+      var on = !included && !locked && !!P.sel[a.id];
       if (btn) {
-        btn.disabled = included;
+        btn.disabled = included || locked;
+        if (locked) btn.setAttribute('data-locked', ''); else btn.removeAttribute('data-locked');
         btn.setAttribute('aria-pressed', String(on));
-        $('.a-pr', btn).textContent = included ? M.included : priceLabel(a);
+        $('.a-pr', btn).textContent = included ? M.included : locked ? (M.lockedNote || '') : priceLabel(a);
       }
       if (on) { monthly += addonMo(a); once += a.once; lines.push([M.addonNames[i], priceLabel(a)]); }
     });
