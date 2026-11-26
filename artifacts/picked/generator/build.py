@@ -305,6 +305,7 @@ def page(L, variant):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="msvalidate.01" content="044B3A1B00AFAA5186B6A53343719B15">
 {redirect}<script>document.documentElement.className+=' js';try{{if(sessionStorage.getItem('mp-intro')){{document.documentElement.className+=' no-intro'}}else{{sessionStorage.setItem('mp-intro','1')}}}}catch(e){{}}</script>
 <title>{e(m['title'])}</title>
 <meta name="description" content="{e(m['desc'])}">
@@ -534,6 +535,7 @@ def privacy_page(L):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="msvalidate.01" content="044B3A1B00AFAA5186B6A53343719B15">
 <title>{e(P['title'])}</title>
 <meta name="description" content="{e(P['desc'])}">
 <link rel="canonical" href="{url}">
@@ -594,6 +596,7 @@ def notfound_page():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="msvalidate.01" content="044B3A1B00AFAA5186B6A53343719B15">
 <title>Page not found — Mr. Picked</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0E1A2B">
