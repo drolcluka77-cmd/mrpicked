@@ -396,3 +396,9 @@ button[disabled]{opacity:.7;cursor:progress}
 .addon[data-locked] .cb{background:transparent;border-color:var(--line)}
 .addon[data-locked] .cb svg{visibility:hidden}
 .addon[data-locked] .a-pr{color:var(--t2)}
+
+/* Price builder: phone = one column (included, add-ons, summary); desktop = included + summary on the left, add-ons in two columns */
+.pb{display:grid;gap:18px;grid-template-columns:minmax(0,1fr);align-items:start}
+.addon-grid{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){.addon-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.addon-grid .addon{height:100%}.addon-grid .addon:last-child:nth-child(odd){grid-column:1/-1}}
+@media (min-width:1000px){.pb{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}.pb-incl{grid-column:1;grid-row:1}.pb-sum{grid-column:1;grid-row:2;position:sticky;top:96px}.pb-add{grid-column:2;grid-row:1 / span 2}}

@@ -404,10 +404,10 @@ def page(L, variant):
 <div class="wrap stack rv" data-rv="pricing" style="gap:36px">
 <div class="stack" style="gap:12px;max-width:760px"><div class="kicker">{e(t['pkK'])}</div><h2 class="h2">{e(t['pkH'])}</h2><p style="font-size:17px;color:var(--t2)">{e(t['pkSub'])}</p></div>
 <div class="grid-auto" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{tiers}</div>
-<div class="grid-auto" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start">
-<div class="box-d"><div class="box-title" id="incl-title">{e(t['inclH'] + ' ' + NAMES[1])}</div>{incl}</div>
-<div class="box-d"><div class="box-title">{e(t['addH'])}</div>{addons}</div>
-<div class="sum"><div class="box-title">{e(t['sumH'])}</div>
+<div class="pb">
+<div class="box-d pb-incl"><div class="box-title" id="incl-title">{e(t['inclH'] + ' ' + NAMES[1])}</div>{incl}</div>
+<div class="box-d pb-add"><div class="box-title">{e(t['addH'])}</div><div class="addon-grid">{addons}</div></div>
+<div class="sum pb-sum"><div class="box-title">{e(t['sumH'])}</div>
 <div class="sum-lines" id="sum-lines"><div><span>{NAMES[1]}</span><span>{fmt(PRICES[1], L)} {e(t['perMonth'])}</span></div></div>
 <div class="hr"></div>
 <div class="sum-row"><span style="font-weight:600">{e(t['sumMonthly'])}</span><b id="sum-monthly">{fmt(PRICES[1], L)}</b></div>
